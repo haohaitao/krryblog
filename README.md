@@ -44,30 +44,5 @@ npm install iview-loader --save-dev
 ```js
 'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
 ```
-- 配置 webpack，改写平时 vue-loader 的配置，形如：
-```js
-module: {
-  rules: [
-    {
-      test: /\.vue$/,
-      use: [
-        {
-          loader: 'vue-loader',
-          options: {
-              
-          }
-        },
-        // 加上下面这行
-        {
-          loader: 'iview-loader',
-          options: {
-            prefix: false
-          }
-        }
-      ]
-    }
-  ]
-}
-```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
