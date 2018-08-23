@@ -51,6 +51,10 @@ npm install iview-loader --save-dev
 ```js
 'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
 ```
+## 两种风格
+1. 无侧边栏，每行三张卡片
+2. 有侧边栏，每行一张卡片
+
 
 ## 小功能
 > 整个页面模块卡片加载的时候，动画加载，翻转加载
@@ -68,5 +72,3 @@ npm install iview-loader --save-dev
 ```
 2. 首页侧边栏可放个人简介、搜索、友情链接、最热文章
 3. 首页侧边栏可去掉，每行就显示三张卡片的博客
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

@@ -1,23 +1,25 @@
 <template>
   <main>
     <section>
-      <ContentSection></ContentSection>
-      <ContentAside></ContentAside>
+      <!-- default use ThemeConcise -->
+      <ThemeConcise></ThemeConcise>
+      <!-- ThemeAnime -->
+      <!-- <ThemeAnime></ThemeAnime> -->
     </section>
     <div class="clear"></div>
   </main>
 </template>
 
 <script>
-import ContentSection from './ContentSection';
-import ContentAside from './ContentAside';
+import ThemeAnime from './ThemeAnime';
+import ThemeConcise from './ThemeConcise';
 export default {
   data () {
     return {
     };
   },
   components: {
-    ContentSection, ContentAside,
+    ThemeAnime, ThemeConcise,
   },
 };
 </script>

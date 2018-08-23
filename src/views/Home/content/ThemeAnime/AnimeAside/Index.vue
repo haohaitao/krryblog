@@ -23,7 +23,7 @@ export default {
   height: 600px;
 
   aside {
-    width: 340px;
+    width: 360px;
     height: 200px;
     border-radius: 4px;
     box-shadow: black 0px 0px 4px;

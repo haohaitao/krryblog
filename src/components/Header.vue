@@ -118,6 +118,7 @@ header {
             }
             .nav-child {
               visibility: hidden;
+              background: rgba(255, 255, 255, .94);
               opacity: 0;
               top: 80%;
               position: absolute;
