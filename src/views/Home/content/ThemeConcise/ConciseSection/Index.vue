@@ -71,7 +71,7 @@ section {
     margin: 0 16px;
     box-shadow: 0 2px 9px 0 rgba(0, 0, 0, .08);
     border: 1px solid #e6ebf5;
-    
+
     &:hover {
       box-shadow: 1px 2px 12px 1px rgba(0, 0, 0, 0.15);
       background: #fff;
