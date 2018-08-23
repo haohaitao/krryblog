@@ -2,6 +2,13 @@
 
 > My blog
 
+## 从零搭建一个博客系统
+
+## 技术栈
+1. vue、iview
+2. java、ssm
+3. mysql
+
 ## Build Setup
 
 ``` bash
@@ -43,6 +50,18 @@ npm install iview-loader --save-dev
 - iView 将标签渲染为原生 html 标签时，由于这些标签是自闭合的，所以有 end 标签会报错，在 .eslintrc.js 多配置一项：
 ```js
 'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
+```
+- 更改鼠标样式，鼠标点击时冒爱心
+```js
+// 需要在 webpack.base.conf.js 中设置多一个 rules cur
+{
+  test: /\.(png|jpe?g|gif|svg|cur)(\?.*)?$/,
+  loader: 'url-loader',
+  options: {
+    limit: 10000,
+    name: utils.assetsPath('img/[name].[hash:7].[ext]')
+  }
+},
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
