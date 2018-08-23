@@ -37,6 +37,9 @@ ul li {
 img {
   vertical-align: middle;
 }
+.clear {
+  clear: both;
+}
 
 /* 滚动条优化 */
 ::-webkit-scrollbar {
