@@ -67,7 +67,7 @@ export default {
 
 <style lang='scss' scoped>
 header {
-  background: rgba(255, 255, 255, .5);
+  background: rgba(255, 255, 255, .86);
   width: 100%;
   height: 70px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
@@ -154,7 +154,7 @@ header {
           transition: .4s;
 
           .s-inp {
-            transition: .6s;
+            width: 100%;
             opacity: 1;
             visibility: visible;
           }
@@ -174,14 +174,15 @@ header {
         }
 
         .s-inp {
+          transition: .6s;
           visibility: hidden;
           opacity: 0;
           font-size: 12px;
           line-height: 30px;
           position: absolute;
           top: 20px;
-          left: 0;
-          width: 100%;
+          right: 0;
+          width: 0%;
           height: 30px;
           padding: 0 30px 0 18px;
           color: #313131;
