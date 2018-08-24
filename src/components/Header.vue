@@ -15,7 +15,7 @@
           </router-link>
           <li class="sub-item">
             <Icon type="ios-list-box" />
-            归档
+            档案
             <ul class="nav-child">
               <li>
                 <a href="#">知识总结</a>
@@ -117,6 +117,7 @@ header {
               // transition: all .3s ease-in-out;
             }
             .nav-child {
+              z-index: 20;
               visibility: hidden;
               background: rgba(255, 255, 255, .94);
               opacity: 0;

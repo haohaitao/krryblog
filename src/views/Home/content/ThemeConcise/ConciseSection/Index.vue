@@ -2,11 +2,14 @@
   <section>
     <article v-for="(val, index) in blogList" :key="index">
       <div class="bg-img" :style="{background: `url(${val.image}) 0% 0% / cover`}"></div>
+      <div class="bg-cover">
+        <p>{{val.description}}</p>
+      </div>
       <div class="other-bgcover right-bgcover"></div>
       <div class="other-bgcover"></div>
       <div class="desc">
         <p class="title">{{val.title}}</p>
-        <span></span>
+        <div class="item-icon"></div>
       </div>
     </article>
     <div class="clear"></div>
@@ -62,11 +65,11 @@ export default {
 <style lang='scss' scoped>
 section {
   width: 100%;
-  padding: 0 87px;
+  padding: 0 72px;
   box-sizing: border-box;
 
   article {
-    width: 270px;
+    width: 280px;
     height: 400px;
     float: left;
     position: relative;
@@ -80,11 +83,52 @@ section {
     &:hover {
       box-shadow: 1px 2px 12px 1px rgba(0, 0, 0, 0.15);
       background: #fff;
+
+      .bg-img {
+        filter: blur(3px);
+        transform: scale(1.1);
+      }
+
+      .bg-cover {
+        transition: .5s;
+        background-color: rgba(0,0,0,.5);
+
+        p {
+          transition: .5s;
+          margin-top: 0px;
+          opacity: 1;
+        }
+      }
     }
 
     .bg-img {
+      transition: all .5s ease;
       height: 300px;
       border-radius: 4px 4px 0 0;
+    }
+
+    .bg-cover {
+      position: absolute;
+      top: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      padding: 40px 28px;
+      cursor: url(../../../../../assets/pic/cursor.cur), pointer !important;
+
+      p {
+        font-size: 14px;
+        margin: 0;
+        margin-top: 26px;
+        padding: 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
+        overflow: hidden;
+        opacity: 0;
+        line-height: 26px;
+        color: #fff;
+      }
     }
 
     .other-bgcover {
