@@ -1,18 +1,37 @@
 <template>
   <section>
     <article v-for="(val, index) in blogList" :key="index">
-      <div class="bg-img" :style="{background: `url(${val.image}) 0% 0% / cover`}"></div>
-      <div class="bg-cover">
-        <p>{{val.description}}</p>
+      <div class='bg-container'>
+        <div class="bg-img" :style="{background: `url(${val.image}) 0% 0% / cover`}"></div>
       </div>
+      <router-link :to="val.blogId">
+        <div class="bg-cover">
+          <p>{{val.description}}</p>
+        </div>
+      </router-link>
       <div class="other-bgcover right-bgcover"></div>
       <div class="other-bgcover"></div>
       <div class="desc">
-        <p class="title">{{val.title}}</p>
-        <div class="item-icon"></div>
+        <router-link :to="val.blogId">
+          <p class="title">{{val.title}}</p>
+        </router-link>
+        <div class="desc-bottom">
+          <div class="d-detail">
+            <Icon type="md-calendar" />
+            {{val.createTime}}
+            <Icon type="md-eye" />
+            {{val.hit}}
+            <Icon type="md-chatboxes" />
+            {{val.comment}}
+          </div>
+          <router-link :to="`category/${val.classifyId}`">
+            <div class="item-icon" :title="val.classify" :style="{backgroundPosition: `0 ${-val.classifyId*40-40}px`}"></div>
+          </router-link>
+        </div>
       </div>
     </article>
     <div class="clear"></div>
+    <Page v-if="blogLen > 12" :total="blogLen" size="small" show-elevator show-total />
   </section>
 </template>
 
@@ -25,37 +44,163 @@ export default {
           title: '博客1',
           description: '这是一段博客描述1',
           image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
+          blogId: '2015',
           createTime: '2018-02-03',
           updateTime: '2018-03-21',
           hit: 468,
           comment: 20,
           classify: '技术',
+          classifyId: '1',
           label: ['JavaScript', 'vue', 'html'],
         },
         {
           title: '博客2',
           description: '这是一段博客描述2',
           image: 'https://muz1.xyz/templates/themes/default/static/img/rand/4.jpg',
+          blogId: '2015',
           createTime: '2018-02-03',
           updateTime: '2018-03-21',
           hit: 468,
           comment: 20,
           classify: '技术',
+          classifyId: '2',
           label: ['JavaScript', 'vue', 'html'],
         },
         {
           title: '博客3',
           description: '这是一段博客描述3',
           image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
           createTime: '2018-02-03',
           updateTime: '2018-03-21',
           hit: 468,
           comment: 20,
           classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2015',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
           label: ['JavaScript', 'vue', 'html'],
         },
       ],
+      blogLen: 12,
     };
+  },
+  computed: {
   },
   components: {
   },
@@ -64,8 +209,9 @@ export default {
 
 <style lang='scss' scoped>
 section {
+  animation: fadeIn .6s linear;
   width: 100%;
-  padding: 0 72px;
+  padding: 0 60px;
   box-sizing: border-box;
 
   article {
@@ -76,7 +222,7 @@ section {
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.5);
     box-sizing: border-box;
-    margin: 0 16px;
+    margin: 20px;
     box-shadow: 0 2px 9px 0 rgba(0, 0, 0, .08);
     overflow: hidden;
 
@@ -101,10 +247,37 @@ section {
       }
     }
 
-    .bg-img {
-      transition: all .5s ease;
-      height: 300px;
-      border-radius: 4px 4px 0 0;
+    .bg-container {
+      &::before {
+        content: "Loading...";
+        position: absolute;
+        border-radius: 4px 4px 0 0;
+        width: 100%;
+        left: 0;
+        background-color: rgba(169, 169, 169, 0.75);
+        text-align: center;
+        line-height: 280px;
+        font-size: 26px;
+        color: #333333;
+        z-index: -1;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        border-radius: 4px 4px 0 0;
+        width: 100%;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0);
+        line-height: 280px;
+        z-index: -1;
+      }
+
+      .bg-img {
+        transition: all .5s ease;
+        height: 280px;
+        border-radius: 4px 4px 0 0;
+      }
     }
 
     .bg-cover {
@@ -139,27 +312,81 @@ section {
       left: 0;
       width: 110%;
       min-height: 100px;
-      transform: rotate(7deg) translate(-10px,0);
+      transform: rotate(7deg) translate(-10px, -20px);
       background-color: #fff;
     }
     .right-bgcover {
-      transform: rotate(-10deg) translate(10px,-10px);
+      transform: rotate(-10deg) translate(10px,-30px);
       opacity: .7;
       background-color: rgba(0, 0, 0, .5) !important;
     }
 
     .desc {
       width: 100%;
-      height: 100px;
+      height: 120px;
       background: #fff;
       position: relative;
-      padding: 0px 20px 20px;
+      padding: 8px 15px 15px;
       box-sizing: border-box;
 
       .title {
         font-size: 16px;
+        display: -webkit-inline-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+
+      .desc-bottom {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 0 15px 15px;
+        text-align: right;
+
+        .d-detail {
+          position: absolute;
+          bottom: 15px;
+
+          i {
+            font-size: 14px;
+            margin-top: -2px;
+
+            &:not(:first-child) {
+              margin-left: 12px;
+            }
+          }
+        }
+
+        .item-icon {
+          background: url(https://raw.githubusercontent.com/Krryxa/krryblog/master/src/assets/pic/bg-ico.png) no-repeat;
+          height: 42px;
+          width: 42px;
+          float: right;
+          border: 1px solid #eaeaea;
+          border-radius: 50%;
+          background-size: 40px auto;
+        }
       }
     }
+  }
+
+  .ivu-page {
+    text-align: center;
+    margin: 50px 0 auto;
+    font-size: 14px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    margin-top: -20px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
   }
 }
 </style>

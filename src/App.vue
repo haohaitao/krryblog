@@ -41,6 +41,22 @@ img {
   clear: both;
 }
 
+/* 分页样式的冲突和解决 */
+.ivu-page li {
+  cursor: url(./assets/pic/cursor.cur), pointer !important;
+}
+
+.ivu-page li:not(.ivu-page-disabled):hover a {
+  color: #eb5055;
+}
+.ivu-page-item-active a {
+  color: #eb5055;
+}
+
+.ivu-page li.ivu-page-disabled a {
+  cursor: not-allowed !important;
+}
+
 /* 滚动条优化 */
 ::-webkit-scrollbar {
   width: 8px;

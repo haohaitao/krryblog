@@ -44,11 +44,11 @@
             <Icon type="md-heart" />
             关于
           </li>
-          <li>
-            <Icon type="ios-paper-plane" />
-            登录
-          </li>
         </ul>
+        <div class="search">
+          <Icon type="md-search" />
+          <input type="text" class="s-inp" placeholder="搜索你想要的内容..." maxlength="30" autocomplete="off">
+        </div>
       </div>
     </div>
   </header>
@@ -92,8 +92,10 @@ header {
       height: 100%;
       line-height: 70px;
       font-size: 14px;
+      position: relative;
 
       .nav-far {
+        margin-right: 40px;
         li {
           position: relative;
           float: left;
@@ -144,6 +146,50 @@ header {
               }
             }
           }
+        }
+      }
+      .search {
+        &:hover {
+          color: #eb5055;
+          transition: .4s;
+
+          .s-inp {
+            transition: .6s;
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        i {
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          position: absolute;
+          top: 20px;
+          right: 0;
+          z-index: 1;
+          font-size: 18px;
+          cursor: url(../assets/pic/cursor.cur), pointer !important;
+        }
+
+        .s-inp {
+          visibility: hidden;
+          opacity: 0;
+          font-size: 12px;
+          line-height: 30px;
+          position: absolute;
+          top: 20px;
+          left: 0;
+          width: 100%;
+          height: 30px;
+          padding: 0 30px 0 18px;
+          color: #313131;
+          border: 1px solid #eb5055;
+          border-radius: 20px;
+          outline: 0;
+          background-color: #fff;
+          -webkit-appearance: none;
         }
       }
     }
