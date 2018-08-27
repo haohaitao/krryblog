@@ -4,7 +4,8 @@
       <div class='bg-container'>
         <div class="bg-img" :style="{background: `url(${val.image}) 0% 0% / cover`}"></div>
       </div>
-      <router-link :to="val.blogId">
+      <!-- 这里使用命名路由，效果与下面一样 -->
+      <router-link :to="{name: 'detail', params: {id: val.blogId, title: val.title}}">
         <div class="bg-cover">
           <p>{{val.description}}</p>
         </div>
@@ -12,6 +13,7 @@
       <div class="other-bgcover right-bgcover"></div>
       <div class="other-bgcover"></div>
       <div class="desc">
+        <!-- 这里直接用 id 作为路径，与上面一样 -->
         <router-link :to="val.blogId">
           <p class="title">{{val.title}}</p>
         </router-link>
@@ -57,7 +59,7 @@ export default {
           title: '博客2',
           description: '这是一段博客描述2',
           image: 'https://muz1.xyz/templates/themes/default/static/img/rand/4.jpg',
-          blogId: '2015',
+          blogId: '2016',
           createTime: '2018-02-03',
           updateTime: '2018-03-21',
           hit: 468,
@@ -70,6 +72,71 @@ export default {
           title: '博客3',
           description: '这是一段博客描述3',
           image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          blogId: '2017',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
+          blogId: '2018',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
+          blogId: '2019',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
+          blogId: '2020',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
+          blogId: '2021',
+          createTime: '2018-02-03',
+          updateTime: '2018-03-21',
+          hit: 468,
+          comment: 20,
+          classify: '技术',
+          classifyId: '3',
+          label: ['JavaScript', 'vue', 'html'],
+        },
+        {
+          title: '博客3',
+          description: '这是一段博客描述3',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
           blogId: '2015',
           createTime: '2018-02-03',
           updateTime: '2018-03-21',
@@ -82,7 +149,7 @@ export default {
         {
           title: '博客3',
           description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
           blogId: '2015',
           createTime: '2018-02-03',
           updateTime: '2018-03-21',
@@ -95,7 +162,7 @@ export default {
         {
           title: '博客3',
           description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
           blogId: '2015',
           createTime: '2018-02-03',
           updateTime: '2018-03-21',
@@ -108,7 +175,7 @@ export default {
         {
           title: '博客3',
           description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
           blogId: '2015',
           createTime: '2018-02-03',
           updateTime: '2018-03-21',
@@ -121,72 +188,7 @@ export default {
         {
           title: '博客3',
           description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
+          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
           blogId: '2015',
           createTime: '2018-02-03',
           updateTime: '2018-03-21',
@@ -197,7 +199,7 @@ export default {
           label: ['JavaScript', 'vue', 'html'],
         },
       ],
-      blogLen: 12,
+      blogLen: 13,
     };
   },
   computed: {

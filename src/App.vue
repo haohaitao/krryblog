@@ -22,7 +22,7 @@ a {
   color: #666;
 }
 a:hover {
-  color: #eb5055;
+  color: #eb5055 !important;
   transition: .4s;
 }
 ul li {

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="home left">
         <Icon type="md-headset" />
-        <a href="#">Krryblog</a>
+        <router-link to="/">Krryblog</router-link>
       </div>
       <div class="nav right">
         <ul class="nav-far">
@@ -119,7 +119,7 @@ header {
               // transition: all .3s ease-in-out;
             }
             .nav-child {
-              z-index: 20;
+              z-index: 1501;
               visibility: hidden;
               background: rgba(255, 255, 255, .94);
               opacity: 0;
