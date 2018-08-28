@@ -14,9 +14,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "animate.css": "^3.7.0",
     "axios": "^0.18.0",
+    "headroom.js": "^0.9.4",
     "iview": "^3.0.1",
     "mavon-editor": "^2.6.17",
+    "progress-catalog": "^1.0.6",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",

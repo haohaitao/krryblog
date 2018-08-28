@@ -7,6 +7,7 @@ import iView from 'iview';
 import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
 import 'iview/dist/styles/iview.css';
+import 'animate.css';
 
 Vue.config.productionTip = false;
 

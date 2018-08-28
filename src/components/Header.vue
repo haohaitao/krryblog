@@ -55,10 +55,27 @@
 </template>
 
 <script>
+import Headroom from 'headroom.js';
 export default {
   data () {
     return {
     };
+  },
+  created () {
+  },
+  mounted () {
+    // 获取页面元素
+    let myElement = document.querySelector('header');
+    let headroom = new Headroom(myElement, {
+      'tolerance': 5,
+      'offset': 80,
+      'classes': {
+        'initial': 'animated',
+        'pinned': 'slideInDown',
+        'unpinned': 'slideOutUp',
+      },
+    });
+    headroom.init();
   },
   components: {
   },
@@ -70,6 +87,9 @@ header {
   background: rgba(255, 255, 255, .86);
   width: 100%;
   height: 70px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
   box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
 
   .container {

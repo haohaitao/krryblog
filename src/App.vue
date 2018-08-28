@@ -23,7 +23,7 @@ a {
 }
 a:hover {
   color: #eb5055 !important;
-  transition: .4s;
+  transition: .3s;
 }
 ul li {
   list-style: none;
@@ -39,6 +39,9 @@ img {
 }
 .clear {
   clear: both;
+}
+.animated {
+  animation-duration: .5s;
 }
 
 /* 分页样式的冲突和解决 */

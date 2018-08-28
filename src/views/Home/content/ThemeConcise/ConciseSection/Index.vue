@@ -376,7 +376,7 @@ section {
 
   .ivu-page {
     text-align: center;
-    margin: 50px 0 auto;
+    margin: 36px 0 auto;
     font-size: 14px;
   }
 }
