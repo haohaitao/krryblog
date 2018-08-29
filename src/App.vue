@@ -44,6 +44,19 @@ img {
   animation-duration: .5s;
 }
 
+/* 回到顶部 */
+.ivu-back-top {
+  right: unset !important;
+  margin-left: 1020px;
+  cursor: url(./assets/pic/cursor.cur), pointer !important;
+}
+.ivu-back-top-inner {
+  background-color: rgba(255, 152, 49, 0.91);
+  border-radius: 4px;
+}
+.ivu-back-top-inner:hover {
+  background-color: rgb(255, 111, 27);
+}
 /* 分页样式的冲突和解决 */
 .ivu-page li {
   cursor: url(./assets/pic/cursor.cur), pointer !important;

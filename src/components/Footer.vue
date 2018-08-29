@@ -1,7 +1,8 @@
 <template>
   <footer>
     <div class="container">
-      © 2018 乐诗
+      <span class="name">© 2018 乐诗</span>
+      <BackTop :height="600" :bottom="60"></BackTop>
     </div>
   </footer>
 </template>
@@ -28,7 +29,10 @@ footer {
     margin: 0 auto;
     height: 100%;
     text-align: center;
-    line-height: 120px;
+
+    .name {
+      line-height: 120px;
+    }
   }
 }
 </style>
