@@ -72,23 +72,20 @@ export default {
     blog.addEventListener('click', ev => {
       let eve = ev || window.event;
       target = eve.target || eve.srcElement;
-      if (target.nodeName.toLowerCase() === 'img' && target.className !== 'zoom-img') {
+      if (target.nodeName.toLowerCase() === 'img' && target.className !== 'zoom-big-img') {
         zooms.style.visibility = 'visible';
         zooms.style.opacity = '1';
-        target.className = 'zoom-img';
-        target.style.marginTop = -target.offsetHeight / 2 + 'px';
+        target.className = 'zoom-big-img';
       } else {
         zooms.style.visibility = 'hidden';
         zooms.style.opacity = '0';
         target.className = '';
-        target.style.marginTop = '0';
       }
     });
     zooms.addEventListener('click', ev => {
       zooms.style.visibility = 'hidden';
       zooms.style.opacity = '0';
       target.className = '';
-      target.style.marginTop = '0';
     });
   },
   components: {
@@ -227,21 +224,22 @@ article {
     }
     img {
       cursor: zoom-in;
-    }
-    .zoom-img {
-      margin: 0;
-      border: none;
-      cursor: zoom-out;
-      border-radius: 0;
-      box-shadow: none;
-      position: fixed;
-      z-index: 1501;
-      top: 50%;
       transition: .3s;
-      transform: scale(1.24);
+    }
+    .zoom-big-img {
+      z-index: 1501;
+      position: fixed;
+      cursor: zoom-out;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      transform: scale(1.1);
     }
   }
 }
+
 #directory {
   position: fixed;
   top: 30%;
