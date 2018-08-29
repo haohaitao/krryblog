@@ -107,97 +107,6 @@ export default {
           classifyId: '3',
           label: ['JavaScript', 'vue', 'html'],
         },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2020',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2021',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
       ],
       blogLen: 13,
     };
@@ -378,17 +287,6 @@ section {
     text-align: center;
     margin: 36px 0 auto;
     font-size: 14px;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    margin-top: -20px;
-  }
-  to {
-    opacity: 1;
-    margin-top: 0;
   }
 }
 </style>

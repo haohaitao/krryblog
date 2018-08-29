@@ -96,6 +96,7 @@ export default {
 
 <style lang='scss' scoped>
 section {
+  animation: fadeIn .6s linear;
   padding: 50px;
 
   .ivu-breadcrumb {

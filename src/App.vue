@@ -128,4 +128,15 @@ scrollbar[orient="vertical"] {
   background: #FF5252;
   color: #fff;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    margin-top: -20px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
 </style>

@@ -76,6 +76,7 @@ npm install iview-loader --save-dev
 5. 根据滚动条上滑出现吸顶盒，下滑隐藏
 6. markdown 语法保存，保存两份，一份是原始 markdown 语法，一份是转义后的 html
 7. 使用了 progress-catalog 插件自动生成目录
+8. 所有页面都使用 fadeIn 动画显示 animation: fadeIn .6s linear;
 
 ##  主题一：图片正方形
 1. 因为使用 background 来装载博客图片，使用 filter: blur(3px); 使背景图片虚化，当准备做图片懒加载的时候，使用了 ::before{} 在被选元素的前面插入内容，且设置 z-index: -1，使用 content 属性定义插入内容的文本信息，这样子来做图片懒加载，当背景图片加载完成，会自动覆盖 ::before{} 的内容
