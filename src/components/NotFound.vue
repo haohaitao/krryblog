@@ -29,7 +29,7 @@ export default {
 <style lang='scss' scoped>
 section {
   animation: fadeIn .6s linear;
-  padding: 200px;
+  padding: 170px;
   text-align: center;
 
   .number {

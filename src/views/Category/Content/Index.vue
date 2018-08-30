@@ -1,8 +1,12 @@
 <template>
-  <main>
+  <section>
+    <div class="header">
+      <h1>『知识总结』</h1>
+      <h4>相关内容 —— 归档</h4>
+    </div>
     <SectionArticle :blogList="blogList"></SectionArticle>
     <Page v-if="blogLen > 12" :total="blogLen" size="small" show-elevator show-total />
-  </main>
+  </section>
 </template>
 
 <script>
@@ -113,8 +117,28 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-main {
-  width: 1080px;
-  margin: 90px auto 0;
+section {
+  .header {
+    background: url(../../../assets/pic/category.jpg) no-repeat;
+    background-size: cover;
+    padding: 96px 0 30px;
+    text-align: center;
+    margin-bottom: 20px;
+
+    h1 {
+      font-weight: 100;
+      font-size: 30px;
+      margin-bottom: 10px;
+      letter-spacing: .1em;
+      color: #fff;
+      text-shadow: 0 4px 8px rgba(7,17,27,.4);
+    }
+
+    h4 {
+      font-weight: 100;
+      font-size: 15px;
+      color: rgba(255,255,255,0.54);
+    }
+  }
 }
 </style>

@@ -46,18 +46,40 @@ img {
 
 /* 回到顶部 */
 .ivu-back-top {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  bottom: 0 !important;
+  transition: .4s ease;
   right: unset !important;
   margin-left: 1020px;
   cursor: url(./assets/pic/cursor.cur), pointer !important;
 }
+.ivu-back-top.ivu-back-top-show {
+  transform: rotate(360deg);
+  bottom: 60px !important;
+  opacity: 1;
+  visibility: visible;
+}
+.ivu-back-top i {
+  padding: 8px 8px;
+}
 .ivu-back-top-inner {
   background-color: rgba(255, 152, 49, 0.91);
-  border-radius: 4px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
 }
 .ivu-back-top-inner:hover {
   background-color: rgb(255, 111, 27);
 }
+
 /* 分页样式的冲突和解决 */
+.ivu-page {
+  text-align: center;
+  margin: 36px 0 auto;
+  font-size: 14px;
+}
 .ivu-page li {
   cursor: url(./assets/pic/cursor.cur), pointer !important;
 }

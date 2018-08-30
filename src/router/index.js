@@ -18,6 +18,12 @@ export default new Router({
       meta: {title: '你的美好，我都记得'},
     },
     {
+      path: '/category/:id',
+      component: () => import('../views/Category'),
+      name: 'category',
+      meta: {title: '你的美好，我都记得'},
+    },
+    {
       path: '/backstage/edit',
       component: () => import('../views/Backstage/Edit'),
       name: 'edit',

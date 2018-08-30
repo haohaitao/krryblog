@@ -14,7 +14,7 @@
       <div class="other-bgcover"></div>
       <div class="desc">
         <!-- 这里直接用 id 作为路径，与上面一样 -->
-        <router-link :to="val.blogId">
+        <router-link :to="`/${val.blogId}`">
           <p class="title">{{val.title}}</p>
         </router-link>
         <div class="desc-bottom">
@@ -26,89 +26,25 @@
             <Icon type="md-chatboxes" />
             {{val.comment}}
           </div>
-          <router-link :to="`category/${val.classifyId}`">
+          <router-link :to="`/category/${val.classifyId}`">
             <div class="item-icon" :title="val.classify" :style="{backgroundPosition: `0 ${-val.classifyId*40-40}px`}"></div>
           </router-link>
         </div>
       </div>
     </article>
     <div class="clear"></div>
-    <Page v-if="blogLen > 12" :total="blogLen" size="small" show-elevator show-total />
   </section>
 </template>
 
 <script>
 export default {
+  props: {
+    blogList: {
+      type: Array,
+    },
+  },
   data () {
     return {
-      blogList: [
-        {
-          title: '博客1',
-          description: '这是一段博客描述1',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2015',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '1',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客2',
-          description: '这是一段博客描述2',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/4.jpg',
-          blogId: '2016',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '2',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/7.jpg',
-          blogId: '2017',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2018',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-        {
-          title: '博客3',
-          description: '这是一段博客描述3',
-          image: 'https://muz1.xyz/templates/themes/default/static/img/rand/6.jpg',
-          blogId: '2019',
-          createTime: '2018-02-03',
-          updateTime: '2018-03-21',
-          hit: 468,
-          comment: 20,
-          classify: '技术',
-          classifyId: '3',
-          label: ['JavaScript', 'vue', 'html'],
-        },
-      ],
-      blogLen: 13,
     };
   },
   computed: {
@@ -198,7 +134,7 @@ section {
       width: 100%;
       height: 100%;
       padding: 40px 28px;
-      cursor: url(../../../../../assets/pic/cursor.cur), pointer !important;
+      cursor: url(../assets/pic/cursor.cur), pointer !important;
 
       p {
         font-size: 14px;
@@ -281,12 +217,6 @@ section {
         }
       }
     }
-  }
-
-  .ivu-page {
-    text-align: center;
-    margin: 36px 0 auto;
-    font-size: 14px;
   }
 }
 </style>

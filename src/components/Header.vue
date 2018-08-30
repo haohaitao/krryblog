@@ -15,16 +15,16 @@
           </router-link>
           <li class="sub-item">
             <Icon type="ios-list-box" />
-            档案
+            归档
             <ul class="nav-child">
               <li>
-                <a href="#">知识总结</a>
+                <router-link to="/category/1">知识总结</router-link>
               </li>
-               <li>
-                <a href="#">分享猫猫</a>
+              <li>
+                <router-link to="/category/2">生活之谈</router-link>
               </li>
-               <li>
-                <a href="#">标签大全</a>
+              <li>
+                <router-link to="/category/3">标签大全</router-link>
               </li>
             </ul>
           </li>
@@ -33,10 +33,10 @@
             主题
             <ul class="nav-child">
               <li>
-                <a href="#">简约优雅</a>
+                <router-link to="#">简约优雅</router-link>
               </li>
-               <li>
-                <a href="#">二次元</a>
+              <li>
+                <router-link to="#">二次元</router-link>
               </li>
             </ul>
           </li>
@@ -84,7 +84,7 @@ export default {
 
 <style lang='scss' scoped>
 header {
-  background: rgba(255, 255, 255, .86);
+  background: rgba(255, 255, 255, .94);
   width: 100%;
   height: 70px;
   position: fixed;
