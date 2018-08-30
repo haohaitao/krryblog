@@ -12,13 +12,13 @@ export default new Router({
       meta: {title: 'Krry blog - 你的美好，我都记得'},
     },
     {
-      path: '/:id',
+      path: '/:id(\\d+)',
       component: () => import('../views/Blog'),
       name: 'blog',
       meta: {title: '你的美好，我都记得'},
     },
     {
-      path: '/category/:id',
+      path: '/category/:id(\\d+)',
       component: () => import('../views/Category'),
       name: 'category',
       meta: {title: '你的美好，我都记得'},
@@ -33,6 +33,12 @@ export default new Router({
       path: '/about',
       component: () => import('../views/About'),
       name: 'about',
+      meta: {title: '你的美好，我都记得'},
+    },
+    {
+      path: '/link',
+      component: () => import('../views/Link'),
+      name: 'link',
       meta: {title: '你的美好，我都记得'},
     },
     {

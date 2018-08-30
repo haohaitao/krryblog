@@ -40,7 +40,8 @@
               </li>
             </ul>
           </li>
-          <router-link to="/link">
+          <!-- 可使用命名路由 -->
+          <router-link :to="{name: 'link'}">
             <li>
               <Icon type="ios-link" style="font-weight: bold;"/>
               友链

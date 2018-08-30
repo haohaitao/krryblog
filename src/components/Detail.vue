@@ -12,7 +12,7 @@
         <Icon type="md-chatboxes" />
         {{blog.comment}}
       </div>
-      <div class="header-tag">
+      <div class="header-tag" v-if="hasTags">
         <router-link :to="`/tag/${tags}`" v-for="(tags, index) in blog.label" :key="index">{{tags}}</router-link>
       </div>
     </div>
@@ -33,7 +33,7 @@ import Catalog from '@/util/catalog.js';
 export default {
   props: {
     blog: {
-      type: JSON,
+      type: Object,
     },
     isNoBlog: {
       type: Boolean,
@@ -42,6 +42,11 @@ export default {
   data () {
     return {
     };
+  },
+  computed: {
+    hasTags () {
+      return this.blog['label'].length > 0;
+    },
   },
   mounted () {
     if (!this.isNoBlog) {
@@ -93,7 +98,7 @@ article {
   background-color: #fff;
 
   .art-header {
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     border-bottom: 1px dashed #b7b7b7;
 
     h1 {
@@ -104,7 +109,7 @@ article {
     }
 
     .header-info {
-      margin: 14px 0px;
+      margin: 14px 0px 0;
       i {
         &:not(:first-child) {
           margin-left: 12px;
@@ -116,6 +121,7 @@ article {
     }
 
     .header-tag {
+      margin-top: 14px;
       a {
         color: #fff;
         border: 1px solid #f16d71;

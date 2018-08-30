@@ -129,6 +129,11 @@ export default {
       }
     },
   },
+  watch: {
+    $route (to, from) {
+      this.getTags();
+    },
+  },
   components: {
     Header, Footer, NotFound, Content,
   },
