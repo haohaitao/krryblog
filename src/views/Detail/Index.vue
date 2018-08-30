@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main v-if="!isNoBlog">
     <Header></Header>
     <article class="detail-article">
       <div class="art-header">
@@ -28,11 +28,13 @@
     <Footer></Footer>
     <div id="zooms" class="zoom-shadow"></div>
   </main>
+  <NotFound v-else></NotFound>
 </template>
 
 <script>
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import NotFound from '@/components/NotFound';
 import '@/assets/css/markdown.css';
 import '@/assets/css/github.css';
 import Catalog from '@/util/catalog.js';
@@ -53,43 +55,56 @@ export default {
         classifyId: '1',
         label: ['JavaScript', 'vue', 'html'],
       },
+      status: 200,
       directory: [],
     };
   },
+  computed: {
+    isNoBlog () {
+      return this.status === 404;
+    },
+  },
   created () {
-    document.title = `${this.blog['title']} - ${document.title}`;
+    this.status = 200;
+    // 404 的标题在 axios 拦截器已经定义
+    if (this.status !== 404) {
+      document.title = `${this.blog['title']} - ${document.title}`;
+    }
   },
   mounted () {
-    Catalog({
-      contentEl: 'blog',
-      catalogEl: 'directory',
-      selector: ['h1', 'h2', 'h3'],
-    });
-    // 事件委托，处理全部 img 标签的点击事件
-    let blog = document.getElementById('blog');
-    let zooms = document.getElementById('zooms');
-    let target = '';
-    blog.addEventListener('click', ev => {
-      let eve = ev || window.event;
-      target = eve.target || eve.srcElement;
-      if (target.nodeName.toLowerCase() === 'img' && target.className !== 'zoom-big-img') {
-        zooms.style.visibility = 'visible';
-        zooms.style.opacity = '1';
-        target.className = 'zoom-big-img';
-      } else {
+    // 查询有博客的时候进行目录编排和图片点击事件
+    if (!this.isNoBlog) {
+      Catalog({
+        contentEl: 'blog',
+        catalogEl: 'directory',
+        selector: ['h1', 'h2', 'h3'],
+      });
+      // 事件委托，处理全部 img 标签的点击事件
+      let blog = document.getElementById('blog');
+      let zooms = document.getElementById('zooms');
+      let target = '';
+      blog.addEventListener('click', ev => {
+        let eve = ev || window.event;
+        target = eve.target || eve.srcElement;
+        if (target.nodeName.toLowerCase() === 'img' && target.className !== 'zoom-big-img') {
+          zooms.style.visibility = 'visible';
+          zooms.style.opacity = '1';
+          target.className = 'zoom-big-img';
+        } else if (target.className === 'zoom-big-img') {
+          zooms.style.visibility = 'hidden';
+          zooms.style.opacity = '0';
+          target.className = '';
+        }
+      });
+      zooms.addEventListener('click', ev => {
         zooms.style.visibility = 'hidden';
         zooms.style.opacity = '0';
         target.className = '';
-      }
-    });
-    zooms.addEventListener('click', ev => {
-      zooms.style.visibility = 'hidden';
-      zooms.style.opacity = '0';
-      target.className = '';
-    });
+      });
+    }
   },
   components: {
-    Header, Footer,
+    Header, Footer, NotFound,
   },
 };
 </script>

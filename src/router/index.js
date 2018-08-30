@@ -25,7 +25,9 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/',
+      component: () => import('../components/NotFound'),
+      name: 'NotFound',
+      meta: {title: '404 - 找不到页面'},
     },
   ],
   scrollBehavior (to, from, savedPosition) {
