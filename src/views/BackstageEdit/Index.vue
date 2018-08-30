@@ -122,7 +122,7 @@ section {
       margin: 0 auto;
       width:200px;
       .upload-icon {
-        cursor: url(../../../assets/pic/cursor.cur), pointer !important;
+        cursor: url(../../assets/pic/cursor.cur), pointer !important;
         width: 200px;
         height:200px;
         line-height: 200px;
@@ -144,6 +144,6 @@ section {
 </style>
 <style>
 .v-note-wrapper .v-note-op .v-left-item .op-icon, .op-icon input {
-  cursor: url(../../../assets/pic/cursor.cur), pointer !important;
+  cursor: url(../../assets/pic/cursor.cur), pointer !important;
 }
 </style>

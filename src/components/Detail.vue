@@ -1,0 +1,298 @@
+<template>
+  <article class="detail-article" ref="article">
+    <div class="art-header">
+      <h1>{{blog.title}}</h1>
+      <div class="header-info">
+        <Icon type="md-pricetags" />
+        <router-link :to="`/category/${blog.classifyId}`">{{blog.classify}}</router-link>
+        <Icon type="md-time" />
+        {{blog.createTime}}
+        <Icon type="md-eye" />
+        {{blog.hit}}
+        <Icon type="md-chatboxes" />
+        {{blog.comment}}
+      </div>
+      <div class="header-tag">
+        <router-link :to="`/tag/${tags}`" v-for="(tags, index) in blog.label" :key="index">{{tags}}</router-link>
+      </div>
+    </div>
+    <div id="blog" class="content markdown-body" v-html="blog.description"></div>
+    <div class="content-footer">
+      <p>本文由 <router-link to="/">乐诗-Krry</router-link> 创作，转载请注明</p>
+      <p>最后编辑时间：{{blog.updateTime}}</p>
+    </div>
+    <aside id="directory"></aside>
+    <div id="zooms" class="zoom-shadow"></div>
+  </article>
+</template>
+
+<script>
+import '@/assets/css/markdown.css';
+import '@/assets/css/github.css';
+import Catalog from '@/util/catalog.js';
+export default {
+  props: {
+    blog: {
+      type: JSON,
+    },
+    isNoBlog: {
+      type: Boolean,
+    },
+  },
+  data () {
+    return {
+    };
+  },
+  mounted () {
+    if (!this.isNoBlog) {
+      Catalog({
+        contentEl: 'blog',
+        catalogEl: 'directory',
+        selector: ['h1', 'h2', 'h3'],
+      });
+      let wrapper = document.getElementsByClassName('cl-wrapper')[0];
+      // 没有目录，就隐藏
+      if (wrapper.innerHTML === '') {
+        wrapper.style.display = 'none';
+      }
+      // 事件委托，处理全部 img 标签的点击事件
+      let blog = document.getElementById('blog');
+      let zooms = document.getElementById('zooms');
+      let target = '';
+      blog.addEventListener('click', ev => {
+        let eve = ev || window.event;
+        target = eve.target || eve.srcElement;
+        if (target.nodeName.toLowerCase() === 'img' && target.className !== 'zoom-big-img') {
+          zooms.style.visibility = 'visible';
+          zooms.style.opacity = '1';
+          target.className = 'zoom-big-img';
+        } else if (target.className === 'zoom-big-img') {
+          zooms.style.visibility = 'hidden';
+          zooms.style.opacity = '0';
+          target.className = '';
+        }
+      });
+      zooms.addEventListener('click', ev => {
+        zooms.style.visibility = 'hidden';
+        zooms.style.opacity = '0';
+        target.className = '';
+      });
+    }
+  },
+  components: {
+  },
+};
+</script>
+
+<style lang='scss' scoped>
+article {
+  animation: fadeIn .6s linear;
+  max-width: 700px;
+  padding: 100px 25px 30px;
+  margin: 0 auto;
+  background-color: #fff;
+
+  .art-header {
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #b7b7b7;
+
+    h1 {
+      font-size: 22px;
+      color: #222;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    .header-info {
+      margin: 14px 0px;
+      i {
+        &:not(:first-child) {
+          margin-left: 12px;
+        }
+
+        font-size: 14px;
+        margin-top: -2px;
+      }
+    }
+
+    .header-tag {
+      a {
+        color: #fff;
+        border: 1px solid #f16d71;
+        border-radius: 15px;
+        background: #f16d71;
+        display: inline-block;
+        margin-right: 10px;
+        padding: 0 15px;
+        height: 25px;
+        line-height: 25px;
+        transition: .4s;
+
+        &:hover {
+          color: #5f5f5f !important;
+          border: 1px solid #f7f7f7;
+          outline-style: none;
+          background: #f7f7f7;
+        }
+      }
+    }
+  }
+  .content {
+    margin: 26px 0;
+  }
+  .content-footer {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 26px;
+    color: #24292e;
+    font-size: 14px;
+
+    a {
+      border-bottom: 1px solid #ccc;
+    }
+  }
+}
+.zoom-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  z-index: 1500;
+  transition: .3s;
+  background: rgba(0, 0, 0 , .6);
+  opacity: 0;
+}
+</style>
+<style lang="scss">
+.detail-article {
+  .content {
+    p {
+      font-size: 14px !important;
+    }
+    ul li {
+      list-style: initial;
+    }
+    ul, ol {
+      padding-left: 1em;
+      li {
+        font-size: 14px !important;
+      }
+    }
+    h1, h2, h3 {
+      position: relative;
+      font-weight: 400;
+      font-size: 1.24em;
+      &::before {
+        line-height: 24px;
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: -15px;
+        content: '#';
+        color: #eb5055;
+      }
+    }
+
+    h1 {
+      font-size: 1.3em;
+      &::before {
+        font-size: 21px;
+        line-height: 25px;
+      }
+    }
+
+    h3 {
+      font-size: 1.05em;
+      &::before {
+        font-size: 19px;
+        line-height: 21px;
+      }
+    }
+    img {
+      cursor: zoom-in;
+      transition: .3s;
+    }
+    .zoom-big-img {
+      z-index: 1501;
+      position: fixed;
+      cursor: zoom-out;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      transform: scale(1.1);
+    }
+  }
+}
+
+#directory {
+  position: fixed;
+  top: 30%;
+  margin-left: 686px;
+  max-width: 400px;
+  .cl-wrapper {
+    padding: 5px 0;
+    border-left: 2px solid #ddd;
+    ul li {
+      position: relative;
+      line-height: 27px;
+      div:hover {
+        color: #f44336 !important;
+      }
+      .cl-link {
+        display: initial;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        font-size: 14px;
+        color: #272727;
+        cursor: url(../assets/pic/cursor.cur), pointer;
+      }
+    }
+    &>ul>li {
+      position: relative;
+      padding-left: 15px;
+      &>.cl-link-active {
+        &::before {
+          background-color: #f44336 !important;
+        }
+      }
+      &>ul>li {
+        &>ul>li {
+          div {
+            margin-left: 20px;
+            color: #5f5f5f !important;
+          }
+        }
+        div {
+          margin-left: 10px;
+          color: #4e4e4e !important;
+        }
+      }
+
+      &>.cl-link {
+        &::before {
+          position: absolute;
+          top: 10px;
+          left: -5px;
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          content: '';
+          border-radius: 50%;
+          background-color: #a0a0a0;
+        }
+      }
+
+      .cl-link-active {
+        color: #f44336 !important;
+      }
+    }
+  }
+}
+</style>

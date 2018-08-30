@@ -46,7 +46,7 @@
               友链
             </li>
           </router-link>
-          <router-link to="/1">
+          <router-link to="/about">
             <li>
               <Icon type="md-heart" />
               关于

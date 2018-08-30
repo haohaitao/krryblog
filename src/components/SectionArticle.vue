@@ -5,7 +5,7 @@
         <div class="bg-img" :style="{background: `url(${val.image}) 0% 0% / cover`}"></div>
       </div>
       <!-- 这里使用命名路由，效果与下面一样 -->
-      <router-link :to="{name: 'detail', params: {id: val.blogId, title: val.title}}">
+      <router-link :to="{name: 'blog', params: {id: val.blogId, title: val.title}}">
         <div class="bg-cover">
           <p>{{val.description}}</p>
         </div>
@@ -83,7 +83,6 @@ section {
       }
 
       .bg-cover {
-        transition: .5s;
         background-color: rgba(0,0,0,.5);
 
         p {
@@ -159,7 +158,7 @@ section {
       left: 0;
       width: 110%;
       min-height: 100px;
-      transform: rotate(7deg) translate(-10px, -20px);
+      transform: rotate(6deg) translate(-10px, -20px);
       background-color: #fff;
     }
     .right-bgcover {

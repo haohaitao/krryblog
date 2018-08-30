@@ -13,8 +13,8 @@ export default new Router({
     },
     {
       path: '/:id',
-      component: () => import('../views/Detail'),
-      name: 'detail',
+      component: () => import('../views/Blog'),
+      name: 'blog',
       meta: {title: '你的美好，我都记得'},
     },
     {
@@ -30,8 +30,14 @@ export default new Router({
       meta: {title: '你的美好，我都记得'},
     },
     {
+      path: '/about',
+      component: () => import('../views/About'),
+      name: 'about',
+      meta: {title: '你的美好，我都记得'},
+    },
+    {
       path: '/backstage/edit',
-      component: () => import('../views/Backstage/Edit'),
+      component: () => import('../views/BackstageEdit'),
       name: 'edit',
       meta: {title: '新增博客 - 你的美好，我都记得'},
     },
