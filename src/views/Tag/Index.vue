@@ -1,7 +1,7 @@
 <template>
   <main v-if="!isNotCategory">
     <Header></Header>
-    <Content :blogList="blogList" :categoryName="categoryName"></Content>
+    <Content :blogList="blogList" :TagName="TagName"></Content>
     <Footer></Footer>
   </main>
   <NotFound v-else></NotFound>
@@ -108,7 +108,7 @@ export default {
           label: ['JavaScript', 'vue', 'html'],
         },
       ],
-      categoryName: '知识总结',
+      TagName: 'JavaScript',
       status: 200,
     };
   },
@@ -118,20 +118,15 @@ export default {
     },
   },
   created () {
-    this.getCategory();
+    this.getTags();
   },
   methods: {
-    getCategory () {
+    getTags () {
       this.status = 200;
       // 404 的标题在 axios 拦截器已经定义
       if (this.status !== 404) {
-        document.title = `${this.categoryName} - ${document.title}`;
+        document.title = `${this.TagName} - ${document.title}`;
       }
-    },
-  },
-  watch: {
-    $route (to, from) {
-      this.getCategory();
     },
   },
   components: {

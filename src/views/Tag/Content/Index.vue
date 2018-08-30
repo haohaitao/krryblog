@@ -1,8 +1,8 @@
 <template>
   <section>
     <div class="header">
-      <h1>『{{categoryName}}』</h1>
-      <h4>相关内容 —— 归档</h4>
+      <h1>『{{TagName}}』</h1>
+      <h4>相关内容 —— 标签</h4>
     </div>
     <div class="article">
       <SectionArticle :blogList="blogList"></SectionArticle>
@@ -18,7 +18,7 @@ export default {
     blogList: {
       type: Array,
     },
-    categoryName: {
+    TagName: {
       type: String,
     },
   },

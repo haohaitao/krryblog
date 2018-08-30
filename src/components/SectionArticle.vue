@@ -63,7 +63,7 @@ section {
 
   article {
     width: 280px;
-    height: 400px;
+    height: 340px;
     float: left;
     position: relative;
     border-radius: 4px;
@@ -103,7 +103,7 @@ section {
         left: 0;
         background-color: rgba(169, 169, 169, 0.75);
         text-align: center;
-        line-height: 280px;
+        line-height: 220px;
         font-size: 26px;
         color: #333333;
         z-index: -1;
@@ -116,13 +116,13 @@ section {
         width: 100%;
         left: 0;
         background-color: rgba(255, 255, 255, 0);
-        line-height: 280px;
+        line-height: 220px;
         z-index: -1;
       }
 
       .bg-img {
         transition: all .5s ease;
-        height: 280px;
+        height: 220px;
         border-radius: 4px 4px 0 0;
       }
     }

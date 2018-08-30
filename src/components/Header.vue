@@ -40,10 +40,18 @@
               </li>
             </ul>
           </li>
-          <li>
-            <Icon type="md-heart" />
-            关于
-          </li>
+          <router-link to="/link">
+            <li>
+              <Icon type="ios-link" style="font-weight: bold;"/>
+              友链
+            </li>
+          </router-link>
+          <router-link to="/1">
+            <li>
+              <Icon type="md-heart" />
+              关于
+            </li>
+          </router-link>
         </ul>
         <div class="search">
           <Icon type="md-search" />
@@ -115,11 +123,11 @@ header {
       position: relative;
 
       .nav-far {
-        margin-right: 40px;
+        margin-right: 38px;
         li {
           position: relative;
           float: left;
-          margin: 0 20px;
+          margin: 0 16px;
           &:hover {
             transition: .4s;
             color: #eb5055;
@@ -153,7 +161,7 @@ header {
 
                 a {
                   padding: 15px 20px;
-                  width: 160px;
+                  width: 156px;
                   display: block;
                   height: 50px;
                   line-height: 20px;
