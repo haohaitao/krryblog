@@ -26,13 +26,13 @@
       </div>
       <div class="upload-img">
         是否发布：
-        <Switch size="large">
+        <i-switch size="large" v-model="status">
           <span slot="open">ON</span>
           <span slot="close">OFF</span>
-        </Switch>
+        </i-switch>
       </div>
       <div class="blog-btn">
-        <Button type="primary" size="large" @click="commit">保存 & 提交</Button>
+        <Button type="primary" size="large" @click="commit">保存</Button>
         <Button style="margin-left: 50px" size="large" @click="back">返回</Button>
       </div>
     </section>
@@ -53,6 +53,7 @@ export default {
       imgName: '',
       visible: false,
       uploadList: [],
+      status: true,
     };
   },
   methods: {
@@ -127,12 +128,12 @@ section {
 
     .ivu-upload {
       margin: 0 auto;
-      width:200px;
+      width: 224px;
       .upload-icon {
         cursor: url(../../assets/pic/cursor.cur), pointer !important;
-        width: 200px;
-        height:200px;
-        line-height: 200px;
+        width: 224px;
+        height: 184px;
+        line-height: 184px;
         i {
           font-size: 36px !important;
         }

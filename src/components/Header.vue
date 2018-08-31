@@ -55,8 +55,8 @@
           </router-link>
         </ul>
         <div class="search">
-          <Icon type="md-search" />
-          <input type="text" class="s-inp" placeholder="搜索你想要的内容..." maxlength="30" autocomplete="off">
+          <Icon type="md-search" @click="search"/>
+          <input type="text" class="s-inp" v-model.trim="keyWord" @keyup.enter="search" placeholder="查找你喜欢的内容..." maxlength="30" autocomplete="off">
         </div>
       </div>
     </div>
@@ -68,6 +68,7 @@ import Headroom from 'headroom.js';
 export default {
   data () {
     return {
+      keyWord: '',
     };
   },
   created () {
@@ -85,6 +86,16 @@ export default {
       },
     });
     headroom.init();
+  },
+  methods: {
+    search () {
+      // 不需要去掉字符串中间的空格，两边的空格在 v-model.trim 已经去掉
+      // this.keyWord = this.keyWord.replace(/\s*/g, '');
+      if (this.keyWord !== '') {
+        console.log(this.keyWord);
+        console.log('search api...');
+      }
+    },
   },
   components: {
   },

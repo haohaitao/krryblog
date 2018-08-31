@@ -42,6 +42,12 @@ export default new Router({
       meta: {title: '你的美好，我都记得'},
     },
     {
+      path: '/search/:keyword',
+      component: () => import('../views/Search'),
+      name: 'search',
+      meta: {title: '你的美好，我都记得'},
+    },
+    {
       path: '/backstage/edit',
       component: () => import('../views/BackstageEdit'),
       name: 'edit',

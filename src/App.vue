@@ -74,6 +74,14 @@ img {
   background-color: rgb(255, 111, 27);
 }
 
+/* 开关按钮 */
+.ivu-switch {
+  cursor: url(./assets/pic/cursor.cur), pointer !important;
+}
+.ivu-switch::after {
+  cursor: url(./assets/pic/cursor.cur), pointer !important;
+}
+
 /* 分页样式的冲突和解决 */
 .ivu-page {
   text-align: center;

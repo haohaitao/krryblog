@@ -294,7 +294,7 @@ article {
         }
         div {
           margin-left: 10px;
-          color: #6d6d6d !important;
+          color: #5f5f5f !important;
         }
       }
 
