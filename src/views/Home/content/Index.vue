@@ -60,7 +60,7 @@ export default {
           hit: 468,
           comment: 20,
           classify: '技术',
-          classifyId: '3',
+          classifyId: '4',
           label: ['JavaScript', 'vue', 'html'],
         },
         {
@@ -73,7 +73,7 @@ export default {
           hit: 468,
           comment: 20,
           classify: '技术',
-          classifyId: '3',
+          classifyId: '4',
           label: ['JavaScript', 'vue', 'html'],
         },
         {
@@ -86,7 +86,7 @@ export default {
           hit: 468,
           comment: 20,
           classify: '技术',
-          classifyId: '3',
+          classifyId: '4',
           label: ['JavaScript', 'vue', 'html'],
         },
         {

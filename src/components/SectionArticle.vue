@@ -27,7 +27,7 @@
             {{val.comment}}
           </div>
           <router-link :to="`/category/${val.classifyId}`">
-            <div class="item-icon" :title="val.classify" :style="{backgroundPosition: `0 ${-val.classifyId*40-40}px`}"></div>
+            <div class="item-icon" :title="val.classify" :style="{backgroundPosition: `0 ${-val.classifyId*70}px`}"></div>
           </router-link>
         </div>
       </div>
@@ -102,7 +102,7 @@ section {
         left: 0;
         background-color: rgba(169, 169, 169, 0.75);
         text-align: center;
-        line-height: 220px;
+        line-height: 230px;
         font-size: 26px;
         color: #333333;
         z-index: -1;
@@ -115,13 +115,13 @@ section {
         width: 100%;
         left: 0;
         background-color: rgba(255, 255, 255, 0);
-        line-height: 220px;
+        line-height: 230px;
         z-index: -1;
       }
 
       .bg-img {
         transition: all .5s ease;
-        height: 220px;
+        height: 230px;
         border-radius: 4px 4px 0 0;
       }
     }
@@ -142,7 +142,7 @@ section {
         padding: 0;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 6;
+        -webkit-line-clamp: 4;
         overflow: hidden;
         opacity: 0;
         line-height: 26px;
@@ -154,11 +154,11 @@ section {
       position: absolute;
       z-index: 0;
       right: 0;
-      bottom: 15px;
+      bottom: 1px;
       left: 0;
       width: 110%;
       min-height: 100px;
-      transform: rotate(6deg) translate(-10px, -20px);
+      transform: rotate(5deg) translate(-10px, -20px);
       background-color: #fff;
     }
     .right-bgcover {
@@ -169,18 +169,22 @@ section {
 
     .desc {
       width: 100%;
-      height: 120px;
+      height: 110px;
       background: #fff;
       position: relative;
-      padding: 8px 15px 15px;
+      padding: 7px 15px 10px;
       box-sizing: border-box;
 
       .title {
+        color: #000;
         font-size: 16px;
         display: -webkit-inline-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
+        &:hover {
+          color: #ff8b18;
+        }
       }
 
       .desc-bottom {
@@ -188,12 +192,12 @@ section {
         right: 0;
         bottom: 0;
         width: 100%;
-        padding: 0 15px 15px;
+        padding: 0 15px 10px;
         text-align: right;
 
         .d-detail {
           position: absolute;
-          bottom: 15px;
+          bottom: 10px;
 
           i {
             font-size: 14px;
@@ -207,12 +211,12 @@ section {
 
         .item-icon {
           background: url(https://raw.githubusercontent.com/Krryxa/krryblog/master/src/assets/pic/bg-ico.png) no-repeat;
-          height: 42px;
-          width: 42px;
+          height: 37px;
+          width: 37px;
           float: right;
           border: 1px solid #eaeaea;
           border-radius: 50%;
-          background-size: 40px auto;
+          background-size: cover;
         }
       }
     }
