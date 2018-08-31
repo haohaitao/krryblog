@@ -28,6 +28,7 @@ export default {
           classify: '技术',
           classifyId: '1',
           label: ['JavaScript', 'vue', 'html'],
+          status: 1, // 发布状态，0 未发布
         },
         {
           title: '博客2',
@@ -41,6 +42,7 @@ export default {
           classify: '技术',
           classifyId: '2',
           label: ['JavaScript', 'vue', 'html'],
+          status: 1, // 发布状态，0 未发布
         },
         {
           title: '博客3',
@@ -54,6 +56,7 @@ export default {
           classify: '技术',
           classifyId: '3',
           label: ['JavaScript', 'vue', 'html'],
+          status: 1, // 发布状态，0 未发布
         },
         {
           title: '博客3',
@@ -67,6 +70,7 @@ export default {
           classify: '技术',
           classifyId: '3',
           label: ['JavaScript', 'vue', 'html'],
+          status: 1, // 发布状态，0 未发布
         },
         {
           title: '博客3',
@@ -80,6 +84,7 @@ export default {
           classify: '技术',
           classifyId: '3',
           label: ['JavaScript', 'vue', 'html'],
+          status: 1, // 发布状态，0 未发布
         },
         {
           title: '博客3',
@@ -93,6 +98,7 @@ export default {
           classify: '技术',
           classifyId: '3',
           label: ['JavaScript', 'vue', 'html'],
+          status: 1, // 发布状态，0 未发布
         },
         {
           title: '博客3',
@@ -106,6 +112,7 @@ export default {
           classify: '技术',
           classifyId: '3',
           label: ['JavaScript', 'vue', 'html'],
+          status: 1, // 发布状态，0 未发布
         },
       ],
       TagName: 'JavaScript',

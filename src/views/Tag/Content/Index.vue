@@ -1,17 +1,13 @@
 <template>
   <section>
-    <div class="header">
-      <h1>『{{TagName}}』</h1>
-      <h4>相关内容 —— 标签</h4>
-    </div>
-    <div class="article">
-      <SectionArticle :blogList="blogList"></SectionArticle>
-    </div>
+    <SectionHeader :title="TagName" :description="description"></SectionHeader>
+    <SectionArticle :blogList="blogList" class="wrapper"></SectionArticle>
     <Page v-if="blogLen > 12" :total="blogLen" size="small" show-elevator show-total />
   </section>
 </template>
 
 <script>
+import SectionHeader from '@/components/SectionHeader';
 import SectionArticle from '@/components/SectionArticle';
 export default {
   props: {
@@ -24,42 +20,22 @@ export default {
   },
   data () {
     return {
+      description: '相关内容 —— 标签',
       blogLen: 13,
     };
   },
   components: {
-    SectionArticle,
+    SectionHeader, SectionArticle,
   },
 };
 </script>
 
 <style lang='scss' scoped>
 section {
-  .header {
-    background: url(../../../assets/pic/category.jpg) no-repeat;
-    background-size: cover;
-    padding: 96px 0 30px;
-    text-align: center;
-
-    h1 {
-      font-weight: 100;
-      font-size: 30px;
-      margin-bottom: 10px;
-      letter-spacing: .1em;
-      color: #fff;
-      text-shadow: 0 4px 8px rgba(7,17,27,.4);
-    }
-
-    h4 {
-      font-weight: 100;
-      font-size: 15px;
-      color: rgba(255,255,255,0.54);
-    }
-  }
-
-  .article {
+  margin: 0 auto;
+  .wrapper {
     width: 1080px;
-    margin: 20px auto 0;
+    padding-top: 20px;
   }
 }
 </style>

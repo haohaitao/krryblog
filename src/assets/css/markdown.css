@@ -213,11 +213,12 @@
 }
 
 .markdown-body a {
-  color: #0366d6;
+  color: #f60;
   text-decoration: none;
 }
 
 .markdown-body a:hover {
+  color: red !important;
   text-decoration: underline;
 }
 

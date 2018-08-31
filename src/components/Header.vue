@@ -106,6 +106,11 @@ header {
     max-width: 100%;
     margin: 0 auto;
     height: 100%;
+    color: #3c3c3c;
+
+    a {
+      color: #3c3c3c;
+    }
 
     .home {
       height: 100%;

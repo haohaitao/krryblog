@@ -1,6 +1,6 @@
 <template>
   <article class="detail-article" ref="article">
-    <div class="art-header">
+    <div class="art-header" v-if="hasShowHeader">
       <h1>{{blog.title}}</h1>
       <div class="header-info">
         <Icon type="md-pricetags" />
@@ -12,7 +12,7 @@
         <Icon type="md-chatboxes" />
         {{blog.comment}}
       </div>
-      <div class="header-tag" v-if="hasTags">
+      <div class="header-tag" v-if="hasShowTags">
         <router-link :to="`/tag/${tags}`" v-for="(tags, index) in blog.label" :key="index">{{tags}}</router-link>
       </div>
     </div>
@@ -44,8 +44,11 @@ export default {
     };
   },
   computed: {
-    hasTags () {
+    hasShowTags () {
       return this.blog['label'].length > 0;
+    },
+    hasShowHeader () {
+      return !!this.blog.status;
     },
   },
   mounted () {
@@ -93,11 +96,12 @@ export default {
 article {
   animation: fadeIn .6s linear;
   max-width: 700px;
-  padding: 100px 25px 30px;
+  padding: 0 25px 30px;
   margin: 0 auto;
   background-color: #fff;
 
   .art-header {
+    padding-top: 100px;
     padding-bottom: 15px;
     border-bottom: 1px dashed #b7b7b7;
 
@@ -246,9 +250,22 @@ article {
     border-left: 2px solid #ddd;
     ul li {
       position: relative;
-      line-height: 27px;
+      line-height: 29px;
       div:hover {
         color: #f44336 !important;
+      }
+      .cl-link-active {
+        &::before {
+          position: absolute;
+          top: 10.3px;
+          left: -5px;
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          content: '';
+          border-radius: 50%;
+          background-color: #f44336 !important;
+        }
       }
       .cl-link {
         display: initial;
@@ -263,35 +280,21 @@ article {
     &>ul>li {
       position: relative;
       padding-left: 15px;
-      &>.cl-link-active {
-        &::before {
-          background-color: #f44336 !important;
-        }
-      }
       &>ul>li {
+        .cl-link-active {
+          &::before {
+            left: -20px;
+          }
+        }
         &>ul>li {
           div {
             margin-left: 20px;
-            color: #5f5f5f !important;
+            color: #8e8e8e !important;
           }
         }
         div {
           margin-left: 10px;
-          color: #4e4e4e !important;
-        }
-      }
-
-      &>.cl-link {
-        &::before {
-          position: absolute;
-          top: 10px;
-          left: -5px;
-          display: inline-block;
-          width: 8px;
-          height: 8px;
-          content: '';
-          border-radius: 50%;
-          background-color: #a0a0a0;
+          color: #6d6d6d !important;
         }
       }
 

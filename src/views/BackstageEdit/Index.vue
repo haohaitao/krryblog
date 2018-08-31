@@ -24,6 +24,13 @@
           </div>
         </Upload>
       </div>
+      <div class="upload-img">
+        是否发布：
+        <Switch size="large">
+          <span slot="open">ON</span>
+          <span slot="close">OFF</span>
+        </Switch>
+      </div>
       <div class="blog-btn">
         <Button type="primary" size="large" @click="commit">保存 & 提交</Button>
         <Button style="margin-left: 50px" size="large" @click="back">返回</Button>
