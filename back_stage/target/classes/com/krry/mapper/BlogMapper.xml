@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.krry.mapper.BlogMapper" >
+	
+	<!-- 查询 -->
+	<select id="getBlog" resultType="Blog">
+		SELECT
+			id,
+			title,
+			content,
+			image,
+			classify,
+			classifyId,
+			label,
+			hit,
+			comment,
+			createTime,
+			updateTime,
+			status
+		FROM
+			blog
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="addBlog" useGeneratedKeys="true" keyProperty="id" parameterType="Blog">  
+	    insert into blog(
+	    	userName,
+	    	password,
+	    	comment
+	    )
+	    values(
+	    	#{userName},
+	    	#{password},
+	    	#{comment}
+	    )
+	</insert>  
+	
+	
+</mapper>
