@@ -31,7 +31,8 @@ public class BlogController {
 	public List<Blog> getBlog(){
 		
 		List<Blog> blog = blogService.getBlog();
-		System.out.println(blog);
+		System.out.println("blog is "+blog);
+		
 		return blog;
 	}
 	
