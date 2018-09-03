@@ -34,7 +34,7 @@
 			b.classifyId = c.id
 	</select>
 	
-	<!-- 查询分类信息 -->
+	<!-- 查询博客的分类 -->
 	<select id="getClassify" resultType="Classify">
 		SELECT
 			id,
