@@ -4,21 +4,27 @@
 
 <mapper namespace="com.krry.mapper.BlogMapper" >
 	
+	<!-- 通用sql -->
+	<sql id="blog_column">
+		title,
+		content_md,
+		content_hm,
+		image,
+		classifyId,
+		label,
+		hit,
+		comment,
+		createTime,
+		updateTime,
+		status
+	</sql>
+	
 	<!-- 查询 -->
 	<select id="getBlog" resultType="Blog">
 		SELECT
 			id,
-			title,
-			content,
-			image,
-			classify,
-			classifyId,
-			label,
-			hit,
-			comment,
-			createTime,
-			updateTime,
-			status
+			classify, <!-- 这里使用关联查询出分类名称 -->
+			<include refid="blog_column"></include>
 		FROM
 			blog
 	</select>
@@ -26,14 +32,20 @@
 	<!-- 新增 -->
 	<insert id="addBlog" useGeneratedKeys="true" keyProperty="id" parameterType="Blog">  
 	    insert into blog(
-	    	userName,
-	    	password,
-	    	comment
+	    	<include refid="blog_column"></include>
 	    )
 	    values(
-	    	#{userName},
-	    	#{password},
-	    	#{comment}
+	    	#{title},
+			#{content_md},
+			#{content_hm},
+			#{image},
+			#{classifyId},
+			#{label},
+			#{hit},
+			#{comment},
+			#{createTime},
+			#{updateTime},
+			#{status}
 	    )
 	</insert>  
 	

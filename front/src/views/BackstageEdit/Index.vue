@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section>
+    <section class="add-blog">
       <Breadcrumb>
         <BreadcrumbItem to="/">博客首页</BreadcrumbItem>
         <BreadcrumbItem to="/">后台中心</BreadcrumbItem>
@@ -8,7 +8,7 @@
       </Breadcrumb>
       <input type="text" maxlength="36" class="blog-title" v-model="title" placeholder="博客标题..." style="width: 100%" />
       <mavon-editor @save="save" placeholder="编辑内容，支持 Markdown"></mavon-editor>
-      <div class="upload-img">
+      <div class="item">
         封面图片：
         <Upload
           ref="upload"
@@ -24,9 +24,21 @@
           </div>
         </Upload>
       </div>
-      <div class="upload-img">
-        是否发布：
-        <i-switch size="large" v-model="status">
+      <div class="item">
+        <span class="text-desc">分类归档：</span>
+        <RadioGroup v-model="classifyId">
+          <Radio :label="item.id" v-for="(item, index) in classifyList" :key="index">
+            <span>{{item.name}}</span>
+          </Radio>
+        </RadioGroup>
+      </div>
+      <div class="item">
+        <span class="text-desc">个性标签：</span>
+        <Input v-model="label" placeholder="为博客添加标签吧~~ 英文逗号 , 分割" :maxlength="30" style="width: 360px" />
+      </div>
+      <div class="item">
+        <span class="text-desc">是否发布：</span>
+        <i-switch size="large" v-model="statusFlag">
           <span slot="open">ON</span>
           <span slot="close">OFF</span>
         </i-switch>
@@ -43,18 +55,46 @@
 <script>
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Service from '@/service';
 export default {
   data () {
     return {
       title: '',
       markdownDesc: '',
       translateDesc: '',
+      classifyId: 1,
+      label: '',
       defaultList: [],
       imgName: '',
       visible: false,
       uploadList: [],
-      status: true,
+      statusFlag: true,
+
+      // 从接口查询出分类归档
+      classifyList: [
+        {
+          id: 1,
+          name: '知识总结',
+        },
+        {
+          id: 2,
+          name: '技术分享',
+        },
+        {
+          id: 3,
+          name: '待重命名',
+        },
+        {
+          id: 4,
+          name: '生活之谈',
+        },
+      ],
     };
+  },
+  computed: {
+    status () {
+      return +this.statusFlag;
+    },
   },
   methods: {
     // markdown save
@@ -91,6 +131,8 @@ export default {
     // save and commit
     commit () {
       // TODO
+      let id = Service.addBlog();
+      console.log(id);
     },
     back () {
       window.history.back(-1);
@@ -122,7 +164,7 @@ section {
     color: #666;
   }
 
-  .upload-img {
+  .item {
     padding: 30px 0 40px;
     font-size: 14px;
 
@@ -139,6 +181,10 @@ section {
         }
       }
     }
+
+    .text-desc {
+      margin-right: 10px;
+    }
   }
 
   .blog-btn {
@@ -148,10 +194,17 @@ section {
       width: 160px;
     }
   }
+
+  .ivu-radio-wrapper {
+    margin-right: 18px;
+    cursor: url(../../assets/pic/cursor.cur), pointer !important;
+  }
 }
 </style>
-<style>
-.v-note-wrapper .v-note-op .v-left-item .op-icon, .op-icon input {
-  cursor: url(../../assets/pic/cursor.cur), pointer !important;
+<style lang="scss">
+.add-blog{
+  .v-note-wrapper .v-note-op .v-left-item .op-icon, .op-icon input, .ivu-radio, .ivu-radio-input {
+    cursor: url(../../assets/pic/cursor.cur), pointer !important;
+  }
 }
 </style>

@@ -34,6 +34,10 @@ npm run e2e
 npm test
 ```
 
+## 路程
+8月22号：搭建 vue 脚手架，开始开发前端界面
+9月2号：开始编写 java 后台，一边写后台接口，一边前端对接接口
+
 ## 安装依赖
 ```bash
 npm install stylus-loader css-loader style-loader --save-dev

@@ -36,6 +36,14 @@ public class BlogController {
 		return blog;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/addBlog")
+	public int addBlog(Blog blog){
+		System.out.println("插入："+blog);
+		int id = blogService.addBlog(blog);
+		return id;
+	}
+	
 }
 
 
