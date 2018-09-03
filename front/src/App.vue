@@ -5,8 +5,26 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'App',
+  data () {
+    return {
+      classifyList: [],
+    };
+  },
+  created () {
+    this.getClassifyList();
+  },
+  methods: {
+    ...mapActions({
+      setClassify: 'blog/SETCLASSIFY', // 将 `this.setClassify()` 映射为 `this.$store.dispatch('blog/SETCLASSIFY')`
+    }),
+    getClassifyList () {
+      // 调用 vuex 中的 action 保存分类信息
+      this.setClassify();
+    },
+  },
 };
 </script>
 

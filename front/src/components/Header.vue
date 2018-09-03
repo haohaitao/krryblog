@@ -17,14 +17,8 @@
             <Icon type="ios-list-box" />
             归档
             <ul class="nav-child">
-              <li>
-                <router-link to="/category/1">知识总结</router-link>
-              </li>
-              <li>
-                <router-link to="/category/2">生活之谈</router-link>
-              </li>
-              <li>
-                <router-link to="/category/3">标签大全</router-link>
+              <li v-for="(item, index) in classifyList" :key="index">
+                <router-link :to="`/category/${item.id}`">{{item.name}}</router-link>
               </li>
             </ul>
           </li>
@@ -70,6 +64,12 @@ export default {
     return {
       keyWord: '',
     };
+  },
+  computed: {
+    // 从接口查询出分类归档
+    classifyList () {
+      return this.$store.getters['blog/classify'];
+    },
   },
   created () {
   },

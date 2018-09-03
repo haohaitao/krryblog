@@ -1,7 +1,6 @@
 'use strict';
 
 import axios from 'axios';
-import router from '@/router';
 
 // axios.defaults.baseURL = 'http://localhost:8085/krryblog';
 
@@ -15,7 +14,7 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(res => {
   const apiRes = res.data;
   if (apiRes.status === 404) {
-    document.title = '404 - 找不到页面'
+    document.title = '404 - 找不到页面';
     // 可以在这里直接设置跳转到 404 页面，已经不需要啦，在组件中已经设置
     // router.push({name: 'NotFound'});
   }

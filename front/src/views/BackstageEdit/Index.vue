@@ -69,23 +69,20 @@ export default {
       visible: false,
       uploadList: [],
       statusFlag: true,
-
-      // 从接口查询出分类归档
-      classifyList: [],
     };
   },
   computed: {
     status () {
       return +this.statusFlag;
     },
+    // 从接口查询出分类归档
+    classifyList () {
+      return this.$store.getters['blog/classify'];
+    },
   },
   created () {
-    this.getClassifyList();
   },
   methods: {
-    async getClassifyList () {
-      this.classifyList = await Service.getClassify();
-    },
     // markdown save
     save (value, render) {
       this.markdownDesc = value;
