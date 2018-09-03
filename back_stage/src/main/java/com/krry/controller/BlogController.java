@@ -79,7 +79,7 @@ public class BlogController {
 	@ResponseBody
 	@RequestMapping("/addBlog")
 	public int addBlog(Blog blog){
-		System.out.println("插入："+blog);
+		System.out.println("新增："+blog);
 		int id = blogService.addBlog(blog);
 		return id;
 	}
