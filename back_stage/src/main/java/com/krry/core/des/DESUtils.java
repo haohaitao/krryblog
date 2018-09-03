@@ -72,8 +72,8 @@ public class DESUtils {
 //		}
 		
 		try {
-			System.out.println(getEncryptString("gsmuser"));
-			System.out.println(getEncryptString("gsqyue"));
+			System.out.println(getEncryptString("qweqweqwe"));
+			System.out.println(getEncryptString("gggggg"));
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
