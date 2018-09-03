@@ -94,6 +94,8 @@ export default {
       if (this.keyWord !== '') {
         console.log(this.keyWord);
         console.log('search api...');
+        this.$router.push(`/search/${this.keyWord}`);
+        this.keyWord = '';
       }
     },
   },

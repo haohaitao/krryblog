@@ -210,7 +210,7 @@ section {
         }
 
         .item-icon {
-          background: url(https://raw.githubusercontent.com/Krryxa/krryblog/master/src/assets/pic/bg-ico.png) no-repeat;
+          background: url(https://raw.githubusercontent.com/Krryxa/krryblog/master/front/src/assets/pic/bg-ico.png) no-repeat;
           height: 37px;
           width: 37px;
           float: right;

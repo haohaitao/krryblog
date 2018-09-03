@@ -37,6 +37,8 @@ export default {
       if (this.keyWord !== '') {
         console.log(this.keyWord);
         console.log('search api...');
+        this.$router.push(`/search/${this.keyWord}`);
+        this.keyWord = '';
       }
     },
     focusSearch () {
@@ -57,7 +59,7 @@ section {
   line-height: 70px;
 
   .msg {
-    margin-top: 26px;
+    margin-top: 30px;
     font-size: 26px;
   }
 
