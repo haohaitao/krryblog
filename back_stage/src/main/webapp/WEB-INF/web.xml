@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>krryblog</display-name>
   <welcome-file-list>
-    <welcome-file>index/index</welcome-file>
+    <welcome-file>index</welcome-file>
   </welcome-file-list>
   <context-param>
     <param-name>contextConfigLocation</param-name>
@@ -36,7 +36,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>krryblog</servlet-name>
-    <url-pattern>/index/index</url-pattern>
+    <url-pattern>/index</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>krryblog</servlet-name>

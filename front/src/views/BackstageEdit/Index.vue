@@ -9,7 +9,7 @@
       <input type="text" maxlength="36" class="blog-title" v-model="title" placeholder="博客标题..." style="width: 100%" />
       <mavon-editor @save="save" placeholder="编辑内容，支持 Markdown"></mavon-editor>
       <div class="item">
-        封面图片：
+        <span class="text-desc">封面图片：</span>
         <Upload
           ref="upload"
           :on-success="handleSuccess"
@@ -71,24 +71,7 @@ export default {
       statusFlag: true,
 
       // 从接口查询出分类归档
-      classifyList: [
-        {
-          id: 1,
-          name: '知识总结',
-        },
-        {
-          id: 2,
-          name: '技术分享',
-        },
-        {
-          id: 3,
-          name: '待重命名',
-        },
-        {
-          id: 4,
-          name: '生活之谈',
-        },
-      ],
+      classifyList: [],
     };
   },
   computed: {
@@ -96,7 +79,13 @@ export default {
       return +this.statusFlag;
     },
   },
+  created () {
+    this.getClassifyList();
+  },
   methods: {
+    async getClassifyList () {
+      this.classifyList = await Service.getClassify();
+    },
     // markdown save
     save (value, render) {
       this.markdownDesc = value;

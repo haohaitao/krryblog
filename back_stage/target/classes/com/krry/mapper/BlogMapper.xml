@@ -6,33 +6,57 @@
 	
 	<!-- 通用sql -->
 	<sql id="blog_column">
-		title,
-		content_md,
-		content_hm,
-		image,
-		classifyId,
-		label,
-		hit,
-		comment,
-		createTime,
-		updateTime,
-		status
+		b.title,
+		b.content_md,
+		b.content_hm,
+		b.image,
+		b.classifyId,
+		b.label,
+		b.hit,
+		b.comment,
+		b.createTime,
+		b.updateTime,
+		b.status
 	</sql>
 	
-	<!-- 查询 -->
+	<!-- 查询博客 -->
+	<!-- 注意这里的 resultType 返回值类型是集合内存储数据的类型Blog，不是 'list' -->
 	<select id="getBlog" resultType="Blog">
+		select
+			b.id,
+			c.name as classify,
+			<include refid="blog_column"></include>
+		from
+			blog b
+		left join
+			classify c
+		on
+			b.classifyId = c.id
+	</select>
+	
+	<!-- 查询分类信息 -->
+	<select id="getClassify" resultType="Classify">
 		SELECT
 			id,
-			classify, <!-- 这里使用关联查询出分类名称 -->
-			<include refid="blog_column"></include>
+			name
 		FROM
-			blog
+			classify
 	</select>
 	
 	<!-- 新增 -->
 	<insert id="addBlog" useGeneratedKeys="true" keyProperty="id" parameterType="Blog">  
 	    insert into blog(
-	    	<include refid="blog_column"></include>
+	    	title,
+			content_md,
+			content_hm,
+			image,
+			classifyId,
+			label,
+			hit,
+			comment,
+			createTime,
+			updateTime,
+			status
 	    )
 	    values(
 	    	#{title},

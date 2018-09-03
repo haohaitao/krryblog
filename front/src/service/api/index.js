@@ -3,9 +3,12 @@ import qs from 'qs';
 
 export default {
   fetchBlog () {
-    return Ax.get('/index.php?c=banners_new&m=getUserTags&is_privilege=1');
+    return Ax.get('/krryblog/blog/getBlog');
+  },
+  fetchClassify () {
+    return Ax.get('/krryblog/blog/getClassify');
   },
   addBlog (reqData) {
-    return Ax.post('/addBlog', qs.stringify(reqData));
+    return Ax.post('/krryblog/blog/addBlog', qs.stringify(reqData));
   },
 };

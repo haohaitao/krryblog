@@ -3,6 +3,7 @@ package com.krry.mapper;
 import java.util.List;
 
 import com.krry.entity.Blog;
+import com.krry.entity.Classify;
 
 public interface BlogMapper {
 	
@@ -11,6 +12,12 @@ public interface BlogMapper {
 	 * @return
 	 */
 	public List<Blog> getBlog();
+	
+	/**
+	 * 查询博客的分类
+	 * @return
+	 */
+	public List<Classify> getClassify();
 	
 	/**
 	 * 增加博客

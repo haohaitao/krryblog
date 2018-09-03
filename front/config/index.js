@@ -10,7 +10,13 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/krryblog': {
+        target: 'http://localhost:8085',  // 目标接口域名
+        changeOrigin: true,  // 是否跨域
+        // secure: false,  // 如果是https接口，需要配置这个参数
+      },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

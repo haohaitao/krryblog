@@ -2,18 +2,19 @@ package com.krry.entity;
 
 public class Blog {
 	
-	public int id;
-	public String title;
-	public String content;
-	public String image;
-	public String classify;
-	public int classifyId;
-	public String label;
-	public int hit;
-	public int comment;
-	public String createTime;
-	public String updateTime;
-	public int status;
+	private int id;
+	private String title;
+	private String content_md;
+	private String content_hm;
+	private String image;
+	private String classify;
+	private int classifyId;
+	private String label;
+	private int hit;
+	private int comment;
+	private String createTime;
+	private String updateTime;
+	private int status;
 	
 	public int getId() {
 		return id;
@@ -27,11 +28,17 @@ public class Blog {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
+	public String getContent_md() {
+		return content_md;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setContent_md(String content_md) {
+		this.content_md = content_md;
+	}
+	public String getContent_hm() {
+		return content_hm;
+	}
+	public void setContent_hm(String content_hm) {
+		this.content_hm = content_hm;
 	}
 	public String getImage() {
 		return image;
@@ -87,6 +94,7 @@ public class Blog {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
 	
 }
 
