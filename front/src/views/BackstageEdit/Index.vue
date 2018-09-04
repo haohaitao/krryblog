@@ -6,43 +6,44 @@
         <BreadcrumbItem to="/">后台中心</BreadcrumbItem>
         <BreadcrumbItem>博客编辑页</BreadcrumbItem>
       </Breadcrumb>
-      <input type="text" maxlength="36" class="blog-title" v-model.trim="title" placeholder="博客标题..." style="width: 100%" />
-      <mavon-editor @save="markdownSave" placeholder="编辑内容，支持 Markdown"></mavon-editor>
-      <div class="item">
-        <span class="text-desc">封面图片：</span>
-        <Upload
-          ref="upload"
-          :on-success="handleSuccess"
-          :format="['jpg','jpeg','png']"
-          :max-size="2048"
-          :on-format-error="handleFormatError"
-          :on-exceeded-size="handleMaxSize"
-          type="drag"
-          action="//jsonplaceholder.typicode.com/posts/">
-          <div class="upload-icon">
-            <Icon type="ios-camera" size="20"></Icon>
-          </div>
-        </Upload>
-      </div>
-      <div class="item">
-        <span class="text-desc">分类归档：</span>
-        <RadioGroup v-model="classifyId">
-          <Radio :label="item.id" v-for="(item, index) in classifyList" :key="index">
-            <span>{{item.name}}</span>
-          </Radio>
-        </RadioGroup>
-      </div>
-      <div class="item">
-        <span class="text-desc">个性标签：</span>
-        <Input v-model="label" placeholder="为博客添加标签吧~~ 英文逗号 , 分割" :maxlength="30" style="width: 360px" />
-      </div>
-      <div class="item">
-        <span class="text-desc">是否发布：</span>
-        <i-switch size="large" v-model="statusFlag">
-          <span slot="open">ON</span>
-          <span slot="close">OFF</span>
-        </i-switch>
-      </div>
+      <Form>
+        <input type="text" maxlength="36" class="blog-title" v-model.trim="title" placeholder="博客标题..." style="width: 100%" />
+        <mavon-editor @save="markdownSave" placeholder="编辑内容，支持 Markdown"></mavon-editor>
+        <FormItem label="博客描述：" style="padding-top: 42px">
+          <Input v-model.trim="description" :autosize="{minRows: 4,maxRows: 10}" style="width: 70%" type="textarea" :rows="4" placeholder="为博客的写上简单描述吧~~" />
+        </FormItem>
+        <FormItem label="封面图片：">
+          <Upload
+            ref="upload"
+            :on-success="handleSuccess"
+            :format="['jpg','jpeg','png']"
+            :max-size="2048"
+            :on-format-error="handleFormatError"
+            :on-exceeded-size="handleMaxSize"
+            type="drag"
+            action="//jsonplaceholder.typicode.com/posts/">
+            <div class="upload-icon">
+              <Icon type="ios-camera" size="20"></Icon>
+            </div>
+          </Upload>
+        </FormItem>
+        <FormItem label="分类归档：">
+          <RadioGroup v-model="classifyId">
+            <Radio :label="item.id" v-for="(item, index) in classifyList" :key="index">
+              <span>{{item.name}}</span>
+            </Radio>
+          </RadioGroup>
+        </FormItem>
+        <FormItem label="个性标签：">
+          <Input v-model.trim="label" placeholder="为博客添加标签吧~~ 英文逗号 , 分割" :maxlength="30" style="width: 360px" />
+        </FormItem>
+        <FormItem label="是否发布：">
+          <i-switch size="large" v-model="statusFlag">
+            <span slot="open">ON</span>
+            <span slot="close">OFF</span>
+          </i-switch>
+        </FormItem>
+      </Form>
       <div class="blog-btn">
         <Button type="primary" size="large" @click="beforeCommit">保存</Button>
         <Button style="margin-left: 50px" size="large" @click="back">返回</Button>
@@ -62,6 +63,7 @@ export default {
       title: '',
       markdownDesc: '',
       translateDesc: '',
+      description: '',
       uploadImgUrl: 'image-url',
       classifyId: 1,
       label: '',
@@ -124,6 +126,9 @@ export default {
       } else if (this.translateDesc.trim() === '') {
         this.$Message.warning('先输入博客内容哦~~');
         return false;
+      } else if (this.description === '') {
+        this.$Message.warning('先简单描述一下博客哦~~');
+        return false;
       } else if (this.uploadImgUrl === '') {
         this.$Message.warning('先上传封面图片哦~~');
         return false;
@@ -141,6 +146,7 @@ export default {
         title: this.title,
         content_md: this.markdownDesc,
         content_hm: this.translateDesc,
+        description: this.description,
         image: this.uploadImgUrl,
         classifyId: this.classifyId,
         label: this.label,
@@ -181,9 +187,8 @@ section {
     z-index: 1009;
   }
 
-  .item {
-    padding: 30px 0 40px;
-    font-size: 14px;
+  .ivu-form-item {
+    padding-top: 24px;
 
     .ivu-upload {
       margin: 0 auto;
@@ -197,10 +202,6 @@ section {
           font-size: 36px !important;
         }
       }
-    }
-
-    .text-desc {
-      margin-right: 10px;
     }
   }
 
@@ -222,6 +223,12 @@ section {
 .add-blog{
   .v-note-wrapper .v-note-op .v-left-item .op-icon, .op-icon input, .ivu-radio, .ivu-radio-input {
     cursor: url(../../assets/pic/cursor.cur), pointer !important;
+  }
+
+  .ivu-form-item {
+    .ivu-form-item-label {
+      font-size: 14px;
+    }
   }
 }
 </style>

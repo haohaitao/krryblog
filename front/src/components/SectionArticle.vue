@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section ref="blogSection">
     <article v-for="(val, index) in blogList" :key="index">
       <div class='bg-container'>
         <div class="bg-img" :style="{background: `url(${val.image}) 0% 0% / cover`}"></div>
@@ -48,6 +48,8 @@ export default {
     };
   },
   computed: {
+  },
+  watch: {
   },
   components: {
   },

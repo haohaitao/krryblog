@@ -6,6 +6,7 @@ public class Blog {
 	private String title;
 	private String content_md;
 	private String content_hm;
+	private String description;
 	private String image;
 	private String classify;
 	private int classifyId;
@@ -15,6 +16,7 @@ public class Blog {
 	private String createTime;
 	private String updateTime;
 	private int status;
+	
 	
 	public int getId() {
 		return id;
@@ -39,6 +41,12 @@ public class Blog {
 	}
 	public void setContent_hm(String content_hm) {
 		this.content_hm = content_hm;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getImage() {
 		return image;
