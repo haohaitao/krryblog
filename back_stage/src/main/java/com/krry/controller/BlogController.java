@@ -25,6 +25,7 @@ public class BlogController {
 	@Autowired
 	private IBlogService blogService;
 	
+	
 	/**
 	 * 查询博客
 	 * @param params
@@ -34,16 +35,7 @@ public class BlogController {
 	@RequestMapping("/getBlog")
 	public HashMap<String, Object> getBlog(){
 		
-		List<Blog> blogList = blogService.getBlog();
-		HashMap<String, Object> resData = new HashMap<>();
-		
-		if (blogList.size() > 0) {
-			resData.put("status", 200);
-		} else {
-			// TODO
-		}
-		resData.put("data", blogList);
-		
+		HashMap<String, Object> resData = blogService.getBlog();
 		
 		return resData;
 	}
@@ -58,18 +50,11 @@ public class BlogController {
 	@RequestMapping("/getClassify")
 	public HashMap<String, Object> getClassify(){
 		
-		List<Classify> classifyList = blogService.getClassify();
-		HashMap<String, Object> resData = new HashMap<>();
-		
-		if (classifyList.size() > 0) {
-			resData.put("status", 200);
-		} else {
-			// TODO
-		}
-		resData.put("data", classifyList);
+		HashMap<String, Object> resData = blogService.getClassify();
 		
 		return resData;
 	}
+	
 	
 	/**
 	 * 新增博客
@@ -79,8 +64,9 @@ public class BlogController {
 	@ResponseBody
 	@RequestMapping("/addBlog")
 	public int addBlog(Blog blog){
-		System.out.println("新增："+blog);
+		
 		int id = blogService.addBlog(blog);
+		
 		return id;
 	}
 	

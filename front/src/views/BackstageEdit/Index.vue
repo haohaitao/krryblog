@@ -6,8 +6,8 @@
         <BreadcrumbItem to="/">后台中心</BreadcrumbItem>
         <BreadcrumbItem>博客编辑页</BreadcrumbItem>
       </Breadcrumb>
-      <input type="text" maxlength="36" class="blog-title" v-model="title" placeholder="博客标题..." style="width: 100%" />
-      <mavon-editor @save="save" placeholder="编辑内容，支持 Markdown"></mavon-editor>
+      <input type="text" maxlength="36" class="blog-title" v-model.trim="title" placeholder="博客标题..." style="width: 100%" />
+      <mavon-editor @save="markdownSave" placeholder="编辑内容，支持 Markdown"></mavon-editor>
       <div class="item">
         <span class="text-desc">封面图片：</span>
         <Upload
@@ -44,7 +44,7 @@
         </i-switch>
       </div>
       <div class="blog-btn">
-        <Button type="primary" size="large" @click="commit">保存</Button>
+        <Button type="primary" size="large" @click="beforeCommit">保存</Button>
         <Button style="margin-left: 50px" size="large" @click="back">返回</Button>
       </div>
     </section>
@@ -62,12 +62,12 @@ export default {
       title: '',
       markdownDesc: '',
       translateDesc: '',
+      uploadImgUrl: 'image-url',
       classifyId: 1,
       label: '',
-      defaultList: [],
+
       imgName: '',
       visible: false,
-      uploadList: [],
       statusFlag: true,
     };
   },
@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     // markdown save
-    save (value, render) {
+    markdownSave (value, render) {
       this.markdownDesc = value;
       this.translateDesc = render;
     },
@@ -115,10 +115,37 @@ export default {
     },
 
     // save and commit
-    commit () {
-      // TODO
-      let id = Service.addBlog();
+    beforeCommit () {
+      let markdownSaveBtn = document.getElementsByClassName('fa-mavon-floppy-o');
+      markdownSaveBtn[0].click();
+      if (this.title === '') {
+        this.$Message.warning('先输入博客标题哦~~');
+        return false;
+      } else if (this.translateDesc.trim() === '') {
+        this.$Message.warning('先输入博客内容哦~~');
+        return false;
+      } else if (this.uploadImgUrl === '') {
+        this.$Message.warning('先上传封面图片哦~~');
+        return false;
+      }
+      let reqData = this.convertParams();
+      this.commit(reqData);
+    },
+    async commit (reqData) {
+      console.log(reqData);
+      let id = await Service.addBlog(reqData);
       console.log(id);
+    },
+    convertParams () {
+      return {
+        title: this.title,
+        content_md: this.markdownDesc,
+        content_hm: this.translateDesc,
+        image: this.uploadImgUrl,
+        classifyId: this.classifyId,
+        label: this.label,
+        status: this.status,
+      };
     },
     back () {
       window.history.back(-1);
@@ -148,6 +175,10 @@ section {
     border: none;
     border-top: 1px solid #ddd;
     color: #666;
+  }
+
+  .v-note-wrapper {
+    z-index: 1009;
   }
 
   .item {

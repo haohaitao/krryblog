@@ -1,5 +1,6 @@
 package com.krry.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.krry.entity.Blog;
@@ -16,13 +17,13 @@ public interface IBlogService {
 	 * 查询所有博客
 	 * @return
 	 */
-	public List<Blog> getBlog();
+	public HashMap<String, Object> getBlog();
 	
 	/**
 	 * 查询博客的分类
 	 * @return
 	 */
-	public List<Classify> getClassify();
+	public HashMap<String, Object> getClassify();
 	
 	/**
 	 * 增加博客
