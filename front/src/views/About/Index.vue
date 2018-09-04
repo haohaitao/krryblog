@@ -28,7 +28,7 @@ export default {
         comment: 20,
         classify: '我',
         classifyId: '1',
-        label: [],
+        label: '',
         status: 0, // 发布状态，0 未发布
       },
       status: 200,

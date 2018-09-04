@@ -3,8 +3,11 @@ package com.krry.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,6 +39,21 @@ public class BlogController {
 	public HashMap<String, Object> getBlog(){
 		
 		HashMap<String, Object> resData = blogService.getBlog();
+		
+		return resData;
+	}
+	
+	
+	/**
+	 * 获取博客详情页
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/getBlogDetail/{id}")
+	public HashMap<String, Object> getBlogDetail(@PathVariable("id")Integer id){
+		
+		HashMap<String, Object> resData = blogService.getBlogDetail(id);
 		
 		return resData;
 	}

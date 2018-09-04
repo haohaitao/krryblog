@@ -13,10 +13,10 @@
         {{blog.comment}}
       </div>
       <div class="header-tag" v-if="hasShowTags">
-        <router-link :to="`/tag/${tags}`" v-for="(tags, index) in blog.label" :key="index">{{tags}}</router-link>
+        <router-link :to="`/tag/${tags}`" v-for="(tags, index) in blogLabel" :key="index">{{tags}}</router-link>
       </div>
     </div>
-    <div id="blog" class="content markdown-body" v-html="blog.description"></div>
+    <div id="blog" class="content markdown-body" v-html="blog.content_hm"></div>
     <div class="content-footer">
       <p>本文由 <router-link to="/">乐诗-Krry</router-link> 创作，转载请注明</p>
       <p>最后编辑时间：{{blog.updateTime}}</p>
@@ -44,11 +44,15 @@ export default {
     };
   },
   computed: {
+    blogLabel () {
+      return this.blog['label'] ? this.blog['label'].split(',') : [];
+    },
     hasShowTags () {
-      return this.blog['label'].length > 0;
+      return this.blogLabel.length > 0;
     },
     hasShowHeader () {
-      return !!this.blog.status;
+      // 当标题是 关于我 或 友情链接，不显示文章头部信息
+      return this.blog.title !== '关于我' && this.blog.title !== '友情链接';
     },
   },
   mounted () {

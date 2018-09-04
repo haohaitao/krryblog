@@ -14,10 +14,16 @@ import com.krry.entity.Classify;
 public interface IBlogService {
 	
 	/**
-	 * 查询所有博客
+	 * 分页查询博客、博客总数
 	 * @return
 	 */
 	public HashMap<String, Object> getBlog();
+	
+	/**
+	 * 获取博客详情页
+	 * @return
+	 */
+	public HashMap<String, Object> getBlogDetail(int id);
 	
 	/**
 	 * 查询博客的分类

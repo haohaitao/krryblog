@@ -5,7 +5,7 @@
         <div class="bg-img" :style="{background: `url(${val.image}) 0% 0% / cover`}"></div>
       </div>
       <!-- 这里使用命名路由，效果与下面一样 -->
-      <router-link :to="{name: 'blog', params: {id: val.blogId, title: val.title}}">
+      <router-link :to="{name: 'blog', params: {id: val.id, title: val.title}}">
         <div class="bg-cover">
           <p>{{val.description}}</p>
         </div>
@@ -14,7 +14,7 @@
       <div class="other-bgcover"></div>
       <div class="desc">
         <!-- 这里直接用 id 作为路径，与上面一样 -->
-        <router-link :to="`/${val.blogId}`">
+        <router-link :to="`/${val.id}`">
           <p class="title">{{val.title}}</p>
         </router-link>
         <div class="desc-bottom">

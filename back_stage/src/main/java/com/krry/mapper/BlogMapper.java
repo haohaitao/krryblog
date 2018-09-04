@@ -14,6 +14,18 @@ public interface BlogMapper {
 	public List<Blog> getBlog();
 	
 	/**
+	 * 查询所有博客总数
+	 * @return
+	 */
+	public int getBlogCount();
+	
+	/**
+	 * 获取博客详情页
+	 * @return
+	 */
+	public Blog getBlogDetail(int id);
+	
+	/**
 	 * 查询博客的分类
 	 * @return
 	 */

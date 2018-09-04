@@ -25,14 +25,26 @@ public class BlogService implements IBlogService{
 	private BlogMapper blogMapper;
 	
 	/**
-	 * 查询博客
+	 * 分页查询博客、博客总数
+	 * 时间戳截掉时分秒
 	 * @param params
 	 * @return
 	 */
 	public HashMap<String, Object> getBlog() {
 		
 		List<Blog> blogList = blogMapper.getBlog();
+		int blogLen = blogMapper.getBlogCount();
 		HashMap<String, Object> resData = new HashMap<>();
+		
+		int len = blogList.size();
+		for (int i = 0; i < len; i++) {
+			Blog curBlog = blogList.get(i);
+			String createTime = curBlog.getCreateTime();
+			String updateTime = curBlog.getUpdateTime();
+			// 去掉 2018-09-04 13:24:05 的时分秒
+			curBlog.setCreateTime(createTime.split(" ")[0]);
+			curBlog.setUpdateTime(updateTime.split(" ")[0]);
+		}
 		
 		if (blogList.size() > 0) {
 			resData.put("status", 200);
@@ -40,6 +52,27 @@ public class BlogService implements IBlogService{
 			// TODO
 		}
 		resData.put("data", blogList);
+		resData.put("blogLen", blogLen);
+		
+		return resData;
+	}
+	
+	
+	/**
+	 * 获取博客详情页
+	 * @return
+	 */
+	public HashMap<String, Object> getBlogDetail(int id){
+		
+		Blog blog = blogMapper.getBlogDetail(id);
+		HashMap<String, Object> resData = new HashMap<>();
+		
+		if (blog != null) {
+			resData.put("status", 200);
+		} else {
+			resData.put("status", 404);
+		}
+		resData.put("data", blog);
 		
 		return resData;
 	}

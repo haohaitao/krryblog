@@ -5,6 +5,9 @@ export default {
   fetchBlog () {
     return Ax.get('/krryblog/blog/getBlog');
   },
+  fetchBlogDetail (id) {
+    return Ax.get(`/krryblog/blog/getBlogDetail/${id}`);
+  },
   fetchClassify () {
     return Ax.get('/krryblog/blog/getClassify');
   },

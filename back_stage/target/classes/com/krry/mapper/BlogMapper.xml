@@ -34,6 +34,29 @@
 			b.classifyId = c.id
 	</select>
 	
+	<!-- 查询所有博客总数 -->
+	<select id="getBlogCount" resultType="int">
+		select
+			count(*)
+		from
+			blog
+	</select>
+	
+	<!-- 获取博客详情页 -->
+	<select id="getBlogDetail" resultType="Blog">
+		select
+			b.id,
+			c.name as classify,
+			<include refid="blog_column"></include>
+		from
+			blog b
+		left join
+			classify c
+		on
+			b.classifyId = c.id
+		where b.id = #{id}
+	</select>
+	
 	<!-- 查询博客的分类 -->
 	<select id="getClassify" resultType="Classify">
 		SELECT
@@ -72,6 +95,5 @@
 			#{status}
 	    )
 	</insert>  
-	
 	
 </mapper>
