@@ -93,6 +93,14 @@ public class BlogController {
 	}
 	
 	
+	/**
+	 * 上传封面图片
+	 * @param file
+	 * @param request
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
 	@ResponseBody
 	@RequestMapping("/upload")
 	public String krryupload(@RequestParam("imgFile") MultipartFile file, HttpServletRequest request) throws IllegalStateException, IOException {

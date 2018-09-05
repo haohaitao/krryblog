@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.krry.mapper.AdminMapper" >
+	
+	<!-- 通用sql -->
+	<sql id="blog_column">
+		b.title,
+		b.content_md,
+		b.content_hm,
+		b.description,
+		b.image,
+		b.classifyId,
+		b.label,
+		b.hit,
+		b.comment,
+		b.createTime,
+		b.updateTime,
+		b.status
+	</sql>
+	
+	<!-- 获取相关链接 -->
+	<select id="getLinkOrAbout" resultType="Blog">
+		select
+			b.id,
+			c.name as classify,
+			<include refid="blog_column"></include>
+		from
+			blog b
+		left join
+			classify c
+		on
+			b.classifyId = c.id
+		where b.title = #{title}
+	</select> 
+	
+</mapper>

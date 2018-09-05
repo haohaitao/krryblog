@@ -31,13 +31,13 @@ export default new Router({
     },
     {
       path: '/about',
-      component: () => import('../views/About'),
+      component: () => import('../views/LinkOrAbout'),
       name: 'about',
       meta: {title: '你的美好，我都记得'},
     },
     {
       path: '/link',
-      component: () => import('../views/Link'),
+      component: () => import('../views/LinkOrAbout'),
       name: 'link',
       meta: {title: '你的美好，我都记得'},
     },
