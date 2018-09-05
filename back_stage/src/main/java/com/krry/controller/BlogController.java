@@ -1,5 +1,6 @@
 package com.krry.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.krry.entity.Blog;
 import com.krry.entity.Classify;
 import com.krry.service.IBlogService;
+import com.krry.util.UploadUtil;
 
 /**
  * Controller
@@ -86,6 +90,15 @@ public class BlogController {
 		int id = blogService.addBlog(blog);
 		
 		return id;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/upload")
+	public String krryupload(@RequestParam("imgFile") MultipartFile file, HttpServletRequest request) throws IllegalStateException, IOException {
+		
+		// 调用工具类完成上传，返回相关数据到页面
+		return UploadUtil.singleupload(file, request);
 	}
 	
 }

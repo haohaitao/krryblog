@@ -64,17 +64,30 @@
 		此工程所有的请求(.do ,addUser,js/image/css)都会被springmvc解析,
 		必须对所有的静态资源文件进行过滤放行 -->
 	  <!-- 静态资源过滤  下面二选一-->
-	  <!--<mvc:default-servlet-handler/> -->
-	  <mvc:resources mapping="/resource/**" location="/resource/" />
+	  <mvc:default-servlet-handler/>
+	  <!-- <mvc:resources mapping="/resource/**" location="/resource/" /> -->
 	 
-   	
-   
-	   <!-- 视图渲染 jsp/freemaker/velocity-->
-	   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		   	<!-- 制定页面存放的路径 -->
-		   	<property name="prefix" value="/WEB-INF/pages/"></property>
-		   	<!-- 文件的后缀 -->
-		   	<property name="suffix" value=".jsp"></property>
-	   </bean> 
+	 
+	 <!-- 配置文件解析器 -->
+	 <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		p:defaultEncoding="utf-8">
+		<property name="uploadTempDir" value="/temp"></property>
+		<property name="maxUploadSize">
+			<value>209715200</value><!-- 200MB -->
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value><!-- 4KB大小读写 -->
+		</property>
+	 </bean>
+  	
+  
+    <!-- 视图渲染 jsp/freemaker/velocity-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	   	<!-- 制定页面存放的路径 -->
+	   	<property name="prefix" value="/WEB-INF/pages/"></property>
+	   	<!-- 文件的后缀 -->
+	   	<property name="suffix" value=".jsp"></property>
+    </bean> 
 	
 </beans>

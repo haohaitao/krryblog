@@ -5,8 +5,8 @@
       <div class="header-info">
         <Icon type="md-pricetags" />
         <router-link :to="`/category/${blog.classifyId}`">{{blog.classify}}</router-link>
-        <Icon type="md-time" />
-        {{blog.createTime}}
+        <Icon type="md-calendar" />
+        {{blog.createTime | subTime(0)}}
         <Icon type="md-eye" />
         {{blog.hit}}
         <Icon type="md-chatboxes" />
@@ -14,6 +14,10 @@
       </div>
       <div class="header-tag" v-if="hasShowTags">
         <router-link :to="`/tag/${tags}`" v-for="(tags, index) in blogLabel" :key="index">{{tags}}</router-link>
+      </div>
+      <div class="tag-time">
+        <Icon type="md-time" />
+        {{blog.createTime | subTime(1)}}
       </div>
     </div>
     <div id="blog" class="content markdown-body" v-html="blog.content_hm"></div>
@@ -37,6 +41,12 @@ export default {
     },
     isNoBlog: {
       type: Boolean,
+    },
+  },
+  filters: {
+    // 2018-09-20 11:33:46 取年月日、取时分秒
+    subTime (time, index) {
+      return time ? time.split(' ')[index] : '';
     },
   },
   data () {
@@ -106,8 +116,9 @@ article {
 
   .art-header {
     padding-top: 100px;
-    padding-bottom: 15px;
+    padding-bottom: 12px;
     border-bottom: 1px dashed #b7b7b7;
+    position: relative;
 
     h1 {
       font-size: 22px;
@@ -117,7 +128,7 @@ article {
     }
 
     .header-info {
-      margin: 14px 0px 0;
+      margin: 12px 0px 0;
       i {
         &:not(:first-child) {
           margin-left: 12px;
@@ -127,8 +138,8 @@ article {
         margin-top: -2px;
       }
     }
-
     .header-tag {
+      width: 570px;
       margin-top: 14px;
       a {
         color: #fff;
@@ -148,6 +159,18 @@ article {
           outline-style: none;
           background: #f7f7f7;
         }
+      }
+    }
+
+    .tag-time {
+      position: absolute;
+      right: 0;
+      bottom: 12px;
+      line-height: 14px;
+
+      i {
+        font-size: 14px;
+        margin-top: -2px;
       }
     }
   }

@@ -1,5 +1,6 @@
 package com.krry.service.impl;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -68,6 +69,21 @@ public class BlogService implements IBlogService{
 		HashMap<String, Object> resData = new HashMap<>();
 		
 		if (blog != null) {
+			// 处理查询出timestamp时间类型多了个 .0  的问题
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // 设置日期格式
+			try {
+				Date createData = df.parse(blog.getCreateTime());
+				Date updateData = df.parse(blog.getUpdateTime());
+				String createTime = df.format(createData);
+				String updateTime = df.format(updateData);
+				blog.setCreateTime(createTime);
+				blog.setUpdateTime(updateTime);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(blog);
+			
 			resData.put("status", 200);
 		} else {
 			resData.put("status", 404);

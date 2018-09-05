@@ -7,6 +7,7 @@ export default {
   },
   async getBlogDetail (id) {
     let res = await Api.fetchBlogDetail(id);
+    console.log(res);
     return res;
   },
   async getClassify () {
