@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <router-view/>
+    <!-- 需要缓存走这里 -->
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <!-- 正常访问走下面，不需要缓存 -->
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 

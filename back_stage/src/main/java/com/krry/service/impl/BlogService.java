@@ -82,7 +82,6 @@ public class BlogService implements IBlogService{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println(blog);
 			
 			resData.put("status", 200);
 		} else {

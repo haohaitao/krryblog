@@ -2,7 +2,7 @@
   <section ref="blogSection">
     <article v-for="(val, index) in blogList" :key="index">
       <div class='bg-container'>
-        <div class="bg-img" :style="{background: `url(${val.image}) 0% 0% / cover`}"></div>
+        <div class="bg-img" :style="{background: `url(${basePath}${val.image}) 0% 0% / cover`}"></div>
       </div>
       <!-- 这里使用命名路由，效果与下面一样 -->
       <router-link :to="{name: 'blog', params: {id: val.id, title: val.title}}">
@@ -45,6 +45,7 @@ export default {
   },
   data () {
     return {
+      basePath: window.location.origin + '/krryblog/',
     };
   },
   computed: {
