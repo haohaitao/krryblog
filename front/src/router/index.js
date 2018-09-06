@@ -27,7 +27,7 @@ export default new Router({
       path: '/tag/:name',
       component: () => import('../views/Tag'),
       name: 'tag',
-      meta: {title: '你的美好，我都记得', keepAlive: true},
+      meta: {title: '你的美好，我都记得'},
     },
     {
       path: '/about',

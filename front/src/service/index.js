@@ -26,4 +26,12 @@ export default {
     let res = await Api.fetchLinkOrAbout(reqData);
     return res;
   },
+  async getBlogByTag (reqData) {
+    let res = await Api.fetchBlogByTag(reqData);
+    return res;
+  },
+  async getBlogByKeyword (reqData) {
+    let res = await Api.fetchBlogByKeyword(reqData);
+    return res;
+  },
 };

@@ -1,6 +1,10 @@
 <template>
   <div class="header">
-    <h1>『{{title}}』</h1>
+    <h1>
+      <span class="e-left">『</span>
+      <span class="text">{{title}}</span>
+      <span class="e-right">』</span>
+    </h1>
     <h4>{{description}}</h4>
   </div>
 </template>
@@ -32,12 +36,32 @@ export default {
   text-align: center;
 
   h1 {
+    position: relative;
     font-weight: 100;
     font-size: 30px;
+    margin: 0 auto;
     margin-bottom: 10px;
     letter-spacing: .1em;
     color: #fff;
-    text-shadow: 0 4px 8px rgba(7,17,27,.4);
+    text-shadow: 0 4px 8px rgba(7, 17, 27, 0.4);
+
+    .e-left {
+      position: relative;
+      left: 2px;
+      top: -11px;
+    }
+    .e-right {
+      right: 2px;
+      top: -11px;
+      position: relative;
+    }
+    .text {
+      max-width: 660px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+    }
   }
 
   h4 {

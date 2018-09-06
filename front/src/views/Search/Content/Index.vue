@@ -1,6 +1,6 @@
 <template>
   <section>
-    <SectionHeader :title="keyWord" :description="description"></SectionHeader>
+    <SectionHeader :title="keyword" :description="description"></SectionHeader>
     <SectionArticle :blogList="blogList" class="wrapper" v-if="!hasNoResult"></SectionArticle>
     <NoResult v-else></NoResult>
     <Page v-if="blogLen > 12" :total="blogLen" size="small" show-elevator show-total/>
@@ -16,8 +16,11 @@ export default {
     blogList: {
       type: Array,
     },
-    keyWord: {
+    keyword: {
       type: String,
+    },
+    blogLen: {
+      type: Number,
     },
     hasNoResult: {
       type: Boolean,
@@ -26,7 +29,6 @@ export default {
   data () {
     return {
       description: '相关内容 —— 搜索',
-      blogLen: 10,
     };
   },
   components: {

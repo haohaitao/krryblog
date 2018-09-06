@@ -20,4 +20,10 @@ export default {
   fetchLinkOrAbout (reqData) {
     return Ax.get('/krryblog/krry/getLinkOrAbout', {params: reqData});
   },
+  fetchBlogByTag (reqData) {
+    return Ax.get(`/krryblog/part/getBlogByTag`, {params: reqData});
+  },
+  fetchBlogByKeyword (reqData) {
+    return Ax.get(`/krryblog/part/getBlogBykeyword`, {params: reqData});
+  },
 };

@@ -17,11 +17,13 @@ export default {
     TagName: {
       type: String,
     },
+    blogLen: {
+      type: Number,
+    },
   },
   data () {
     return {
       description: '相关内容 —— 标签',
-      blogLen: 13,
     };
   },
   components: {

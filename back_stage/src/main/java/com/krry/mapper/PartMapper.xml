@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.krry.mapper.PartMapper" >
+	
+	<!-- 通用sql -->
+	<sql id="blog_column">
+		b.title,
+		b.content_md,
+		b.content_hm,
+		b.description,
+		b.image,
+		b.classifyId,
+		b.label,
+		b.hit,
+		b.comment,
+		b.createTime,
+		b.updateTime,
+		b.status
+	</sql>
+	
+	<!-- 根据标签查询已发布的博客 -->
+	<select id="getBlogByTag" resultType="Blog" parameterType="Params">
+		select
+			b.id,
+			c.name as classify,
+			<include refid="blog_column"></include>
+		from
+			blog b
+		left join
+			classify c
+		on
+			b.classifyId = c.id
+		where
+			b.status = 1
+		and
+			b.label regexp '^${tag}$|^${tag},|,${tag}$|,${tag},'
+	</select>
+	
+	<!-- 根据标签查询已发布的博客总数 -->
+	<select id="getTagBlogCount" resultType="int" parameterType="Params">
+		select
+			count(*)
+		from
+			blog
+		where
+			status = 1
+		and
+			label regexp '^${tag}$|^${tag},|,${tag}$|,${tag},'
+	</select>
+	
+	
+	<!-- 搜索已发布的博客 -->
+	<select id="getBlogBykeyword" resultType="Blog" parameterType="Params">
+		select
+			b.id,
+			c.name as classify,
+			<include refid="blog_column"></include>
+		from
+			blog b
+		left join
+			classify c
+		on
+			b.classifyId = c.id
+		where
+			b.status = 1
+		and(
+			b.title LIKE '%${keyword}%'
+			or b.description like '%${keyword}%'
+			or b.label like '%${keyword}%'
+			or c.name like '%${keyword}%'
+		)
+	</select>
+	
+	<!-- 搜索已发布的博客总数 -->
+	<select id="getKeyworkBlogCount" resultType="int" parameterType="Params">
+		select
+			count(*)
+		from
+			blog b
+		left join
+			classify c
+		on
+			b.classifyId = c.id
+		where
+			status = 1
+		and(
+			b.title LIKE '%${keyword}%'
+			or b.description like '%${keyword}%'
+			or b.label like '%${keyword}%'
+			or c.name like '%${keyword}%'
+		)
+	</select>
+	
+	
+</mapper>
+
+
