@@ -8,7 +8,7 @@
 
 ## 技术栈
 1. vue、iview
-2. java、ssm
+2. java、ssm、maven
 3. mysql
 
 ## Build Setup

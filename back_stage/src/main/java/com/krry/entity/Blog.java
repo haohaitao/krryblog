@@ -103,15 +103,6 @@ public class Blog {
 		this.status = status;
 	}
 	
-	@Override
-	public String toString() {
-		return "Blog [id=" + id + ", title=" + title + ", content_md="
-				+ content_md + ", content_hm=" + content_hm + ", description="
-				+ description + ", image=" + image + ", classify=" + classify
-				+ ", classifyId=" + classifyId + ", label=" + label + ", hit="
-				+ hit + ", comment=" + comment + ", createTime=" + createTime
-				+ ", updateTime=" + updateTime + ", status=" + status + "]";
-	}
 	
 }
 
