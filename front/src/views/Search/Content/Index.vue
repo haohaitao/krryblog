@@ -10,7 +10,7 @@
 <script>
 import SectionHeader from '@/components/SectionHeader';
 import SectionArticle from '@/components/SectionArticle';
-import NoResult from '../NoResult';
+import NoResult from './NoResult';
 export default {
   props: {
     blogList: {

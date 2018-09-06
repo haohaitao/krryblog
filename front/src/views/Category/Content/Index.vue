@@ -17,11 +17,13 @@ export default {
     categoryName: {
       type: String,
     },
+    blogLen: {
+      type: Number,
+    },
   },
   data () {
     return {
       description: '相关内容 —— 归档',
-      blogLen: 13,
     };
   },
   components: {

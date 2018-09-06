@@ -9,7 +9,6 @@
 <script>
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import NotFound from '@/components/NotFound';
 import Content from './Content';
 export default {
   data () {
@@ -139,7 +138,7 @@ export default {
     },
   },
   components: {
-    Header, Footer, NotFound, Content,
+    Header, Footer, Content,
   },
 };
 </script>

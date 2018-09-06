@@ -20,7 +20,7 @@
 		b.status
 	</sql>
 	
-	<!-- 查询博客 -->
+	<!-- 查询已发布的博客 -->
 	<!-- 注意这里的 resultType 返回值类型是集合内存储数据的类型Blog，不是 'list' -->
 	<select id="getBlog" resultType="Blog">
 		select
@@ -33,14 +33,18 @@
 			classify c
 		on
 			b.classifyId = c.id
+		where
+			b.status = 1
 	</select>
 	
-	<!-- 查询所有博客总数 -->
+	<!-- 查询所有已发布的博客总数 -->
 	<select id="getBlogCount" resultType="int">
 		select
 			count(*)
 		from
 			blog
+		where
+			status = 1
 	</select>
 	
 	<!-- 获取博客详情页 -->
@@ -60,11 +64,51 @@
 	
 	<!-- 查询博客的分类 -->
 	<select id="getClassify" resultType="Classify">
-		SELECT
+		select
 			id,
 			name
-		FROM
+		from
 			classify
+	</select>
+	
+	<!-- 查询分类博客 -->
+	<select id="getBlogByClassifyId" resultType="Blog">
+		select
+			b.id,
+			c.name as classify,
+			<include refid="blog_column"></include>
+		from
+			blog b
+		left join
+			classify c
+		on
+			b.classifyId = c.id
+		where
+			b.classifyId = #{id}
+		and
+			b.status = 1
+	</select>
+	
+	<!-- 查询已发布的分类博客总数 -->
+	<select id="getBlogClassifyCount" resultType="int">
+		select
+			count(*)
+		from
+			blog
+		where
+			classifyId = #{id}
+		and
+			status = 1
+	</select>
+	
+	<!-- 查询分类博客的名称 -->
+	<select id="getBlogClassifyName" resultType="String">
+		select
+			name
+		from
+			classify
+		where
+			id = #{id}
 	</select>
 	
 	<!-- 新增 -->

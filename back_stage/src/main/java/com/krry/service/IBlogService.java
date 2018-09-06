@@ -32,6 +32,12 @@ public interface IBlogService {
 	public HashMap<String, Object> getClassify();
 	
 	/**
+	 * 获取分类博客、博客总数
+	 * @return
+	 */
+	public HashMap<String, Object> getBlogByClassifyId(int id);
+	
+	/**
 	 * 增加博客
 	 * @return
 	 */

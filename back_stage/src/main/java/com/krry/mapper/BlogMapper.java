@@ -8,13 +8,13 @@ import com.krry.entity.Classify;
 public interface BlogMapper {
 	
 	/**
-	 * 查询所有博客
+	 * 查询已发布的博客
 	 * @return
 	 */
 	public List<Blog> getBlog();
 	
 	/**
-	 * 查询所有博客总数
+	 * 查询已发布的博客总数
 	 * @return
 	 */
 	public int getBlogCount();
@@ -30,6 +30,24 @@ public interface BlogMapper {
 	 * @return
 	 */
 	public List<Classify> getClassify();
+	
+	/**
+	 * 查询已发布的分类博客
+	 * @return
+	 */
+	public List<Blog> getBlogByClassifyId(int id);
+	
+	/**
+	 * 查询已发布的分类博客总数
+	 * @return
+	 */
+	public int getBlogClassifyCount(int id);
+	
+	/**
+	 * 查询分类博客的名称
+	 * @return
+	 */
+	public String getBlogClassifyName(int id);
 	
 	/**
 	 * 增加博客

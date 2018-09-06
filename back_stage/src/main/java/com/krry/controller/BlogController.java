@@ -77,6 +77,21 @@ public class BlogController {
 	
 	
 	/**
+	 * 获取分类博客、博客总数
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/getBlogByClassifyId/{id}")
+	public HashMap<String, Object> getBlogByClassifyId(@PathVariable("id")Integer id){
+		
+		HashMap<String, Object> resData = blogService.getBlogByClassifyId(id);
+		
+		return resData;
+	}
+	
+	
+	/**
 	 * 新增博客
 	 * @param blog
 	 * @return

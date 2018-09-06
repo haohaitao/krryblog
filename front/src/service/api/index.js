@@ -11,6 +11,9 @@ export default {
   fetchClassify () {
     return Ax.get('/krryblog/blog/getClassify');
   },
+  fetchBlogByClassifyId (id) {
+    return Ax.get(`/krryblog/blog/getBlogByClassifyId/${id}`);
+  },
   addBlog (reqData) {
     return Ax.post('/krryblog/blog/addBlog', qs.stringify(reqData));
   },

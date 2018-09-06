@@ -38,16 +38,16 @@ public class BlogService implements IBlogService{
 		HashMap<String, Object> resData = new HashMap<>();
 		
 		int len = blogList.size();
-		for (int i = 0; i < len; i++) {
-			Blog curBlog = blogList.get(i);
-			String createTime = curBlog.getCreateTime();
-			String updateTime = curBlog.getUpdateTime();
-			// 去掉 2018-09-04 13:24:05 的时分秒
-			curBlog.setCreateTime(createTime.split(" ")[0]);
-			curBlog.setUpdateTime(updateTime.split(" ")[0]);
-		}
 		
-		if (blogList.size() > 0) {
+		if (len > 0) {
+			for (int i = 0; i < len; i++) {
+				Blog curBlog = blogList.get(i);
+				String createTime = curBlog.getCreateTime();
+				String updateTime = curBlog.getUpdateTime();
+				// 去掉 2018-09-04 13:24:05 的时分秒
+				curBlog.setCreateTime(createTime.split(" ")[0]);
+				curBlog.setUpdateTime(updateTime.split(" ")[0]);
+			}
 			resData.put("status", 200);
 		} else {
 			// TODO
@@ -109,6 +109,49 @@ public class BlogService implements IBlogService{
 			// TODO
 		}
 		resData.put("data", classifyList);
+		
+		return resData;
+	}
+	
+	/**
+	 * 获取分类博客、博客总数
+	 * 时间戳截掉时分秒
+	 * @param params
+	 * @return
+	 */
+	public HashMap<String, Object> getBlogByClassifyId(int id) {
+		
+		List<Blog> blogList = blogMapper.getBlogByClassifyId(id);
+		int blogLen = blogMapper.getBlogClassifyCount(id);
+		String categoryName = blogMapper.getBlogClassifyName(id);
+		
+		HashMap<String, Object> resData = new HashMap<>();
+		
+		int len = blogList.size();
+		
+		if (categoryName != null) {
+			if (len > 0) {
+				for (int i = 0; i < len; i++) {
+					Blog curBlog = blogList.get(i);
+					String createTime = curBlog.getCreateTime();
+					String updateTime = curBlog.getUpdateTime();
+					// 去掉 2018-09-04 13:24:05 的时分秒
+					curBlog.setCreateTime(createTime.split(" ")[0]);
+					curBlog.setUpdateTime(updateTime.split(" ")[0]);
+				}
+				resData.put("status", 200);
+			} else {
+				// TODO
+				// 某分类没有发表过博客的情况
+				resData.put("status", 406);
+			}
+		} else {
+			// 分类id出错
+			resData.put("status", 404);
+		}
+		resData.put("data", blogList);
+		resData.put("blogLen", blogLen);
+		resData.put("categoryName", categoryName);
 		
 		return resData;
 	}

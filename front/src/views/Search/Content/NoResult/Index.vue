@@ -120,7 +120,7 @@ section {
     }
   }
   .rep-search {
-    cursor: url(../../../assets/pic/cursor.cur), pointer !important;
+    cursor: url(../../../../assets/pic/cursor.cur), pointer !important;
   }
 }
 </style>

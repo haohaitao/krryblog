@@ -51,6 +51,13 @@ export default {
   computed: {
   },
   watch: {
+    blogList (newVal) {
+      // 共用组件，每次数据变化产生过渡效果
+      this.$refs.blogSection.style['display'] = 'none';
+      setTimeout(() => {
+        this.$refs.blogSection.style['display'] = 'block';
+      }, 0);
+    },
   },
   components: {
   },
