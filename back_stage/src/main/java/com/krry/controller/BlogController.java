@@ -2,7 +2,6 @@ package com.krry.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.krry.entity.Blog;
-import com.krry.entity.Classify;
 import com.krry.service.IBlogService;
 import com.krry.util.UploadUtil;
 

@@ -20,29 +20,24 @@ export default {
     return {
       blog: {},
       status: 200,
+      description: 'About me',
     };
   },
   computed: {
     isNoBlog () {
       return this.status === 404;
     },
-    type () {
-      return this.$route.name;
-    },
-    description () {
-      return this.type === 'link' ? 'Network correlation' : 'About me';
-    },
-    title () {
-      return this.type === 'link' ? '友情链接' : '关于我';
-    },
   },
   created () {
-    this.getLinkOrAbout();
+    this.getAbout();
   },
   methods: {
-    async getLinkOrAbout () {
+    async getAbout () {
+      let reqData = {
+        title: '关于我',
+      };
       // fetch about api
-      let res = await Service.getLinkOrAbout(this.title);
+      let res = await Service.getLinkOrAbout(reqData);
       this.blog = res.data;
       this.status = res.status;
       // 404 的标题在 axios 拦截器已经定义
