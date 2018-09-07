@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.krry.entity.Blog;
+import com.krry.entity.User;
 import com.krry.mapper.AdminMapper;
 import com.krry.service.IAdminService;
 
@@ -22,6 +23,25 @@ public class AdminService implements IAdminService{
 
 	@Autowired
 	private AdminMapper adminMapper;
+	
+	
+	/**
+	 * 登录
+	 * @return
+	 */
+	public String login(User user){
+		
+		User realUser = adminMapper.getUserByName(user);
+		if (realUser != null) {
+			if (realUser.getPassword().equals(user.getPassword())) {
+				return "success";
+			} else {
+				return "密码错误哦~";
+			}
+		} else {
+			return "用户名不存在哦~";
+		}
+	}
 
 	
 	public HashMap<String, Object> getLinkOrAbout(String title) {

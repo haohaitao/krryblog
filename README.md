@@ -7,7 +7,7 @@
 > 可以说这个项目是把我从实习阶段所总结出来的、包括以前的经验和知识，做的一个项目
 
 ## 技术栈
-1. vue、iview
+1. vue、iview、markdown
 2. java、ssm、maven
 3. mysql
 

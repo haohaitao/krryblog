@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.krry.entity.User;
 import com.krry.service.IAdminService;
 
 /**
@@ -23,6 +24,21 @@ public class AdminController {
 	
 	@Autowired
 	private IAdminService adminService;
+	
+	
+	/**
+	 * 登录
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/login")
+	public String login(User user){
+		
+		String resData = adminService.login(user);
+		
+		return resData;
+	}
 	
 	
 	/**

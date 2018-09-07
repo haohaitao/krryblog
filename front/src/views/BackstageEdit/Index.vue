@@ -88,19 +88,16 @@ export default {
       markdownSaveBtn[0].click();
       if (this.title === '') {
         this.$Message.warning('先输入博客标题哦~~');
-        return false;
       } else if (this.translateDesc.trim() === '') {
         this.$Message.warning('先输入博客内容哦~~');
-        return false;
       } else if (this.description === '') {
         this.$Message.warning('先简单描述一下博客哦~~');
-        return false;
       } else if (this.uploadImgUrl === '') {
         this.$Message.warning('先上传封面图片哦~~');
-        return false;
+      } else {
+        let reqData = this.convertParams();
+        this.commit(reqData);
       }
-      let reqData = this.convertParams();
-      this.commit(reqData);
     },
     async commit (reqData) {
       console.log(reqData);

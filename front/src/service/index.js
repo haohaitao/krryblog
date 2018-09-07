@@ -33,4 +33,8 @@ export default {
     let res = await Api.fetchBlogByKeyword(reqData);
     return res;
   },
+  async getLogin (reqData) {
+    let res = await Api.fetchLogin(reqData);
+    return res;
+  },
 };

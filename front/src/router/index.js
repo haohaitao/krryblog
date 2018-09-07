@@ -48,6 +48,12 @@ export default new Router({
       meta: {title: '你的美好，我都记得'},
     },
     {
+      path: '/backstage',
+      component: () => import('../views/BackstageLogin'),
+      name: 'login',
+      meta: {title: '管理员登录 - 你的美好，我都记得', keepAlive: true},
+    },
+    {
       path: '/backstage/edit',
       component: () => import('../views/BackstageEdit'),
       name: 'edit',

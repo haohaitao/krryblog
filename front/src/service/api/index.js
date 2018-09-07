@@ -26,4 +26,7 @@ export default {
   fetchBlogByKeyword (reqData) {
     return Ax.get(`/krryblog/part/getBlogBykeyword`, {params: reqData});
   },
+  fetchLogin (reqData) {
+    return Ax.get(`/krryblog/krry/login`, {params: reqData});
+  },
 };

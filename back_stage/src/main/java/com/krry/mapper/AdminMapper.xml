@@ -20,6 +20,18 @@
 		b.status
 	</sql>
 	
+	
+	<!-- 查询根据用户名查询 -->
+	<select id="getUserByName" resultType="User" parameterType="User">
+		select
+			name,
+			password
+		from
+			user
+		where name = #{name}
+	</select> 
+	
+	
 	<!-- 获取相关链接 -->
 	<select id="getLinkOrAbout" resultType="Blog">
 		select
