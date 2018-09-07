@@ -54,10 +54,16 @@ export default new Router({
       meta: {title: '管理员登录 - 你的美好，我都记得', keepAlive: true},
     },
     {
+      path: '/backstage/list',
+      component: () => import('../views/BackstageList'),
+      name: 'list',
+      meta: {title: '后台中心 - 你的美好，我都记得', keepAlive: true, requireAuth: true},
+    },
+    {
       path: '/backstage/edit',
       component: () => import('../views/BackstageEdit'),
       name: 'edit',
-      meta: {title: '新增博客 - 你的美好，我都记得', keepAlive: true},
+      meta: {title: '新增博客 - 你的美好，我都记得', keepAlive: true, requireAuth: true},
     },
     {
       path: '*',

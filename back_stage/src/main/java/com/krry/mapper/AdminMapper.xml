@@ -32,7 +32,7 @@
 	</select> 
 	
 	
-	<!-- 获取相关链接 -->
+	<!-- 获取相关链接/关于 -->
 	<select id="getLinkOrAbout" resultType="Blog">
 		select
 			b.id,
@@ -45,6 +45,40 @@
 		on
 			b.classifyId = c.id
 		where b.title = #{title}
-	</select> 
+	</select>
+	
+	
+	<!-- 分页查询所有博客（发布和未发布） -->
+	<select id="getBlog" resultType="Blog">
+		select
+			b.id,
+			c.name as classify,
+			b.title,
+			b.label,
+			b.hit,
+			b.comment,
+			b.createTime,
+			b.updateTime,
+			b.status
+		from
+			blog b
+		left join
+			classify c
+		on
+			b.classifyId = c.id
+		order by
+ 			id desc
+	</select>
+	
+	
+	<!-- 查询所有博客总数 -->
+	<select id="getBlogCount" resultType="int">
+		select
+			count(*)
+		from
+			blog
+	</select>
 	
 </mapper>
+
+

@@ -3,7 +3,7 @@
     <section class="add-blog">
       <Breadcrumb>
         <BreadcrumbItem to="/">博客首页</BreadcrumbItem>
-        <BreadcrumbItem to="/">后台中心</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: 'list'}">后台中心</BreadcrumbItem>
         <BreadcrumbItem>博客编辑页</BreadcrumbItem>
       </Breadcrumb>
       <Form>

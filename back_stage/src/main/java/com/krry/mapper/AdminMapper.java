@@ -1,5 +1,7 @@
 package com.krry.mapper;
 
+import java.util.List;
+
 import com.krry.entity.Blog;
 import com.krry.entity.User;
 
@@ -18,5 +20,21 @@ public interface AdminMapper {
 	 * @return
 	 */
 	public Blog getLinkOrAbout(String title);
+	
+	
+	/**
+	 * 分页所有博客（发布和未发布）
+	 * @return
+	 */
+	public List<Blog> getBlog();
+	
+	/**
+	 * 博客总数
+	 * @return
+	 */
+	public int getBlogCount();
 
 }
+
+
+

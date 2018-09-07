@@ -37,4 +37,8 @@ export default {
     let res = await Api.fetchLogin(reqData);
     return res;
   },
+  async getAllBlog () {
+    let res = await Api.fetchAllBlog();
+    return res;
+  },
 };

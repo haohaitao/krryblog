@@ -1,7 +1,7 @@
 <template>
   <section class="login">
     <h1>Wellcome Login</h1>
-    <Form :label-width="73" label-position="right">
+    <Form :label-width="73" label-position="top">
       <FormItem label="name">
         <Input v-model.trim="name" placeholder="Enter name..."/>
       </FormItem>
@@ -36,7 +36,7 @@ export default {
           render: (h) => {
             return h('div', [
               h('Icon', {
-                'class': 'demo-spin-icon-load',
+                'class': 'icon-load',
                 props: {
                   type: 'ios-loading',
                   size: 26,
@@ -60,6 +60,9 @@ export default {
       } else {
         // 成功登录
         console.log('成功登录');
+        sessionStorage.setItem('username', this.name);
+        this.$store.dispatch('user/SETUSERNAME', this.name);
+        this.$router.push({name: 'list'});
       }
       this.$Spin.hide();
     },
@@ -85,10 +88,8 @@ section {
   }
 
   .ivu-form {
-    width: 400px;
+    width: 300px;
     margin: 40px auto 0;
-    position: relative;
-    left: -37px;
   }
 }
 </style>
@@ -97,6 +98,10 @@ section {
   .ivu-form {
     .ivu-form-item-label {
       font-size: 14px;
+      text-align: left;
+    }
+    .ivu-form-item-content {
+      margin-left: 0 !important;
     }
     input {
       font-size: 14px;
@@ -104,14 +109,16 @@ section {
     .my-button {
       margin-top: 60px;
       .ivu-form-item-content {
-        margin-left: 63px !important;
         text-align: center;
 
         button {
-          width: 120px;
+          width: 100px;
         }
       }
     }
   }
+}
+.icon-load {
+  animation: ani-demo-spin 1s linear infinite;
 }
 </style>

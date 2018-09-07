@@ -48,10 +48,25 @@ public class AdminController {
 	 */
 	@ResponseBody
 	@RequestMapping("/getLinkOrAbout")
-	public HashMap<String, Object> getBlog(HttpServletRequest request){
+	public HashMap<String, Object> getLinkOrAbout(HttpServletRequest request){
 		
 		String title = request.getParameter("title");
 		HashMap<String, Object> resData = adminService.getLinkOrAbout(title);
+		
+		return resData;
+	}
+	
+	
+	/**
+	 * 分页所有博客（发布和未发布）、博客总数
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/getBlog")
+	public HashMap<String, Object> getBlog(){
+		
+		HashMap<String, Object> resData = adminService.getBlog();
 		
 		return resData;
 	}

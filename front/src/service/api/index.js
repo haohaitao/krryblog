@@ -29,4 +29,7 @@ export default {
   fetchLogin (reqData) {
     return Ax.get(`/krryblog/krry/login`, {params: reqData});
   },
+  fetchAllBlog () {
+    return Ax.get(`/krryblog/krry/getBlog`);
+  },
 };

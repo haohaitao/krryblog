@@ -35,6 +35,8 @@
 			b.classifyId = c.id
 		where
 			b.status = 1
+		order by
+ 			b.id desc
 	</select>
 	
 	<!-- 查询所有已发布的博客总数 -->
@@ -87,6 +89,8 @@
 			b.classifyId = #{id}
 		and
 			b.status = 1
+		order by
+ 			b.id desc
 	</select>
 	
 	<!-- 查询已发布的分类博客总数 -->

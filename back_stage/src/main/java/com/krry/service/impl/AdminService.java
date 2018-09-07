@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,10 @@ public class AdminService implements IAdminService{
 	}
 
 	
+	/**
+	 * 查询相关链接 / 关于我
+	 * @return
+	 */
 	public HashMap<String, Object> getLinkOrAbout(String title) {
 		
 		Blog blog = adminMapper.getLinkOrAbout(title);
@@ -69,6 +74,40 @@ public class AdminService implements IAdminService{
 			resData.put("status", 404);
 		}
 		resData.put("data", blog);
+		
+		return resData;
+	}
+	
+	
+	/**
+	 * 分页所有博客（发布和未发布）、博客总数
+	 * 时间戳截掉时分秒
+	 * @param params
+	 * @return
+	 */
+	public HashMap<String, Object> getBlog() {
+		
+		List<Blog> blogList = adminMapper.getBlog();
+		int blogLen = adminMapper.getBlogCount();
+		HashMap<String, Object> resData = new HashMap<>();
+		
+		int len = blogList.size();
+		
+		if (len > 0) {
+			for (int i = 0; i < len; i++) {
+				Blog curBlog = blogList.get(i);
+				String createTime = curBlog.getCreateTime();
+				String updateTime = curBlog.getUpdateTime();
+				// 去掉 2018-09-04 13:24:05 的时分秒
+				curBlog.setCreateTime(createTime.split(" ")[0]);
+				curBlog.setUpdateTime(updateTime.split(" ")[0]);
+			}
+			resData.put("status", 200);
+		} else {
+			// TODO
+		}
+		resData.put("data", blogList);
+		resData.put("blogLen", blogLen);
 		
 		return resData;
 	}
