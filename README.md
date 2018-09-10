@@ -76,7 +76,7 @@ npm install iview-loader --save-dev
   }
 },
 ```
-2. 首页侧边栏可放个人简介、搜索、友情链接、最热文章
+2. 首页侧边栏可放个人简介、搜索、友情链接、最热文章（已废弃此条）
 3. 单页面项目，点击跳转的时候，做一个顶部的加载条显示
 4. 回到顶部
 5. 根据滚动条上滑出现吸顶盒，下滑隐藏
@@ -88,7 +88,7 @@ npm install iview-loader --save-dev
 11. 做一个后台系统，存放所有的博客文章，包括状态为 不发布 的“关于”文章，这样可编辑和管理所有博客
 12. 使用骨架屏，异步加载，慢慢浮现的动画依然不会延迟
 
-##  图片正方形
+##  图片长方形：280*230
 1. 因为使用 background 来装载博客图片，使用 filter: blur(3px); 使背景图片虚化，当准备做图片懒加载的时候，使用了 ::before{} 在被选元素的前面插入内容，且设置 z-index: -1，使用 content 属性定义插入内容的文本信息，这样子来做图片懒加载，当背景图片加载完成，会自动覆盖 ::before{} 的内容
 2. 点击分页的时候，加载数据完成后，section 先 display: none，再 display: block; 才会显示动画
 
@@ -111,3 +111,6 @@ npm install iview-loader --save-dev
   status: 200
 }
 ```
+
+## 问题
+1. 如果出现mybatis查询中文没有结果集的情况，或者查询中文出现报错，在jdbc.propersities文件里的db.url=数据库地址加上?useUnicode=true&characterEncoding=UTF-8

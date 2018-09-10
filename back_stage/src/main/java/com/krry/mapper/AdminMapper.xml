@@ -29,7 +29,7 @@
 		from
 			user
 		where name = #{name}
-	</select> 
+	</select>
 	
 	
 	<!-- 获取相关链接/关于 -->
