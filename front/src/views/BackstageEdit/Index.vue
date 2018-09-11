@@ -8,12 +8,12 @@
       </Breadcrumb>
       <Form>
         <input type="text" maxlength="36" class="blog-title" v-model.trim="title" placeholder="博客标题..." style="width: 100%" />
-        <mavon-editor @save="markdownSave" placeholder="编辑内容，支持 Markdown"></mavon-editor>
+        <mavon-editor :value="markdownDesc" @save="markdownSave" placeholder="编辑内容，支持 Markdown"></mavon-editor>
         <FormItem label="博客描述：" style="padding-top: 42px">
           <Input v-model.trim="description" :autosize="{minRows: 4,maxRows: 10}" style="width: 460px" type="textarea" :rows="4" placeholder="为博客的写上简单描述吧~~" />
         </FormItem>
         <!-- upload image -->
-        <uploadImg :uploadImgUrl="uploadImgUrl" @changeImgUrl="changeImgUrl"></uploadImg>
+        <uploadImg :defaultList="defaultUploadList" :uploadImgUrl="uploadImgUrl" :imgName="imgName" @changeImg="changeImg"></uploadImg>
         <FormItem label="分类归档：">
           <RadioGroup v-model="classifyId">
             <Radio :label="item.id" v-for="(item, index) in classifyList" :key="index">
@@ -48,15 +48,19 @@ import Service from '@/service';
 export default {
   data () {
     return {
+      id: 0,
       title: '',
       markdownDesc: '',
       translateDesc: '',
       description: '',
+      imgName: '',
       uploadImgUrl: '',
       classifyId: 1,
       label: '',
 
       statusFlag: true,
+
+      defaultUploadList: [],
     };
   },
   computed: {
@@ -76,32 +80,15 @@ export default {
       let id = this.$route.params['id'];
       // get blog when edit
       if (id !== undefined) {
-        document.title = document.title.replace('新增', '编辑');
-        let res = await Service.getBlogDetail(id);
-        let status = res.status;
-        if (status !== 404) {
-          let resBlog = res.data;
-          this.injectBlog(resBlog);
+        let blog = this.$route.params;
+        for (let key in blog) {
+          this[key] = blog[key];
         }
+        this.defaultUploadList = [{
+          name: this.imgName,
+          url: window.location.origin + '/krryblog/' + this.uploadImgUrl,
+        }];
       }
-    },
-
-    // inject blog when edit (equal params)
-    injectBlog (resBlog) {
-      let convertAndParams = [
-        'title',
-        'markdownDesc|content_md',
-        'translateDesc|content_hm',
-        'description',
-        'uploadImgUrl|image',
-        'classifyId',
-        'label',
-      ];
-      for (let val of convertAndParams) {
-        let params = val.split('|');
-        params.length > 1 ? this[params[0]] = resBlog[params[1]] : this[params[0]] = resBlog[params[0]];
-      }
-      this.statusFlag = !!resBlog.status;
     },
 
     // markdown save
@@ -111,7 +98,8 @@ export default {
     },
 
     // from child
-    changeImgUrl (url) {
+    changeImg (name, url) {
+      this.imgName = name;
       this.uploadImgUrl = url;
     },
 
@@ -134,8 +122,13 @@ export default {
     },
     async commit (reqData) {
       console.log(reqData);
-      let id = await Service.addBlog(reqData);
-      console.log(id);
+      if (this.id > 0) {
+        // is edit
+        console.log('是编辑');
+      } else {
+        let id = await Service.addBlog(reqData);
+        console.log(id);
+      }
     },
     convertParams () {
       return {
@@ -143,6 +136,7 @@ export default {
         content_md: this.markdownDesc,
         content_hm: this.translateDesc,
         description: this.description,
+        imageName: this.imgName,
         image: this.uploadImgUrl,
         classifyId: this.classifyId,
         label: this.label,

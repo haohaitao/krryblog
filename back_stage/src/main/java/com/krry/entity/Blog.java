@@ -7,6 +7,7 @@ public class Blog {
 	private String content_md;
 	private String content_hm;
 	private String description;
+	private String imageName;
 	private String image;
 	private String classify;
 	private int classifyId;
@@ -47,6 +48,12 @@ public class Blog {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 	public String getImage() {
 		return image;

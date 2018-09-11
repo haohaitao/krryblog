@@ -10,6 +10,7 @@
 		b.content_md,
 		b.content_hm,
 		b.description,
+		b.imageName,
 		b.image,
 		b.classifyId,
 		b.label,

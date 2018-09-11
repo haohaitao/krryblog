@@ -10,6 +10,7 @@
 		b.content_md,
 		b.content_hm,
 		b.description,
+		b.imageName,
 		b.image,
 		b.classifyId,
 		b.label,
@@ -52,15 +53,8 @@
 	<select id="getBlog" resultType="Blog">
 		select
 			b.id,
-			b.title,
-			b.classifyId,
 			c.name as classify,
-			b.label,
-			b.hit,
-			b.comment,
-			b.createTime,
-			b.updateTime,
-			b.status
+			<include refid="blog_column"></include>
 		from
 			blog b
 		left join

@@ -7,6 +7,7 @@
       :max-size="2048"
       :on-format-error="handleFormatError"
       :on-exceeded-size="handleMaxSize"
+      :default-file-list="defaultList"
       type="drag"
       name="imgFile"
       action="/krryblog/blog/upload">
@@ -38,6 +39,12 @@ export default {
     uploadImgUrl: {
       type: String,
     },
+    imgName: {
+      type: String,
+    },
+    defaultList: {
+      type: Array,
+    },
   },
   data () {
     return {
@@ -52,11 +59,13 @@ export default {
   },
   watch: {
     uploadList (newVal) {
+      let Eleupload = document.getElementsByClassName('ivu-upload-input')[0];
       if (newVal.length === 0) {
         // 上传列表为空，设置文件上传为可用
-        let Eleupload = document.getElementsByClassName('ivu-upload-input')[0];
         Eleupload.removeAttribute('disabled');
-        this.$emit('changeImgUrl', '');
+        this.$emit('changeImg', '', '');
+      } else {
+        Eleupload.setAttribute('disabled', true);
       }
     },
   },
@@ -73,7 +82,7 @@ export default {
     },
     handleSuccess (res, file) {
       if (res !== null) {
-        this.$emit('changeImgUrl', res.url);
+        this.$emit('changeImg', res.oldName, res.url);
         file.url = window.location.origin + '/krryblog/' + res.url;
         file.name = res.oldName;
         // 设置文件上传不可用
@@ -171,6 +180,6 @@ export default {
   }
 }
 .ivu-modal-mask, .ivu-modal-wrap {
-  z-index: 1010;
+  z-index: 1010 !important;
 }
 </style>
