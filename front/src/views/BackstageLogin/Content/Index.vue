@@ -3,14 +3,14 @@
     <h1>Wellcome Login</h1>
     <Form :label-width="73" label-position="top">
       <FormItem label="name">
-        <Input v-model.trim="name" placeholder="Enter name..."/>
+        <Input v-model.trim="name" @keyup.enter.native="beforeSubmit" placeholder="Enter name..."/>
       </FormItem>
       <FormItem label="password">
-        <Input v-model.trim="password" type="password" placeholder="Enter password..."/>
+        <Input v-model.trim="password" @keyup.enter.native="beforeSubmit" type="password" placeholder="Enter password..."/>
       </FormItem>
       <FormItem class="my-button">
         <Button type="primary" @click="beforeSubmit">Submit</Button>
-        <Button style="margin-left: 38px" @click="back">Cancel</Button>
+        <Button style="margin-top: 20px" @click="back">Cancel</Button>
       </FormItem>
     </Form>
   </section>
@@ -112,7 +112,7 @@ section {
         text-align: center;
 
         button {
-          width: 100px;
+          width: 100%;
         }
       }
     }
