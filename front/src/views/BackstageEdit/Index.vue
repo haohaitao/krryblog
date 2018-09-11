@@ -124,7 +124,7 @@ export default {
       console.log(reqData);
       if (this.id > 0) {
         // is edit
-        console.log('是编辑');
+        console.log('是编辑，id：' + this.id);
       } else {
         let id = await Service.addBlog(reqData);
         console.log(id);

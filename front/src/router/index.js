@@ -57,7 +57,7 @@ export default new Router({
       path: '/backstage/list',
       component: () => import('../views/BackstageList'),
       name: 'list',
-      meta: {title: '后台中心 - 你的美好，我都记得', keepAlive: true, requireAuth: true},
+      meta: {title: '后台中心 - 你的美好，我都记得', requireAuth: true},
     },
     {
       path: '/backstage/edit',
