@@ -114,3 +114,4 @@ npm install iview-loader --save-dev
 
 ## 问题
 1. 如果出现mybatis查询中文没有结果集的情况，或者查询中文出现报错，在jdbc.propersities文件里的db.url=数据库地址加上?useUnicode=true&characterEncoding=UTF-8
+2. 若页面已经被 keepAlive 了，那将获取路由参数的钩子应该是 activated，created 和 mounted 钩子无法获取

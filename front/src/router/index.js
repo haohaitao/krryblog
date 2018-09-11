@@ -63,7 +63,7 @@ export default new Router({
       path: '/backstage/edit',
       component: () => import('../views/BackstageEdit'),
       name: 'edit',
-      meta: {title: '新增博客 - 你的美好，我都记得', keepAlive: true, requireAuth: true},
+      meta: {title: '新增博客 - 你的美好，我都记得', requireAuth: true},
     },
     {
       path: '*',

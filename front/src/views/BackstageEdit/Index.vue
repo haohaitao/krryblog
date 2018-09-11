@@ -69,8 +69,41 @@ export default {
     },
   },
   created () {
+    this.getBlogInfo();
   },
   methods: {
+    async getBlogInfo () {
+      let id = this.$route.params['id'];
+      // get blog when edit
+      if (id !== undefined) {
+        document.title = document.title.replace('新增', '编辑');
+        let res = await Service.getBlogDetail(id);
+        let status = res.status;
+        if (status !== 404) {
+          let resBlog = res.data;
+          this.injectBlog(resBlog);
+        }
+      }
+    },
+
+    // inject blog when edit (equal params)
+    injectBlog (resBlog) {
+      let convertAndParams = [
+        'title',
+        'markdownDesc|content_md',
+        'translateDesc|content_hm',
+        'description',
+        'uploadImgUrl|image',
+        'classifyId',
+        'label',
+      ];
+      for (let val of convertAndParams) {
+        let params = val.split('|');
+        params.length > 1 ? this[params[0]] = resBlog[params[1]] : this[params[0]] = resBlog[params[0]];
+      }
+      this.statusFlag = !!resBlog.status;
+    },
+
     // markdown save
     markdownSave (value, render) {
       this.markdownDesc = value;

@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     async getBlog () {
-      let res = await Service.getBlog();
+      let res = await Service.getAllBlog();
       this.status = res.status;
       // 404 的标题在 axios 拦截器已经定义
       if (this.status !== 404) {

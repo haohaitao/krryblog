@@ -36,10 +36,24 @@ export default {
           title: '标题',
           width: 150,
           key: 'title',
+          render: (h, params) => {
+            return h('router-link', {
+              props: {
+                to: `/${params.row.id}`,
+              },
+            }, params.row.title);
+          },
         },
         {
           title: '归档',
           key: 'classify',
+          render: (h, params) => {
+            return h('router-link', {
+              props: {
+                to: `/category/${params.row.classifyId}`,
+              },
+            }, params.row.classify);
+          },
         },
         {
           title: '标签',
@@ -68,7 +82,7 @@ export default {
               },
               on: {
                 'on-change': val => {
-                  this.setStatus(val);
+                  this.setStatus(params.row.id, val);
                 },
               },
             }, [
@@ -93,7 +107,16 @@ export default {
           width: 140,
           align: 'center',
           render: (h, params) => {
-            return h('div', [
+            return h('router-link', {
+              props: {
+                to: {
+                  name: 'edit',
+                  params: {
+                    id: params.row.id,
+                  },
+                },
+              },
+            }, [
               h('Button', {
                 props: {
                   type: 'primary',
@@ -101,11 +124,6 @@ export default {
                 },
                 style: {
                   marginRight: '10px',
-                },
-                on: {
-                  click: () => {
-                    this.modify(params.row['id']);
-                  },
                 },
               }, '修改'),
               h('Button', {
@@ -127,8 +145,8 @@ export default {
   },
   methods: {
     // 设置发布状态
-    setStatus (val) {
-      console.log(val);
+    setStatus (id, val) {
+      console.log(id, val);
     },
     modify (id) {
       console.log('修改id：' + id);

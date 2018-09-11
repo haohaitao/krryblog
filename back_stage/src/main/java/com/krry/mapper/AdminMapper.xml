@@ -52,8 +52,9 @@
 	<select id="getBlog" resultType="Blog">
 		select
 			b.id,
-			c.name as classify,
 			b.title,
+			b.classifyId,
+			c.name as classify,
 			b.label,
 			b.hit,
 			b.comment,
