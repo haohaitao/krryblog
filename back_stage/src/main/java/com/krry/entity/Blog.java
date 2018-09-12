@@ -17,6 +17,7 @@ public class Blog {
 	private String createTime;
 	private String updateTime;
 	private int status;
+	private int isDelete;
 	
 	
 	public int getId() {
@@ -108,6 +109,12 @@ public class Blog {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public int getIsDelete() {
+		return isDelete;
+	}
+	public void setIsDelete(int isDelete) {
+		this.isDelete = isDelete;
 	}
 	
 	

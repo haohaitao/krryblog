@@ -122,6 +122,20 @@ public class BlogController {
 		return UploadUtil.singleupload(file, request);
 	}
 	
+	/**
+	 * 修改博客
+	 * @param blog
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/updateBlog")
+	public String updateBlog(Blog blog){
+		
+		String msg = blogService.updateBlog(blog);
+		
+		return msg;
+	}
+	
 }
 
 

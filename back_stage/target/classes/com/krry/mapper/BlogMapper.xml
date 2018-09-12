@@ -18,7 +18,8 @@
 		b.comment,
 		b.createTime,
 		b.updateTime,
-		b.status
+		b.status,
+		b.isDelete
 	</sql>
 	
 	<!-- 查询已发布的博客 -->
@@ -36,6 +37,8 @@
 			b.classifyId = c.id
 		where
 			b.status = 1
+		and
+			b.isDelete = 0
 		order by
  			b.id desc
 	</select>
@@ -48,6 +51,8 @@
 			blog
 		where
 			status = 1
+		and
+			isDelete = 0
 	</select>
 	
 	<!-- 获取博客详情页 -->
@@ -62,7 +67,12 @@
 			classify c
 		on
 			b.classifyId = c.id
-		where b.id = #{id}
+		where
+			b.id = #{id}
+		and
+			b.status = 1
+		and
+			b.isDelete = 0
 	</select>
 	
 	<!-- 查询博客的分类 -->
@@ -90,6 +100,8 @@
 			b.classifyId = #{id}
 		and
 			b.status = 1
+		and
+			b.isDelete = 0
 		order by
  			b.id desc
 	</select>
@@ -104,6 +116,8 @@
 			classifyId = #{id}
 		and
 			status = 1
+		and
+			isDelete = 0
 	</select>
 	
 	<!-- 查询分类博客的名称 -->
@@ -131,7 +145,8 @@
 			comment,
 			createTime,
 			updateTime,
-			status
+			status,
+			isDelete
 	    )
 	    values(
 	    	#{title},
@@ -146,8 +161,33 @@
 			#{comment},
 			#{createTime},
 			#{updateTime},
-			#{status}
+			#{status},
+			#{isDelete}
 	    )
-	</insert>  
+	</insert>
+	
+	<!-- 修改博客 -->
+	<update id="updateBlog"  parameterType="Blog">
+		update
+			krryblog
+		set
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(title)">title=#{title},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(content_md)">content_md=#{content_md},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(content_hm)">content_hm=#{content_hm},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(description)">description=#{description},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(imageName)">imageName=#{imageName},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(image)">image=#{image},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(classifyId)">classifyId=#{classifyId},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(label)">label=#{label},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(hit)">hit=#{hit},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(comment)">comment=#{comment},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(updateTime)">updateTime=#{updateTime},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(status)">status=#{status},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(isDelete)">isDelete=#{isDelete},</if>
+		</trim>
+		where
+			id = #{id}
+	</update>
 	
 </mapper>

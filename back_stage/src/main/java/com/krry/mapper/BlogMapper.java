@@ -54,5 +54,11 @@ public interface BlogMapper {
 	 * @return
 	 */
 	public int addBlog(Blog blog);
+	
+	/**
+	 * 修改博客
+	 * @param blog
+	 */
+	public void updateBlog(Blog blog);
 
 }

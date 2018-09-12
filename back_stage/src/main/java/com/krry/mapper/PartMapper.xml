@@ -18,7 +18,8 @@
 		b.comment,
 		b.createTime,
 		b.updateTime,
-		b.status
+		b.status,
+		b.isDelete
 	</sql>
 	
 	<!-- 根据标签查询已发布的博客 -->
@@ -36,6 +37,8 @@
 		where
 			b.status = 1
 		and
+			b.isDelete = 0
+		and
 			b.label regexp '^${tag}$|^${tag},|,${tag}$|,${tag},'
 	</select>
 	
@@ -47,6 +50,8 @@
 			blog
 		where
 			status = 1
+		and
+			isDelete = 0
 		and
 			label regexp '^${tag}$|^${tag},|,${tag}$|,${tag},'
 	</select>
@@ -66,6 +71,8 @@
 			b.classifyId = c.id
 		where
 			b.status = 1
+		and
+			b.isDelete = 0
 		and(
 			b.title LIKE '%${keyword}%'
 			or b.description like '%${keyword}%'
@@ -86,6 +93,8 @@
 			b.classifyId = c.id
 		where
 			status = 1
+		and
+			isDelete = 0
 		and(
 			b.title LIKE '%${keyword}%'
 			or b.description like '%${keyword}%'

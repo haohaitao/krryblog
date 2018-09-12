@@ -170,10 +170,28 @@ public class BlogService implements IBlogService{
 		blog.setComment(0);
 		blog.setCreateTime(date);
 		blog.setUpdateTime(date);
+		blog.setIsDelete(0);
 		
 		int id = blogMapper.addBlog(blog);
 		
 		return id;
+	}
+
+	
+	/**
+	 * 修改博客
+	 * @param blog
+	 * @return
+	 */
+	public String updateBlog(Blog blog) {
+		
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // 设置日期格式
+		String date = df.format(new Date()); // new Date()为获取当前系统时间，也可使用当前时间戳
+		blog.setUpdateTime(date);
+		
+		blogMapper.updateBlog(blog);
+		
+		return "success";
 	}
 
 

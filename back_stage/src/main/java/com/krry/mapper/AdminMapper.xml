@@ -18,11 +18,12 @@
 		b.comment,
 		b.createTime,
 		b.updateTime,
-		b.status
+		b.status,
+		b.isDelete
 	</sql>
 	
 	
-	<!-- 查询根据用户名查询 -->
+	<!-- 根据用户名查询 -->
 	<select id="getUserByName" resultType="User" parameterType="User">
 		select
 			name,
@@ -61,17 +62,21 @@
 			classify c
 		on
 			b.classifyId = c.id
+		where
+			isDelete = 0
 		order by
  			id desc
 	</select>
 	
 	
-	<!-- 查询所有博客总数 -->
+	<!-- 查询所有博客总数（发布和未发布） -->
 	<select id="getBlogCount" resultType="int">
 		select
 			count(*)
 		from
 			blog
+		where
+			isDelete = 0
 	</select>
 	
 </mapper>

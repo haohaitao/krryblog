@@ -43,4 +43,10 @@ public interface IBlogService {
 	 */
 	public int addBlog(Blog blog);
 	
+	/**
+	 * 修改博客
+	 * @param blog
+	 */
+	public String updateBlog(Blog blog);
+	
 }
