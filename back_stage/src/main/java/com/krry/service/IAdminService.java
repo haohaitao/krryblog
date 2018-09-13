@@ -5,6 +5,11 @@ import java.util.HashMap;
 import com.krry.entity.Blog;
 import com.krry.entity.User;
 
+/**
+ * 业务层
+ * @author w
+ *
+ */
 public interface IAdminService {
 
 	/**

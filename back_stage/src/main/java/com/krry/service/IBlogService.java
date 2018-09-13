@@ -7,7 +7,7 @@ import com.krry.entity.Blog;
 import com.krry.entity.Classify;
 
 /**
- * service层：处理业务逻辑（impl里面实现）
+ * 业务层
  * @author asusaad
  *
  */

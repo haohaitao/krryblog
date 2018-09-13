@@ -15,6 +15,7 @@ import com.krry.mapper.AdminMapper;
 import com.krry.service.IAdminService;
 
 /**
+ * 实现业务层
  * 实现service层接口，数据处理对接数据库
  * @author krry
  *

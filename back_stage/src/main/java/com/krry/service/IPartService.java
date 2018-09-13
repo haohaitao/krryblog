@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.krry.entity.Params;
 
 /**
- * service层：处理业务逻辑（impl里面实现）
+ * 业务层
  * @author asusaad
  *
  */

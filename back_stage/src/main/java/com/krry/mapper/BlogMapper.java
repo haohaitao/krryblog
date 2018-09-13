@@ -5,6 +5,11 @@ import java.util.List;
 import com.krry.entity.Blog;
 import com.krry.entity.Classify;
 
+/**
+ * 持久层
+ * @author w
+ *
+ */
 public interface BlogMapper {
 	
 	/**

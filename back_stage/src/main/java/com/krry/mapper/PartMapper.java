@@ -5,6 +5,11 @@ import java.util.List;
 import com.krry.entity.Blog;
 import com.krry.entity.Params;
 
+/**
+ * 持久层
+ * @author w
+ *
+ */
 public interface PartMapper {
 	
 	/**

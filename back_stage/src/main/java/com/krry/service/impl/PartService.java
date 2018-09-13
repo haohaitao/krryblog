@@ -13,6 +13,7 @@ import com.krry.mapper.PartMapper;
 import com.krry.service.IPartService;
 
 /**
+ * 实现业务层
  * 实现service层接口，数据处理对接数据库
  * @author krry
  *
