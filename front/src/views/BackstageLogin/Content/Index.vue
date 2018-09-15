@@ -118,7 +118,4 @@ section {
     }
   }
 }
-.icon-load {
-  animation: ani-demo-spin 1s linear infinite;
-}
 </style>

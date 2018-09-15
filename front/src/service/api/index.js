@@ -17,6 +17,9 @@ export default {
   addBlog (reqData) {
     return Ax.post('/krryblog/blog/addBlog', qs.stringify(reqData));
   },
+  updateBlog (reqData) {
+    return Ax.post('/krryblog/blog/updateBlog', qs.stringify(reqData));
+  },
   fetchLinkOrAbout (reqData) {
     return Ax.get('/krryblog/krry/getLinkOrAbout', {params: reqData});
   },

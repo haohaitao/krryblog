@@ -105,6 +105,11 @@ img {
   cursor: url(./assets/pic/cursor.cur), pointer !important;
 }
 
+/* 加载动画 */
+.icon-load {
+  animation: ani-demo-spin 1s linear infinite;
+}
+
 /* 分页样式的冲突和解决 */
 .ivu-page {
   text-align: center;

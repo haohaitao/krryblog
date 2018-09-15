@@ -21,6 +21,10 @@ export default {
     let res = await Api.addBlog(reqData);
     return res;
   },
+  async updateBlog (reqData) {
+    let res = await Api.updateBlog(reqData);
+    return res;
+  },
   async getLinkOrAbout (reqData) {
     let res = await Api.fetchLinkOrAbout(reqData);
     return res;

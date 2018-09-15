@@ -68,7 +68,7 @@ export default {
           key: 'createTime',
         },
         {
-          title: '更新时间',
+          title: '最后更新',
           key: 'updateTime',
         },
         {
@@ -107,33 +107,36 @@ export default {
           width: 140,
           align: 'center',
           render: (h, params) => {
-            return h('router-link', {
-              props: {
-                to: {
-                  name: 'edit',
-                  params: {
-                    id: params.row.id,
-                    title: params.row.title,
-                    markdownDesc: params.row.content_md,
-                    description: params.row.description,
-                    imgName: params.row.imageName,
-                    uploadImgUrl: params.row.image,
-                    classifyId: params.row.classifyId,
-                    label: params.row.label,
-                    statusFlag: !!params.row.status,
+            return h('div', {
+            }, [
+              h('router-link', {
+                props: {
+                  to: {
+                    name: 'edit',
+                    params: {
+                      id: params.row.id,
+                      title: params.row.title,
+                      markdownDesc: params.row.content_md,
+                      description: params.row.description,
+                      imgName: params.row.imageName,
+                      uploadImgUrl: params.row.image,
+                      classifyId: params.row.classifyId,
+                      label: params.row.label,
+                      statusFlag: !!params.row.status,
+                    },
                   },
                 },
-              },
-            }, [
-              h('Button', {
-                props: {
-                  type: 'primary',
-                  size: 'small',
-                },
-                style: {
-                  marginRight: '10px',
-                },
-              }, '修改'),
+              }, [
+                h('Button', {
+                  props: {
+                    type: 'primary',
+                    size: 'small',
+                  },
+                  style: {
+                    marginRight: '10px',
+                  },
+                }, '修改'),
+              ]),
               h('Button', {
                 props: {
                   type: 'error',
@@ -155,9 +158,6 @@ export default {
     // 设置发布状态
     setStatus (id, val) {
       console.log(id, val);
-    },
-    modify (id) {
-      console.log('修改id：' + id);
     },
     remove (id) {
       console.log('删除id：' + id);

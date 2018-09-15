@@ -81,6 +81,7 @@ export default {
       // get blog when edit
       if (id !== undefined) {
         let blog = this.$route.params;
+        // 参数注入
         for (let key in blog) {
           this[key] = blog[key];
         }
@@ -122,13 +123,36 @@ export default {
     },
     async commit (reqData) {
       console.log(reqData);
+      this.$Spin.show({
+        render: (h) => {
+          return h('div', [
+            h('Icon', {
+              'class': 'icon-load',
+              props: {
+                type: 'ios-loading',
+                size: 26,
+              },
+            }),
+            h('div', '正在保存~~'),
+          ]);
+        },
+      });
       if (this.id > 0) {
         // is edit
         console.log('是编辑，id：' + this.id);
+        reqData = Object.assign({}, reqData, {id: this.id});
+        console.log(reqData);
+        let msg = await Service.updateBlog(reqData);
+        if (msg === 'success') {
+          this.$router.push('/' + this.id);
+        } else {
+          this.$Message.error('出错了呢，修改失败...');
+        }
       } else {
         let id = await Service.addBlog(reqData);
-        console.log(id);
+        this.$router.push('/' + id);
       }
+      this.$Spin.hide();
     },
     convertParams () {
       return {
