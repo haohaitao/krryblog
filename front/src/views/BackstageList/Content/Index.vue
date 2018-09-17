@@ -1,6 +1,6 @@
 <template>
   <section class="list">
-    <h1>Wellcome~ this is all blog</h1>
+    <h1>~Wellcome~</h1>
     <router-link :to="{name: 'edit'}">
       <Button type="success" class="add-button">add</Button>
     </router-link>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import Service from '@/service';
 export default {
   props: {
     blogList: {
@@ -61,18 +62,22 @@ export default {
         },
         {
           title: '点击 / 评论',
+          width: 103,
           key: 'hitComment',
         },
         {
           title: '发表时间',
+          width: 106,
           key: 'createTime',
         },
         {
           title: '最后更新',
+          width: 106,
           key: 'updateTime',
         },
         {
           title: '状态',
+          width: 90,
           key: 'status',
           align: 'center',
           render: (h, params) => {
@@ -144,7 +149,7 @@ export default {
                 },
                 on: {
                   click: () => {
-                    this.remove(params.row['id']);
+                    this.beforeRemove(params.row['id'], params.row['title']);
                   },
                 },
               }, '删除'),
@@ -156,11 +161,72 @@ export default {
   },
   methods: {
     // 设置发布状态
-    setStatus (id, val) {
+    async setStatus (id, val) {
       console.log(id, val);
+      this.$Spin.show({
+        render: (h) => {
+          return h('div', [
+            h('Icon', {
+              'class': 'icon-load',
+              props: {
+                type: 'ios-loading',
+                size: 26,
+              },
+            }),
+            h('div', '正在修改~~'),
+          ]);
+        },
+      });
+      let reqData = {
+        id: id,
+        status: val ? 1 : 0,
+      };
+      let msg = await Service.updateBlog(reqData);
+      if (msg === 'success') {
+        this.$Message.success('修改成功');
+      } else {
+        this.$Message.error('出错了呢，修改失败...');
+      }
+      this.$Spin.hide();
     },
-    remove (id) {
+    beforeRemove (id, title) {
       console.log('删除id：' + id);
+      this.$Modal.confirm({
+        title: '提示~',
+        content: `<p>是否删除博客 “ ${title} ” ？</p>`,
+        onOk: () => {
+          this.remove(id);
+        },
+      });
+    },
+    async remove (id) {
+      this.$Spin.show({
+        render: (h) => {
+          return h('div', [
+            h('Icon', {
+              'class': 'icon-load',
+              props: {
+                type: 'ios-loading',
+                size: 26,
+              },
+            }),
+            h('div', '正在删除~~'),
+          ]);
+        },
+      });
+      let reqData = {
+        id: id,
+        isDelete: 1,
+      };
+      let msg = await Service.updateBlog(reqData);
+      if (msg === 'success') {
+        // refresh local data
+        this.$emit('deleteBlog', id);
+        this.$Message.success('删除成功');
+      } else {
+        this.$Message.error('出错了呢，删除失败...');
+      }
+      this.$Spin.hide();
     },
   },
   components: {

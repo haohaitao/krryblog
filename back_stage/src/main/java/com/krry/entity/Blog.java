@@ -2,7 +2,7 @@ package com.krry.entity;
 
 public class Blog {
 	
-	private int id;
+	private Integer id;
 	private String title;
 	private String content_md;
 	private String content_hm;
@@ -10,20 +10,19 @@ public class Blog {
 	private String imageName;
 	private String image;
 	private String classify;
-	private int classifyId;
+	private Integer classifyId;
 	private String label;
-	private int hit;
-	private int comment;
+	private Integer hit;
+	private Integer comment;
 	private String createTime;
 	private String updateTime;
-	private int status;
-	private int isDelete;
+	private Integer status;
+	private Integer isDelete;
 	
-	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -68,10 +67,10 @@ public class Blog {
 	public void setClassify(String classify) {
 		this.classify = classify;
 	}
-	public int getClassifyId() {
+	public Integer getClassifyId() {
 		return classifyId;
 	}
-	public void setClassifyId(int classifyId) {
+	public void setClassifyId(Integer classifyId) {
 		this.classifyId = classifyId;
 	}
 	public String getLabel() {
@@ -80,16 +79,16 @@ public class Blog {
 	public void setLabel(String label) {
 		this.label = label;
 	}
-	public int getHit() {
+	public Integer getHit() {
 		return hit;
 	}
-	public void setHit(int hit) {
+	public void setHit(Integer hit) {
 		this.hit = hit;
 	}
-	public int getComment() {
+	public Integer getComment() {
 		return comment;
 	}
-	public void setComment(int comment) {
+	public void setComment(Integer comment) {
 		this.comment = comment;
 	}
 	public String getCreateTime() {
@@ -104,16 +103,16 @@ public class Blog {
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	public int getIsDelete() {
+	public Integer getIsDelete() {
 		return isDelete;
 	}
-	public void setIsDelete(int isDelete) {
+	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
 	}
 	

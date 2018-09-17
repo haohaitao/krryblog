@@ -48,11 +48,11 @@ export default {
     .e-left {
       position: relative;
       left: 2px;
-      top: -11px;
+      top: -12px;
     }
     .e-right {
       right: 2px;
-      top: -11px;
+      top: -12px;
       position: relative;
     }
     .text {

@@ -10,7 +10,7 @@ export default new Router({
       path: '/',
       component: () => import('../views/Home'),
       name: 'home',
-      meta: {title: 'Krry blog - 你的美好，我都记得', keepAlive: true},
+      meta: {title: 'Krry blog - 你的美好，我都记得'},
     },
     {
       path: '/:id(\\d+)',

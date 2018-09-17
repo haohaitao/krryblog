@@ -1,7 +1,7 @@
 <template>
   <main>
     <Header></Header>
-    <Content :blogList="blogList" :blogLen="blogLen"></Content>
+    <Content :blogList="blogList" :blogLen="blogLen" @deleteBlog="deleteBlog"></Content>
     <Footer></Footer>
   </main>
 </template>
@@ -37,6 +37,10 @@ export default {
         this.blogList = res.data;
         this.blogLen = res.blogLen;
       }
+    },
+    deleteBlog (id) {
+      this.blogList = this.blogList.filter(item => item.id !== id);
+      --this.blogLen;
     },
   },
   components: {

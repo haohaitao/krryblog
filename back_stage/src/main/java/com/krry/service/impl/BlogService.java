@@ -66,10 +66,21 @@ public class BlogService implements IBlogService{
 	 */
 	public HashMap<String, Object> getBlogDetail(int id){
 		
+		Blog newBlog = new Blog();
+		
 		Blog blog = blogMapper.getBlogDetail(id);
+		
 		HashMap<String, Object> resData = new HashMap<>();
 		
 		if (blog != null) {
+			// 设置点击量+1
+			int hit = blog.getHit();
+			blog.setHit(++hit);
+			newBlog.setHit(hit);
+			newBlog.setId(id);
+			
+			blogMapper.updateBlog(newBlog);
+			
 			// 处理查询出timestamp时间类型多了个 .0  的问题
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // 设置日期格式
 			try {
