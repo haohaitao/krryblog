@@ -147,3 +147,22 @@ if (options.extract) {
 }
 ```
 4. 自定义动画不执行，在 vue 项目中找到 build 文件夹下的 vue-loader.conf.js，将 extract：isProduction  改为 extract：false
+5. 开发环境和生产环境的接口地址问题
+在 config 下 dev.env.js 是配置开发环境，prod.env.js 是配置生产环境<br>
+开发环境使用 proxyTable 代理接口，所以不用管接口问题<br>
+生产环境时，与线上的接口不产生跨域问题，所以在 prod.env.js 配置：
+```js
+'use strict'
+module.exports = {
+  NODE_ENV: '"production"',
+  API_ROOT: '"https://www.ainyi.com"'
+}
+
+```
+所以在 axios 配置：
+```js
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? process.env.API_ROOT : '';
+```
+6. 路由变成 history 模式
+
+7. 将 vue 打包后输出的 dist 文件夹下面的文件拷贝到 后台接口项目目录结构的 src/main/webapp/ 下面

@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://localhost:8085/krryblog';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? process.env.API_ROOT : '';
 
 axios.interceptors.request.use(config => {
   return config;
