@@ -40,6 +40,8 @@
 			b.isDelete = 0
 		and
 			b.label regexp '^${tag}$|^${tag},|,${tag}$|,${tag},'
+		order by
+ 			b.id desc
 	</select>
 	
 	<!-- 根据标签查询已发布的博客总数 -->
@@ -79,6 +81,8 @@
 			or b.label like '%${keyword}%'
 			or c.name like '%${keyword}%'
 		)
+		order by
+ 			b.id desc
 	</select>
 	
 	<!-- 搜索已发布的博客总数 -->

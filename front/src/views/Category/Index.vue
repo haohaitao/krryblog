@@ -1,7 +1,7 @@
 <template>
   <main v-if="!isNotCategory">
     <Header></Header>
-    <Content :blogList="blogList" :categoryName="categoryName" :blogLen="blogLen"></Content>
+    <Content :blogList="blogList" :categoryName="categoryName" :blogLen="blogLen" @changePage="changePage"></Content>
     <Footer></Footer>
   </main>
   <NotFound v-else></NotFound>
@@ -20,6 +20,8 @@ export default {
       categoryName: '',
       blogLen: 0,
       status: 200,
+      pageNo: 1,
+      pageSize: 9,
     };
   },
   computed: {
@@ -37,7 +39,11 @@ export default {
       if (id < 1 || id > 4) {
         this.status = 404;
       }
-      let res = await Service.getBlogByClassifyId(id);
+      let reqData = {
+        pageNo: this.pageNo,
+        pageSize: this.pageSize,
+      };
+      let res = await Service.getBlogByClassifyId(id, reqData);
       this.status = res.status;
 
       // 404 的标题在 axios 拦截器已经定义
@@ -53,6 +59,10 @@ export default {
           console.log('分类下没有发布过任何博客的情况');
         }
       }
+    },
+    changePage (pageNo) {
+      this.pageNo = pageNo;
+      this.getCategory();
     },
   },
   watch: {

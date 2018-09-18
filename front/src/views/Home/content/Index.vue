@@ -1,7 +1,7 @@
 <template>
   <main>
     <SectionArticle :blogList="blogList"></SectionArticle>
-    <Page v-if="blogLen > 12" :total="blogLen" size="small" show-elevator show-total />
+    <Page v-if="blogLen > 12" :total="blogLen" size="small" :page-size="12" show-elevator show-total @on-change="changePage" />
   </main>
 </template>
 
@@ -13,6 +13,8 @@ export default {
     return {
       blogList: [],
       blogLen: 0,
+      pageNo: 1,
+      pageSize: 12,
     };
   },
   created () {
@@ -20,12 +22,20 @@ export default {
   },
   methods: {
     async getBlog () {
-      let res = await Service.getBlog();
+      let reqData = {
+        pageNo: this.pageNo,
+        pageSize: this.pageSize,
+      };
+      let res = await Service.getBlog(reqData);
       if (res.status === 200) {
         this.blogList = res.data;
         this.blogLen = res.blogLen;
         console.log(res);
       }
+    },
+    changePage (pageNo) {
+      this.pageNo = pageNo;
+      this.getBlog();
     },
   },
   components: {

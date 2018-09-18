@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.krry.entity.Blog;
+import com.krry.entity.Params;
 import com.krry.service.IBlogService;
 import com.krry.util.UploadUtil;
 
@@ -38,9 +39,9 @@ public class BlogController {
 	 */
 	@ResponseBody
 	@RequestMapping("/getBlog")
-	public HashMap<String, Object> getBlog(){
+	public HashMap<String, Object> getBlog(Params params){
 		
-		HashMap<String, Object> resData = blogService.getBlog();
+		HashMap<String, Object> resData = blogService.getBlog(params);
 		
 		return resData;
 	}
@@ -83,9 +84,9 @@ public class BlogController {
 	 */
 	@ResponseBody
 	@RequestMapping("/getBlogByClassifyId/{id}")
-	public HashMap<String, Object> getBlogByClassifyId(@PathVariable("id")Integer id){
+	public HashMap<String, Object> getBlogByClassifyId(@PathVariable("id")Integer id, Params params){
 		
-		HashMap<String, Object> resData = blogService.getBlogByClassifyId(id);
+		HashMap<String, Object> resData = blogService.getBlogByClassifyId(id, params);
 		
 		return resData;
 	}

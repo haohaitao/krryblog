@@ -1,8 +1,8 @@
 import Api from './api';
 
 export default {
-  async getBlog () {
-    let res = await Api.fetchBlog();
+  async getBlog (reqData) {
+    let res = await Api.fetchBlog(reqData);
     return res;
   },
   async getBlogDetail (id) {
@@ -13,8 +13,8 @@ export default {
     let res = await Api.fetchClassify();
     return res.data;
   },
-  async getBlogByClassifyId (id) {
-    let res = await Api.fetchBlogByClassifyId(id);
+  async getBlogByClassifyId (id, reqData) {
+    let res = await Api.fetchBlogByClassifyId(id, reqData);
     return res;
   },
   async addBlog (reqData) {
@@ -41,8 +41,8 @@ export default {
     let res = await Api.fetchLogin(reqData);
     return res;
   },
-  async getAllBlog () {
-    let res = await Api.fetchAllBlog();
+  async getAllBlog (reqData) {
+    let res = await Api.fetchAllBlog(reqData);
     return res;
   },
 };

@@ -3,6 +3,7 @@ package com.krry.service;
 import java.util.HashMap;
 
 import com.krry.entity.Blog;
+import com.krry.entity.Params;
 import com.krry.entity.User;
 
 /**
@@ -30,6 +31,6 @@ public interface IAdminService {
 	 * 分页所有博客（发布和未发布）、博客总数
 	 * @return
 	 */
-	public HashMap<String, Object> getBlog();
+	public HashMap<String, Object> getBlog(Params parmas);
 
 }

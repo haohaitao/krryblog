@@ -9,8 +9,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.krry.entity.Blog;
 import com.krry.entity.Classify;
+import com.krry.entity.Params;
 import com.krry.mapper.BlogMapper;
 import com.krry.service.IBlogService;
 
@@ -32,7 +35,13 @@ public class BlogService implements IBlogService{
 	 * @param params
 	 * @return
 	 */
-	public HashMap<String, Object> getBlog() {
+	public HashMap<String, Object> getBlog(Params params) {
+		
+		// 分页
+		int pageNo = params.getPageNo();
+		int pageSize = params.getPageSize();
+		
+		PageHelper.startPage(pageNo, pageSize);
 		
 		List<Blog> blogList = blogMapper.getBlog();
 		int blogLen = blogMapper.getBlogCount();
@@ -53,7 +62,10 @@ public class BlogService implements IBlogService{
 		} else {
 			// TODO
 		}
-		resData.put("data", blogList);
+		// 用PageInfo对结果进行包装
+        PageInfo<Blog> pageInfo = new PageInfo<Blog>(blogList);
+        List<Blog> pageBlog = pageInfo.getList();
+		resData.put("data", pageBlog);
 		resData.put("blogLen", blogLen);
 		
 		return resData;
@@ -131,7 +143,13 @@ public class BlogService implements IBlogService{
 	 * @param params
 	 * @return
 	 */
-	public HashMap<String, Object> getBlogByClassifyId(int id) {
+	public HashMap<String, Object> getBlogByClassifyId(int id, Params params) {
+		
+		// 分页
+		int pageNo = params.getPageNo();
+		int pageSize = params.getPageSize();
+		
+		PageHelper.startPage(pageNo, pageSize);
 		
 		List<Blog> blogList = blogMapper.getBlogByClassifyId(id);
 		int blogLen = blogMapper.getBlogClassifyCount(id);
@@ -161,7 +179,11 @@ public class BlogService implements IBlogService{
 			// 分类id出错
 			resData.put("status", 404);
 		}
-		resData.put("data", blogList);
+		// 用PageInfo对结果进行包装
+        PageInfo<Blog> pageInfo = new PageInfo<Blog>(blogList);
+        List<Blog> pageBlog = pageInfo.getList();
+        
+		resData.put("data", pageBlog);
 		resData.put("blogLen", blogLen);
 		resData.put("categoryName", categoryName);
 		

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.krry.entity.Blog;
 import com.krry.entity.Classify;
+import com.krry.entity.Params;
 
 /**
  * 业务层
@@ -17,7 +18,7 @@ public interface IBlogService {
 	 * 分页查询博客、博客总数
 	 * @return
 	 */
-	public HashMap<String, Object> getBlog();
+	public HashMap<String, Object> getBlog(Params params);
 	
 	/**
 	 * 获取博客详情页
@@ -35,7 +36,7 @@ public interface IBlogService {
 	 * 获取分类博客、博客总数
 	 * @return
 	 */
-	public HashMap<String, Object> getBlogByClassifyId(int id);
+	public HashMap<String, Object> getBlogByClassifyId(int id, Params params);
 	
 	/**
 	 * 增加博客

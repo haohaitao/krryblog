@@ -1,7 +1,7 @@
 <template>
   <main>
     <Header></Header>
-    <Content :blogList="blogList" :keyword="keyword" :blogLen="blogLen" :hasNoResult="hasNoResult"></Content>
+    <Content :blogList="blogList" :keyword="keyword" :blogLen="blogLen" :hasNoResult="hasNoResult" @changePage="changePage"></Content>
     <Footer></Footer>
   </main>
 </template>
@@ -18,6 +18,8 @@ export default {
       keyword: '',
       blogLen: 0,
       status: 200,
+      pageNo: 1,
+      pageSize: 9,
     };
   },
   computed: {
@@ -33,12 +35,18 @@ export default {
       this.keyword = this.$route.params['keyword'];
       document.title = `${this.keyword} 的搜索结果 - ${document.title}`;
       let reqData = {
+        pageNo: this.pageNo,
+        pageSize: this.pageSize,
         keyword: this.keyword,
       };
       let res = await Service.getBlogByKeyword(reqData);
       this.status = res.status;
       this.blogList = res.data;
       this.blogLen = res.blogLen;
+    },
+    changePage (pageNo) {
+      this.pageNo = pageNo;
+      this.getSearch();
     },
   },
   watch: {

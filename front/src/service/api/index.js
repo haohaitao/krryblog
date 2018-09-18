@@ -2,8 +2,8 @@ import Ax from '@/service/axios';
 import qs from 'qs';
 
 export default {
-  fetchBlog () {
-    return Ax.get('/krryblog/blog/getBlog');
+  fetchBlog (reqData) {
+    return Ax.get('/krryblog/blog/getBlog', {params: reqData});
   },
   fetchBlogDetail (id) {
     return Ax.get(`/krryblog/blog/getBlogDetail/${id}`);
@@ -11,8 +11,8 @@ export default {
   fetchClassify () {
     return Ax.get('/krryblog/blog/getClassify');
   },
-  fetchBlogByClassifyId (id) {
-    return Ax.get(`/krryblog/blog/getBlogByClassifyId/${id}`);
+  fetchBlogByClassifyId (id, reqData) {
+    return Ax.get(`/krryblog/blog/getBlogByClassifyId/${id}`, {params: reqData});
   },
   addBlog (reqData) {
     return Ax.post('/krryblog/blog/addBlog', qs.stringify(reqData));
@@ -32,7 +32,7 @@ export default {
   fetchLogin (reqData) {
     return Ax.get(`/krryblog/krry/login`, {params: reqData});
   },
-  fetchAllBlog () {
-    return Ax.get(`/krryblog/krry/getBlog`);
+  fetchAllBlog (reqData) {
+    return Ax.get(`/krryblog/krry/getBlog`, {params: reqData});
   },
 };

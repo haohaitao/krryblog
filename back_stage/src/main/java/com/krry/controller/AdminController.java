@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.krry.entity.Params;
 import com.krry.entity.User;
 import com.krry.service.IAdminService;
 
@@ -64,9 +65,9 @@ public class AdminController {
 	 */
 	@ResponseBody
 	@RequestMapping("/getBlog")
-	public HashMap<String, Object> getBlog(){
+	public HashMap<String, Object> getBlog(Params params){
 		
-		HashMap<String, Object> resData = adminService.getBlog();
+		HashMap<String, Object> resData = adminService.getBlog(params);
 		
 		return resData;
 	}

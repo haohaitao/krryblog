@@ -1,7 +1,7 @@
 <template>
   <main v-if="!isNotCategory">
     <Header></Header>
-    <Content :blogList="blogList" :TagName="TagName" :blogLen="blogLen"></Content>
+    <Content :blogList="blogList" :TagName="TagName" :blogLen="blogLen" @changePage="changePage"></Content>
     <Footer></Footer>
   </main>
   <NotFound v-else></NotFound>
@@ -20,6 +20,8 @@ export default {
       TagName: '',
       blogLen: 0,
       status: 200,
+      pageNo: 1,
+      pageSize: 9,
     };
   },
   computed: {
@@ -34,6 +36,8 @@ export default {
     async getTags () {
       this.TagName = this.$route.params['name'];
       let reqData = {
+        pageNo: this.pageNo,
+        pageSize: this.pageSize,
         tag: this.TagName,
       };
       let res = await Service.getBlogByTag(reqData);
@@ -44,6 +48,10 @@ export default {
         this.blogLen = res.blogLen;
         document.title = `${this.TagName} - ${document.title}`;
       }
+    },
+    changePage (pageNo) {
+      this.pageNo = pageNo;
+      this.getTags();
     },
   },
   watch: {

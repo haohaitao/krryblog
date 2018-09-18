@@ -9,7 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.krry.entity.Blog;
+import com.krry.entity.Params;
 import com.krry.entity.User;
 import com.krry.mapper.AdminMapper;
 import com.krry.service.IAdminService;
@@ -86,7 +89,13 @@ public class AdminService implements IAdminService{
 	 * @param params
 	 * @return
 	 */
-	public HashMap<String, Object> getBlog() {
+	public HashMap<String, Object> getBlog(Params params) {
+		
+		// 分页
+		int pageNo = params.getPageNo();
+		int pageSize = params.getPageSize();
+		
+		PageHelper.startPage(pageNo, pageSize);
 		
 		List<Blog> blogList = adminMapper.getBlog();
 		int blogLen = adminMapper.getBlogCount();
@@ -107,7 +116,10 @@ public class AdminService implements IAdminService{
 		} else {
 			// TODO
 		}
-		resData.put("data", blogList);
+		// 用PageInfo对结果进行包装
+        PageInfo<Blog> pageInfo = new PageInfo<Blog>(blogList);
+        List<Blog> pageBlog = pageInfo.getList();
+		resData.put("data", pageBlog);
 		resData.put("blogLen", blogLen);
 		
 		return resData;

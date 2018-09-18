@@ -2,7 +2,7 @@
   <section>
     <SectionHeader :title="TagName" :description="description"></SectionHeader>
     <SectionArticle :blogList="blogList" class="wrapper"></SectionArticle>
-    <Page v-if="blogLen > 12" :total="blogLen" size="small" show-elevator show-total />
+    <Page v-if="blogLen > 9" :total="blogLen" size="small" :page-size="9" show-elevator show-total @on-change="changePage"/>
   </section>
 </template>
 
@@ -25,6 +25,11 @@ export default {
     return {
       description: '相关内容 —— 标签',
     };
+  },
+  methods: {
+    changePage (pageNo) {
+      this.$emit('changePage', pageNo);
+    },
   },
   components: {
     SectionHeader, SectionArticle,
