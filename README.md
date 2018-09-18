@@ -61,7 +61,7 @@ npm install iview-loader --save-dev
 ```
 ## 两种风格
 1. 无侧边栏，每行三张卡片
-2. 有侧边栏，每行一张卡片
+2. 有侧边栏，每行一张卡片 （暂时废弃）
 
 
 ## 小功能
@@ -118,3 +118,32 @@ npm install iview-loader --save-dev
 ## 问题
 1. 如果出现mybatis查询中文没有结果集的情况，或者查询中文出现报错，在jdbc.propersities文件里的db.url=数据库地址加上?useUnicode=true&characterEncoding=UTF-8
 2. 若页面已经被 keepAlive 了，那将获取路由参数的钩子应该是 activated，created 和 mounted 钩子无法获取
+
+## 部署
+1. 文件路径出错：在 config 的 index.js 下 build 的设置：assetsPublicPath: './',
+2. 字体路径出错：
+```
+真实路径应该是
+xxx/static/fonts/icomoon.0125455.woff 
+浏览器实际加载路径为：
+xxx/static/css/static/fonts/icomoon.0125455.woff 
+解决方法：
+webpack 配置问题
+在 build/webpack.prod.conf.js 中 extract :true 改为 fasle即可。
+```
+3. css 添加的背景中引用的图片路径出错
+在 build 文件夹下 找 utils.js 配置加上 publicPath: '../../',
+```js
+// Extract CSS when that option is specified
+// (which is the case during production build)
+if (options.extract) {
+  return ExtractTextPlugin.extract({
+    use: loaders,
+    publicPath: '../../', // 加上这一行
+    fallback: 'vue-style-loader'
+  })
+} else {
+  return ['vue-style-loader'].concat(loaders)
+}
+```
+4. 自定义动画不执行，在 vue 项目中找到 build 文件夹下的 vue-loader.conf.js，将 extract：isProduction  改为 extract：false
