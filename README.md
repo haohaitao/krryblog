@@ -99,19 +99,25 @@ npm install iview-loader --save-dev
 1. 查询详细博客内容的数据：
 ```js
 {
-  blog: {
-    title: 'Vue网站后台系统',
-    description: ``,
-    blogId: '2015',
-    createTime: '2018-02-03',
-    updateTime: '2018-03-21',
-    hit: 468,
-    comment: 20,
-    classify: '技术',
-    classifyId: '1',
-    label: ['JavaScript', 'vue', 'html']
-  },
-  status: 200
+  [{
+    id: 33,
+    title: '测试444',
+    content_md: '测试444测试444',
+    content_hm: '<p>测试444测试444</p>\n',
+    description: '测试444',
+    imageName: '830db39e136e1f0547519217bd11d0f4.jpg',
+    image: 'upload/2018/09/18/ee971bcc-dcf9-49cb-b496-7c293f692d37.jpg',
+    classify: '技术分享',
+    classifyId: 2,
+    label: '标签',
+    hit: 2,
+    comment: 0,
+    createTime: '2018-09-18',
+    updateTime: '2018-09-18',
+    status: 1,
+    isDelete: 0
+  }],
+  status: 200,
 }
 ```
 
@@ -155,7 +161,7 @@ if (options.extract) {
 'use strict'
 module.exports = {
   NODE_ENV: '"production"',
-  API_ROOT: '"https://www.ainyi.com"'
+  API_ROOT: '"https://ainyi.com"'
 }
 
 ```
@@ -166,3 +172,5 @@ axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? process.env.API
 6. 路由变成 history 模式
 
 7. 将 vue 打包后输出的 dist 文件夹下面的文件拷贝到 后台接口项目目录结构的 src/main/webapp/ 下面
+
+8. 把所有的 console.log 删除
