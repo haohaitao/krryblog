@@ -213,13 +213,15 @@
 }
 
 .markdown-body a {
-  color: #f60;
+  color: #666 !important;
+  border-bottom: 1px solid #ccc;
   text-decoration: none;
 }
 
 .markdown-body a:hover {
-  color: red !important;
-  text-decoration: underline;
+  color: #eb5055 !important;
+  text-decoration: none;
+  border-bottom: 1px solid #eb5055;
 }
 
 .markdown-body strong {
