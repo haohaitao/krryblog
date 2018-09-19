@@ -1,12 +1,11 @@
 <template>
-  <SkeletonArticle v-if="hasShowSkeleton"></SkeletonArticle>
-  <section v-else ref="blogSection">
-    <article v-for="(val, index) in blogList" :key="index">
+  <section ref="blogSection">
+    <article v-for="(val, index) in blogShowList" :key="index">
       <div class='bg-container'>
-        <div class="bg-img" :style="{background: `url(${basePath}${val.image}) 0% 0% / cover`}"></div>
+        <div class="bg-img" :style="val.id | setLink({background: `url(${basePath}${val.image}) 0% 0% / cover`})"></div>
       </div>
-      <!-- 这里使用命名路由，效果与下面一样 -->
-      <router-link :to="{name: 'blog', params: {id: val.id, title: val.title}}">
+      <!-- 这里使用命名路由，效果与下面一样，使用过滤器控制骨架屏的链接 -->
+      <router-link :to="val.id | setLink({name: 'blog', params: {id: val.id, title: val.title}})">
         <div class="bg-cover">
           <p>{{val.description}}</p>
         </div>
@@ -14,20 +13,20 @@
       <div class="other-bgcover right-bgcover"></div>
       <div class="other-bgcover"></div>
       <div class="desc">
-        <!-- 这里直接用 id 作为路径，与上面一样 -->
-        <router-link :to="`/${val.id}`">
+        <!-- 这里直接用 id 作为路径，使用过滤器控制骨架屏的链接 -->
+        <router-link :to="val.id | setLink(`/${val.id}`)">
           <p class="title">{{val.title}}</p>
         </router-link>
         <div class="desc-bottom">
-          <div class="d-detail">
+          <div :class="{'d-detail': true, 'hidden-detail': !val.id}">
             <Icon type="md-calendar" />
-            {{val.createTime}}
+            <span>{{val.createTime}}</span>
             <Icon type="md-eye" />
-            {{val.hit}}
+            <span>{{val.hit}}</span>
             <Icon type="md-chatboxes" />
-            {{val.comment}}
+            <span>{{val.comment}}</span>
           </div>
-          <router-link :to="`/category/${val.classifyId}`">
+          <router-link :to="val.id | setLink(`/category/${val.classifyId}`)">
             <div class="item-icon" :title="val.classify" :style="{backgroundPosition: `0 ${-val.classifyId*70}px`}"></div>
           </router-link>
         </div>
@@ -38,7 +37,6 @@
 </template>
 
 <script>
-import SkeletonArticle from './SkeletonArticle';
 export default {
   props: {
     blogList: {
@@ -48,30 +46,68 @@ export default {
   data () {
     return {
       basePath: window.location.origin + '/krryblog/',
-      hasShowSkeleton: true,
+      blogShowList: [
+        {
+          classify: '',
+          title: '',
+          description: '',
+          id: '',
+          image: '',
+          createTime: '2018-08-23',
+          hit: 20,
+          comment: 20,
+          classifyId: 1,
+        }, {
+          classify: '',
+          title: '',
+          description: '',
+          id: '',
+          image: '',
+          createTime: '2018-08-23',
+          hit: 20,
+          comment: 20,
+          classifyId: 2,
+        }, {
+          classify: '',
+          title: '',
+          description: '',
+          id: '',
+          image: '',
+          createTime: '2018-08-23',
+          hit: 20,
+          comment: 20,
+          classifyId: 3,
+        },
+      ],
     };
+  },
+  filters: {
+    setLink (id, link) {
+      return id ? link : '';
+    },
   },
   computed: {
   },
   watch: {
-    blogList (newVal) {
-      this.hasShowSkeleton = false;
-      // 共用组件，每次数据变化产生过渡效果
-      this.$refs.blogSection.style['display'] = 'none';
-      setTimeout(() => {
-        this.$refs.blogSection.style['display'] = 'block';
-      }, 0);
+    blogList (newVal, oldVal) {
+      this.blogShowList = this.blogList;
+      if (oldVal.length !== 0) {
+        // 共用组件，每次数据变化产生过渡效果
+        this.$refs.blogSection.style['display'] = 'none';
+        setTimeout(() => {
+          this.$refs.blogSection.style['display'] = 'block';
+        }, 0);
+      }
     },
   },
   components: {
-    SkeletonArticle,
   },
 };
 </script>
 
 <style lang='scss' scoped>
 section {
-  animation: fadeInNoOpa .6s linear;
+  animation: fadeIn .6s linear;
   width: 100%;
   padding: 0 60px;
   box-sizing: border-box;
@@ -221,6 +257,12 @@ section {
             &:not(:first-child) {
               margin-left: 12px;
             }
+          }
+
+        }
+        .hidden-detail {
+          span {
+            visibility: hidden;
           }
         }
 
