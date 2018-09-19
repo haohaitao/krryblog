@@ -40,7 +40,7 @@ npm test
 8月22号：搭建 vue 脚手架，开始开发前端界面<br>
 9月02号：开始编写 java 后台，一边写后台接口，一边前端对接接口<br>
 9月17号：博客功能基本完成<br>
-9月18号：尝试上线<br>
+9月18号：尝试上线，上线成功<br>
 
 ## 安装依赖
 ```bash
@@ -124,6 +124,19 @@ npm install iview-loader --save-dev
 ## 问题
 1. 如果出现mybatis查询中文没有结果集的情况，或者查询中文出现报错，在jdbc.propersities文件里的db.url=数据库地址加上?useUnicode=true&characterEncoding=UTF-8
 2. 若页面已经被 keepAlive 了，那将获取路由参数的钩子应该是 activated，created 和 mounted 钩子无法获取
+3. 子组件的 props 的 default 属性，只在父组件没有传递该 props 的情况下才生效，有可能该子组件被很多父组件引用，有些父组件会传递 props 属性，有些没有，没有传递 props 属性的子组件，就会用到 default 属性
+4. 骨架屏的制作：（本项目使用方法 2 ）
+（1）自制模板，进入路由展示，加载数据后替换真实组件<br>
+（2）模拟数据，在真实模板模拟异步加载的数据，当真实数据加载完成，将模拟数据替换成真实数据（可保留之前自定义的动画）
+5. 监听对象 {} 变化的问题，可以使用深度监听：
+```js
+mounted () {
+  // 这里使用深度监听 blog 对象的属性变化
+  this.$watch('blog', this.getCatalog, {
+    deep: true,
+  });
+},
+```
 
 ## 部署
 1. 文件路径出错：在 config 的 index.js 下 build 的设置：assetsPublicPath: './',
@@ -172,3 +185,5 @@ axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? process.env.API
 6. 路由变成 history 模式
 
 7. 将 vue 打包后输出的 dist 文件夹下面的文件拷贝到 后台接口项目目录结构的 src/main/webapp/ 下面
+
+8. 把所有的 console.log 删除
