@@ -1,35 +1,32 @@
 <template>
-  <SkeletonArticle v-if="hasShowSkeleton"></SkeletonArticle>
-  <section v-else ref="blogSection">
+  <section>
     <article v-for="(val, index) in blogList" :key="index">
       <div class='bg-container'>
-        <div class="bg-img" :style="{background: `url(${basePath}${val.image}) 0% 0% / cover`}"></div>
+        <div class="bg-img"></div>
       </div>
-      <!-- 这里使用命名路由，效果与下面一样 -->
-      <router-link :to="{name: 'blog', params: {id: val.id, title: val.title}}">
+      <div>
         <div class="bg-cover">
           <p>{{val.description}}</p>
         </div>
-      </router-link>
+      </div>
       <div class="other-bgcover right-bgcover"></div>
       <div class="other-bgcover"></div>
       <div class="desc">
-        <!-- 这里直接用 id 作为路径，与上面一样 -->
-        <router-link :to="`/${val.id}`">
+        <div>
           <p class="title">{{val.title}}</p>
-        </router-link>
+        </div>
         <div class="desc-bottom">
           <div class="d-detail">
             <Icon type="md-calendar" />
-            {{val.createTime}}
+            <span style="visibility: hidden;">{{val.createTime}}</span>
             <Icon type="md-eye" />
-            {{val.hit}}
+            <span style="visibility: hidden;">{{val.hit}}</span>
             <Icon type="md-chatboxes" />
-            {{val.comment}}
+            <span style="visibility: hidden;">{{val.comment}}</span>
           </div>
-          <router-link :to="`/category/${val.classifyId}`">
+          <div>
             <div class="item-icon" :title="val.classify" :style="{backgroundPosition: `0 ${-val.classifyId*70}px`}"></div>
-          </router-link>
+          </div>
         </div>
       </div>
     </article>
@@ -38,40 +35,39 @@
 </template>
 
 <script>
-import SkeletonArticle from './SkeletonArticle';
 export default {
-  props: {
-    blogList: {
-      type: Array,
-    },
-  },
   data () {
     return {
-      basePath: window.location.origin + '/krryblog/',
-      hasShowSkeleton: true,
+      blogList: [
+        {
+          createTime: '2013-08-23',
+          hit: 20,
+          comment: 12,
+          classifyId: 1,
+        }, {
+          createTime: '2013-08-23',
+          hit: 20,
+          comment: 12,
+          classifyId: 2,
+        }, {
+          createTime: '2013-08-23',
+          hit: 20,
+          comment: 12,
+          classifyId: 3,
+        },
+      ],
     };
   },
   computed: {
   },
-  watch: {
-    blogList (newVal) {
-      this.hasShowSkeleton = false;
-      // 共用组件，每次数据变化产生过渡效果
-      this.$refs.blogSection.style['display'] = 'none';
-      setTimeout(() => {
-        this.$refs.blogSection.style['display'] = 'block';
-      }, 0);
-    },
-  },
   components: {
-    SkeletonArticle,
   },
 };
 </script>
 
 <style lang='scss' scoped>
 section {
-  animation: fadeInNoOpa .6s linear;
+  // animation: fadeIn .6s linear;
   width: 100%;
   padding: 0 60px;
   box-sizing: border-box;
@@ -235,14 +231,6 @@ section {
         }
       }
     }
-  }
-}
-@keyframes fadeInNoOpa {
-  from {
-    margin-top: -20px;
-  }
-  to {
-    margin-top: 0;
   }
 }
 </style>
