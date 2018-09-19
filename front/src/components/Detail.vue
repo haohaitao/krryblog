@@ -275,7 +275,7 @@ article {
 
 #directory {
   position: fixed;
-  top: 30%;
+  top: 32%;
   margin-left: 686px;
   max-width: 400px;
   .cl-wrapper {

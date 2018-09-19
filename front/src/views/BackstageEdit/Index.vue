@@ -146,13 +146,14 @@ export default {
         console.log(reqData);
         let msg = await Service.updateBlog(reqData);
         if (msg === 'success') {
-          this.$router.push('/' + this.id);
+          this.$router.push({name: 'list'});
         } else {
           this.$Message.error('出错了呢，修改失败...');
         }
       } else {
         let id = await Service.addBlog(reqData);
-        this.$router.push('/' + id);
+        console.log('保存的id：' + id);
+        this.$router.push({name: 'list'});
       }
       this.$Spin.hide();
     },
@@ -230,6 +231,16 @@ section {
   .ivu-form-item {
     .ivu-form-item-label {
       font-size: 14px;
+    }
+  }
+
+  .v-note-wrapper {
+    .v-note-show {
+      .v-show-content {
+        ul li {
+          list-style: initial !important;
+        }
+      }
     }
   }
 }
