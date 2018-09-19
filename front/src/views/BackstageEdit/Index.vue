@@ -45,6 +45,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import uploadImg from './UploadImg';
 import Service from '@/service';
+import '@/assets/css/markdown.css';
+import '@/assets/css/github.css';
 export default {
   data () {
     return {
