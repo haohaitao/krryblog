@@ -67,7 +67,7 @@ export default {
 
 <style lang='scss' scoped>
 section {
-  // animation: fadeIn .6s linear;
+  animation: fadeIn .6s linear;
   width: 100%;
   padding: 0 60px;
   box-sizing: border-box;
