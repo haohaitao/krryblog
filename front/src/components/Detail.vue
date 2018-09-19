@@ -39,9 +39,6 @@ export default {
     blog: {
       type: Object,
     },
-    isNoBlog: {
-      type: Boolean,
-    },
   },
   filters: {
     // 2018-09-20 11:33:46 取年月日、取时分秒
@@ -66,7 +63,16 @@ export default {
     },
   },
   mounted () {
-    if (!this.isNoBlog) {
+    if (JSON.stringify(this.blog) !== '{}' && this.blog !== null) {
+      this.getCatalog();
+    }
+    // 这里使用深度监听 blog 对象的属性变化
+    this.$watch('blog', this.getCatalog, {
+      deep: true,
+    });
+  },
+  methods: {
+    getCatalog () {
       Catalog({
         contentEl: 'blog',
         catalogEl: 'directory',
@@ -99,7 +105,7 @@ export default {
         zooms.style.opacity = '0';
         target.className = '';
       });
-    }
+    },
   },
   components: {
   },

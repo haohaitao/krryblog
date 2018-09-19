@@ -1,7 +1,7 @@
 <template>
   <main v-if="!isNoBlog">
     <Header></Header>
-    <Detail :blog="blog" :isNoBlog="isNoBlog"></Detail>
+    <Detail :blog="blog"></Detail>
     <Footer></Footer>
   </main>
   <NotFound v-else></NotFound>
@@ -33,9 +33,9 @@ export default {
       let id = this.$route.params['id'];
       let res = await Service.getBlogDetail(id);
       this.status = res.status;
+      this.blog = res.data;
       // 404 的标题在 axios 拦截器已经定义
       if (this.status !== 404) {
-        this.blog = res.data;
         document.title = `${this.blog['title']} - ${document.title}`;
       }
     },

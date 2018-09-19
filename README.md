@@ -128,6 +128,15 @@ npm install iview-loader --save-dev
 4. 骨架屏的制作：（本项目使用方法 2 ）
 （1）自制模板，进入路由展示，加载数据后替换真实组件<br>
 （2）模拟数据，在真实模板模拟异步加载的数据，当真实数据加载完成，将模拟数据替换成真实数据（可保留之前自定义的动画）
+5. 监听对象 {} 变化的问题，可以使用深度监听：
+```js
+mounted () {
+  // 这里使用深度监听 blog 对象的属性变化
+  this.$watch('blog', this.getCatalog, {
+    deep: true,
+  });
+},
+```
 
 ## 部署
 1. 文件路径出错：在 config 的 index.js 下 build 的设置：assetsPublicPath: './',
