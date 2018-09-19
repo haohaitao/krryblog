@@ -86,11 +86,16 @@ export default {
       return id ? link : '';
     },
   },
+  created () {
+    if (this.blogList.length > 0) {
+      this.blogShowList = this.blogList;
+    }
+  },
   computed: {
   },
   watch: {
     blogList (newVal, oldVal) {
-      this.blogShowList = this.blogList;
+      this.blogShowList = newVal;
       if (oldVal.length !== 0) {
         // 共用组件，每次数据变化产生过渡效果
         this.$refs.blogSection.style['display'] = 'none';
