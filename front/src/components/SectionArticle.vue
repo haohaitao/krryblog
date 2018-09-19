@@ -7,7 +7,7 @@
       <!-- 这里使用命名路由，效果与下面一样，使用过滤器控制骨架屏的链接 -->
       <router-link :to="val.id | setLink({name: 'blog', params: {id: val.id, title: val.title}})">
         <div class="bg-cover">
-          <p>{{val.description}}</p>
+          <p v-html="val.description"></p>
         </div>
       </router-link>
       <div class="other-bgcover right-bgcover"></div>
