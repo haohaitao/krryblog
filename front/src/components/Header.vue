@@ -5,11 +5,12 @@
         <Icon type="md-headset" />
         <router-link to="/">Krryblog</router-link>
       </div>
-      <div class="nav-coll-menu">
-        <span class="icon-menu cross">
+      <div class="nav-coll-menu" ref="collMenuNavFar" :class="{'nav-coll-menu-padd': isVisibleNavFar}">
+        <span class="icon-menu cross" :class="{'icon-menu-close': isVisibleNavFar}">
           <span class="middle"></span>
         </span>
-        <ul class="nav-far">
+        <span class="click-fun" @click="closeCollMenu"></span>
+        <ul class="nav-far" :class="{'visible-nav-far': isVisibleNavFar}">
           <router-link to="/">
             <li>
               首页
@@ -105,6 +106,7 @@ export default {
   data () {
     return {
       keyWord: '',
+      isVisibleNavFar: false,
     };
   },
   computed: {
@@ -128,6 +130,9 @@ export default {
       },
     });
     headroom.init();
+    this.$refs.collMenuNavFar.onmouseleave = () => {
+      this.isVisibleNavFar = false;
+    };
   },
   methods: {
     search () {
@@ -139,6 +144,9 @@ export default {
         this.$router.push(`/search/${this.keyWord}`);
         this.keyWord = '';
       }
+    },
+    closeCollMenu () {
+      this.isVisibleNavFar = !this.isVisibleNavFar;
     },
   },
   components: {
@@ -284,6 +292,9 @@ header {
       }
     }
 
+    .nav-coll-menu-padd {
+      padding-bottom: 25px !important;
+    }
     /* 小菜单 */
     .nav-coll-menu {
       position: absolute;
@@ -297,18 +308,26 @@ header {
       padding: 10px;
       box-sizing: content-box;
 
-      &:hover .icon-menu {
+      .click-fun {
+        width: 40px;
+        height: 36px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .icon-menu-close {
         transform: rotateZ(360deg);
 
         &::before {
-          top: 7px;
-          transform: rotate(45deg);
-          background: #eb5055;
+          top: 7px !important;
+          transform: rotate(45deg) !important;
+          background: #eb5055 !important;
         }
         &::after {
-          bottom: 7px;
-          transform: rotate(135deg);
-          background: #eb5055;
+          bottom: 7px !important;
+          transform: rotate(135deg) !important;
+          background: #eb5055 !important;
         }
         .middle {
           opacity: 0;
@@ -351,16 +370,11 @@ header {
         }
       }
 
-      &:hover {
-        padding-bottom: 28px;
-
-        & > .nav-far {
-          visibility: visible;
-          margin-top: 20px;
-          opacity: .96;
-        }
+      .visible-nav-far {
+        visibility: visible !important;
+        margin-top: 20px !important;
+        opacity: .96 !important;
       }
-
       .nav-far {
         opacity: 0;
         transition: .4s;
@@ -368,17 +382,17 @@ header {
         width: 130px;
         margin-top: 0;
         box-shadow: 0 1px 6px #b3b3b3c4;
-        background: #fffffff0;
+        background: rgba(255, 255, 255, 0.92);
         font-size: 14px;
         // border-radius: 5px;
         li {
           position: relative;
-          margin: 0 22px;
+          padding: 0 22px;
           line-height: 50px;
           transition: .4s;
           &:hover {
             transition: .4s;
-            margin: 0 32px;
+            padding: 0 32px;
             color: #eb5055;
             cursor: url(../assets/pic/cursor.cur), pointer !important;
           }
@@ -396,16 +410,17 @@ header {
               // transition: all .3s ease-in-out;
             }
             .nav-child {
-              left: 30px;
+              left: 60px;
               z-index: 1501;
               visibility: hidden;
               background: rgba(255, 255, 255, .94);
               opacity: 0;
-              top: 80%;
+              top: 38px;
               position: absolute;
               box-shadow: 0 0 10px 0 #cacaca;
               transition: all .3s ease-in-out;
               li {
+                padding: 0;
                 float: none;
                 margin: 0;
 
