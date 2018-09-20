@@ -69,7 +69,7 @@ export default {
     status () {
       return +this.statusFlag;
     },
-    // 从接口查询出分类归档
+    // 从接口查询出分类
     classifyList () {
       return this.$store.getters['blog/classify'];
     },

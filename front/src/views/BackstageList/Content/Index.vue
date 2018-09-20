@@ -46,7 +46,7 @@ export default {
           },
         },
         {
-          title: '归档',
+          title: '存档',
           key: 'classify',
           render: (h, params) => {
             return h('router-link', {
