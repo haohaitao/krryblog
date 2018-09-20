@@ -23,7 +23,7 @@ export default {
   },
   data () {
     return {
-      description: '相关内容 —— 归档',
+      description: '相关内容 —— 存档',
     };
   },
   methods: {

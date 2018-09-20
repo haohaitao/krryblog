@@ -15,7 +15,7 @@
           </router-link>
           <li class="sub-item">
             <Icon type="ios-list-box" />
-            归档
+            存档
             <ul class="nav-child">
               <li v-for="(item, index) in classifyList" :key="index">
                 <router-link :to="`/category/${item.id}`">{{item.name}}</router-link>

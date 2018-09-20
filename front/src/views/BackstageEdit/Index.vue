@@ -14,7 +14,7 @@
         </FormItem>
         <!-- upload image -->
         <uploadImg :defaultList="defaultUploadList" :uploadImgUrl="uploadImgUrl" :imgName="imgName" @changeImg="changeImg"></uploadImg>
-        <FormItem label="分类归档：">
+        <FormItem label="分类存档：">
           <RadioGroup v-model="classifyId">
             <Radio :label="item.id" v-for="(item, index) in classifyList" :key="index">
               <span>{{item.name}}</span>

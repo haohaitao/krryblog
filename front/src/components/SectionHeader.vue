@@ -34,6 +34,7 @@ export default {
   background-size: cover;
   padding: 96px 0 30px;
   text-align: center;
+  background-position-x: -50px;
 
   h1 {
     position: relative;
