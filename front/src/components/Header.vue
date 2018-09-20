@@ -182,6 +182,8 @@ header {
 
       a {
         font-size: 20px;
+        position: relative;
+        z-index: 1;
       }
     }
 
@@ -381,7 +383,7 @@ header {
         visibility: hidden;
         width: 130px;
         margin-top: 0;
-        box-shadow: 0 1px 6px #b3b3b3c4;
+        box-shadow: 0 0 4px 0 #d4d4d4;
         background: rgba(255, 255, 255, 0.92);
         font-size: 14px;
         // border-radius: 5px;
@@ -417,7 +419,7 @@ header {
               opacity: 0;
               top: 38px;
               position: absolute;
-              box-shadow: 0 0 10px 0 #cacaca;
+              box-shadow: 0 0 4px 0 #d4d4d4;
               transition: all .3s ease-in-out;
               li {
                 padding: 0;
