@@ -88,13 +88,13 @@ img {
   padding: 8px 8px;
 }
 .ivu-back-top-inner {
-  background-color: rgba(255, 152, 49, 0.91);
+  background-color: rgba(255, 152, 49, 0.8);
   border-radius: 50%;
   height: 40px;
   width: 40px;
 }
 .ivu-back-top-inner:hover {
-  background-color: rgb(255, 111, 27);
+  background-color: rgb(255, 111, 27, 0.9);
 }
 
 /* 开关按钮 */
@@ -185,6 +185,122 @@ scrollbar[orient="vertical"] {
 ::selection {
   background: #FF5252;
   color: #fff;
+}
+
+/* 响应式 */
+@media screen and (max-width: 1080px) {
+  /* 回到顶部 */
+  .ivu-back-top {
+    right: 30px !important;
+  }
+}
+
+@media screen and (max-width: 967px) {
+  /* 每行显示两个博客 */
+  .section-article {
+    width: 680px;
+  }
+  .section-article article {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  /* 每行显示两个博客时，中间空格减小 */
+  .section-article {
+    width: 640px;
+  }
+  .section-article article {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+}
+
+@media screen and (max-width: 647px) {
+  /* 每行显示一个博客，大小根据屏幕变化 */
+  .section-article {
+    width: 100%;
+  }
+  .section-article article {
+    width: 70% !important;
+    margin-left: 15% !important;
+    margin-right: 15% !important;
+  }
+}
+
+@media screen and (max-width: 408px) {
+  /* 每行显示一个博客，左右外边框变小 */
+  .section-article {
+    width: 100%;
+  }
+  .section-article article {
+    width: 80% !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  /* 每行显示一个博客，左右外边框再次变小 */
+  .section-article {
+    width: 100%;
+  }
+  .section-article article {
+    width: 86% !important;
+    margin-left: 7% !important;
+    margin-right: 7% !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  /* 目录隐藏 */
+  #directory {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* 头部菜单收起 */
+  .head-page .home {
+    float: none;
+    text-align: center;
+  }
+  .head-page .nav-coll-menu {
+    display: block !important;
+  }
+  .head-page .nav {
+    position: absolute !important;
+    top: 0;
+    right: 6px;
+    margin-left: 6px;
+  }
+  .head-page .nav .nav-far {
+    visibility: hidden;
+  }
+  .head-page .nav .search i {
+    font-size: 26px !important;
+    height: 34px !important;
+    width: 34px !important;
+    top: 18px !important;
+    line-height: 34px !important;
+    z-index: 2 !important;
+  }
+  .head-page .nav .search input {
+    height: 34px !important;
+    top: 18px !important;
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  /* 时间隐藏 */
+  .detail-article .art-header .tag-time {
+    display: none;
+  }
+  .detail-article .art-header .header-tag {
+    width: 100% !important;
+  }
 }
 
 @keyframes fadeIn {

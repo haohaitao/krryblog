@@ -41,7 +41,6 @@ export default {
 section {
   margin: 0 auto;
   .wrapper {
-    width: 1080px;
     padding-top: 20px;
   }
 }

@@ -1,7 +1,11 @@
 <template>
   <footer>
     <div class="container">
-      <span class="name">© 2018 乐诗</span>
+      <!-- 需要用到的竖线使用全角竖线｜ -->
+      <span class="name">Copyright © 2018 乐诗</span>&nbsp;
+      <span class="github">
+        <a target="_blank" href="https://github.com/Krryxa"><Icon type="logo-github" /></a>
+      </span>
       <BackTop :height="600" :bottom="60"></BackTop>
     </div>
   </footer>
@@ -30,9 +34,17 @@ footer {
     margin: 0 auto;
     height: 100%;
     text-align: center;
+    font-size: 14px;
 
     .name {
       line-height: 120px;
+    }
+
+    .github {
+      i {
+        font-size: 18px;
+        margin-top: -5px;
+      }
     }
   }
 }

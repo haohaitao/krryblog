@@ -145,7 +145,7 @@ article {
       }
     }
     .header-tag {
-      width: 570px;
+      width: 85%;
       margin-top: 14px;
       a {
         color: #fff;

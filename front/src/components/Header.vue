@@ -1,9 +1,51 @@
 <template>
-  <header>
+  <header class="head-page">
     <div class="container">
       <div class="home left">
         <Icon type="md-headset" />
         <router-link to="/">Krryblog</router-link>
+      </div>
+      <div class="nav-coll-menu">
+        <span class="icon-menu cross">
+          <span class="middle"></span>
+        </span>
+        <ul class="nav-far">
+          <router-link to="/">
+            <li>
+              首页
+            </li>
+          </router-link>
+          <li class="sub-item">
+            存档
+            <ul class="nav-child">
+              <li v-for="(item, index) in classifyList" :key="index">
+                <router-link :to="`/category/${item.id}`">{{item.name}}</router-link>
+              </li>
+            </ul>
+          </li>
+          <li class="sub-item">
+            主题
+            <ul class="nav-child">
+              <li>
+                <router-link to="#">简约优雅</router-link>
+              </li>
+              <li>
+                <router-link to="#">二次元</router-link>
+              </li>
+            </ul>
+          </li>
+          <!-- 可使用命名路由 -->
+          <router-link :to="{name: 'link'}">
+            <li>
+              友链
+            </li>
+          </router-link>
+          <router-link to="/about">
+            <li>
+              关于
+            </li>
+          </router-link>
+        </ul>
       </div>
       <div class="nav right">
         <ul class="nav-far">
@@ -238,6 +280,150 @@ header {
           outline: 0;
           background-color: #fff;
           -webkit-appearance: none;
+        }
+      }
+    }
+
+    /* 小菜单 */
+    .nav-coll-menu {
+      position: absolute;
+      width: 20px;
+      top: 15px;
+      left: 6px;
+      cursor: url(../assets/pic/cursor.cur), pointer;
+      z-index: 1;
+      display: none;
+      height: 16px;
+      padding: 10px;
+      box-sizing: content-box;
+
+      &:hover .icon-menu {
+        transform: rotateZ(360deg);
+
+        &::before {
+          top: 7px;
+          transform: rotate(45deg);
+          background: #eb5055;
+        }
+        &::after {
+          bottom: 7px;
+          transform: rotate(135deg);
+          background: #eb5055;
+        }
+        .middle {
+          opacity: 0;
+        }
+      }
+
+      .icon-menu {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 16px;
+        transition: all .4s ease-in-out;
+        transition-timing-function: cubic-bezier(.61,.04,.17,1.32);
+
+        &::before, &::after {
+          position: absolute;
+          width: 20px;
+          height: 2px;
+          content: '';
+          transition: all .4s ease-in-out;
+          transform-origin: 50% 50% 0;
+          background: #313131;
+        }
+        &::before {
+          top: 0;
+        }
+        &::after {
+          bottom: 0;
+        }
+
+        .middle {
+          position: absolute;
+          top: 50%;
+          display: inline-block;
+          width: 20px;
+          height: 2px;
+          margin-top: -1px;
+          transition: all .4s ease-in-out;
+          background: #313131;
+        }
+      }
+
+      &:hover {
+        padding-bottom: 28px;
+
+        & > .nav-far {
+          visibility: visible;
+          margin-top: 20px;
+          opacity: .96;
+        }
+      }
+
+      .nav-far {
+        opacity: 0;
+        transition: .4s;
+        visibility: hidden;
+        width: 130px;
+        margin-top: 0;
+        box-shadow: 0 1px 6px #b3b3b3c4;
+        background: #fffffff0;
+        font-size: 14px;
+        // border-radius: 5px;
+        li {
+          position: relative;
+          margin: 0 22px;
+          line-height: 50px;
+          transition: .4s;
+          &:hover {
+            transition: .4s;
+            margin: 0 32px;
+            color: #eb5055;
+            cursor: url(../assets/pic/cursor.cur), pointer !important;
+          }
+
+          i {
+            font-size: 16px;
+            margin-top: -3px;
+          }
+
+          &.sub-item {
+            &:hover > .nav-child {
+              visibility: visible;
+              opacity: .98;
+              top: 100%;
+              // transition: all .3s ease-in-out;
+            }
+            .nav-child {
+              left: 30px;
+              z-index: 1501;
+              visibility: hidden;
+              background: rgba(255, 255, 255, .94);
+              opacity: 0;
+              top: 80%;
+              position: absolute;
+              box-shadow: 0 0 10px 0 #cacaca;
+              transition: all .3s ease-in-out;
+              li {
+                float: none;
+                margin: 0;
+
+                a {
+                  padding: 15px 22px;
+                  width: 130px;
+                  display: block;
+                  height: 50px;
+                  line-height: 20px;
+                  transition: .4s;
+
+                  &:hover {
+                    padding-left: 32px;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

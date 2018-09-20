@@ -61,11 +61,13 @@ section {
   .msg {
     margin-top: 30px;
     font-size: 26px;
+    padding: 0 8px;
   }
 
   .search-box {
-    width: 580px;
+    max-width: 600px;
     margin: 0 auto;
+    padding: 0 10px;
 
     &:hover {
       .inp-btn {
@@ -81,7 +83,7 @@ section {
       transition: .3s;
       float: left;
       margin: 0 auto;
-      width: 500px;
+      width: 80%;
       height: 38px;
       border-radius: 5px 0 0 5px;
       border: 1px solid #dcdee2;
@@ -98,7 +100,7 @@ section {
     .inp-btn {
       transition: .3s;
       float: left;
-      width: 80px;
+      width: 20%;
       height: 38px;
       border-radius: 0 5px 5px 0;
       border: 1px solid #ff8737;

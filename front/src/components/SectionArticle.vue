@@ -1,5 +1,5 @@
 <template>
-  <section ref="blogSection">
+  <section ref="blogSection" class="section-article">
     <article v-for="(val, index) in blogShowList" :key="index">
       <div class='bg-container'>
         <div class="bg-img" :style="val.id | setLink({background: `url(${basePath}${val.image}) 0% 0% / cover`})"></div>
@@ -113,8 +113,8 @@ export default {
 <style lang='scss' scoped>
 section {
   animation: fadeIn .6s linear;
-  width: 100%;
-  padding: 0 60px;
+  max-width: 960px;
+  margin: 0 auto;
   box-sizing: border-box;
 
   article {
