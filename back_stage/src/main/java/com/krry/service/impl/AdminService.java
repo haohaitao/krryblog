@@ -15,6 +15,7 @@ import com.krry.entity.Blog;
 import com.krry.entity.Params;
 import com.krry.entity.User;
 import com.krry.mapper.AdminMapper;
+import com.krry.mapper.BlogMapper;
 import com.krry.service.IAdminService;
 
 /**
@@ -28,6 +29,9 @@ public class AdminService implements IAdminService{
 
 	@Autowired
 	private AdminMapper adminMapper;
+	
+	@Autowired
+	private BlogMapper blogMapper;
 	
 	
 	/**
@@ -55,10 +59,21 @@ public class AdminService implements IAdminService{
 	 */
 	public HashMap<String, Object> getLinkOrAbout(String title) {
 		
+		Blog newBlog = new Blog();
+		
 		Blog blog = adminMapper.getLinkOrAbout(title);
 		HashMap<String, Object> resData = new HashMap<>();
 		
 		if (blog != null) {
+			// 设置点击量+1
+			int id = blog.getId();
+			int hit = blog.getHit();
+			blog.setHit(++hit);
+			newBlog.setHit(hit);
+			newBlog.setId(id);
+			
+			blogMapper.updateBlog(newBlog);
+			
 			// 处理查询出timestamp时间类型多了个 .0  的问题
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // 设置日期格式
 			try {
