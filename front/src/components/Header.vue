@@ -69,10 +69,10 @@
             <Icon type="md-color-palette" />
             主题
             <ul class="nav-child">
-              <li>
+              <li @click="littleThem">
                 <router-link to="#">简约优雅</router-link>
               </li>
-              <li>
+              <li @click="currentThem">
                 <router-link to="#">二次元</router-link>
               </li>
             </ul>
@@ -147,6 +147,12 @@ export default {
     },
     closeCollMenu () {
       this.isVisibleNavFar = !this.isVisibleNavFar;
+    },
+    littleThem () {
+      this.$Message.info('已经是当前主题哦~');
+    },
+    currentThem () {
+      this.$Message.error('该主题暂时未完成~ QAQ');
     },
   },
   components: {
