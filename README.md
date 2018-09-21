@@ -139,6 +139,7 @@ mounted () {
   });
 },
 ```
+6. 移动端不支持十六进制的透明度，会失效，所以要在设置颜色的同时设置透明度就用 rgba 的形式设置
 
 ## 部署
 1. 文件路径出错：在 config 的 index.js 下 build 的设置：assetsPublicPath: './',

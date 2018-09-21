@@ -94,7 +94,7 @@ img {
   width: 40px;
 }
 .ivu-back-top-inner:hover {
-  background: rgb(255, 111, 27, 0.9) !important;
+  background: rgba(255, 111, 27, 0.9) !important;
 }
 
 /* 开关按钮 */
