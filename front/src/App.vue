@@ -88,13 +88,13 @@ img {
   padding: 8px 8px;
 }
 .ivu-back-top-inner {
-  background-color: rgba(255, 152, 49, 0.8);
+  background: rgba(255, 152, 49, 0.8);
   border-radius: 50%;
   height: 40px;
   width: 40px;
 }
 .ivu-back-top-inner:hover {
-  background-color: rgb(255, 111, 27, 0.9) !important;
+  background: rgb(255, 111, 27, 0.9) !important;
 }
 
 /* 开关按钮 */
