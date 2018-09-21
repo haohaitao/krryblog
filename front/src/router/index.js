@@ -34,13 +34,13 @@ export default new Router({
       path: '/about',
       component: () => import('../views/About'),
       name: 'about',
-      meta: {title: '你的美好，我都记得', keepAlive: true},
+      meta: {title: '你的美好，我都记得'},
     },
     {
       path: '/link',
       component: () => import('../views/Link'),
       name: 'link',
-      meta: {title: '你的美好，我都记得', keepAlive: true},
+      meta: {title: '你的美好，我都记得'},
     },
     {
       path: '/search/:keyword',

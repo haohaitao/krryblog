@@ -374,7 +374,7 @@ header {
 
       .visible-nav-far {
         visibility: visible !important;
-        margin-top: 20px !important;
+        margin-top: 24px !important;
         opacity: .96 !important;
       }
       .nav-far {
