@@ -1,7 +1,7 @@
 <template>
   <main>
     <SectionArticle :blogList="blogList"></SectionArticle>
-    <Page v-if="blogLen > 12" :total="blogLen" size="small" :page-size="12" show-elevator show-total @on-change="changePage" />
+    <Page v-if="blogLen > 12" :total="blogLen" size="small" :page-size="12" show-elevator @on-change="changePage" />
   </main>
 </template>
 

@@ -2,7 +2,7 @@
   <section>
     <SectionHeader :title="TagName" :description="description"></SectionHeader>
     <SectionArticle :blogList="blogList" class="wrapper"></SectionArticle>
-    <Page v-if="blogLen > 9" :total="blogLen" size="small" :page-size="9" show-elevator show-total @on-change="changePage"/>
+    <Page v-if="blogLen > 9" :total="blogLen" size="small" :page-size="9" show-elevator @on-change="changePage"/>
   </section>
 </template>
 

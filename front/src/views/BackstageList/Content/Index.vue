@@ -5,7 +5,7 @@
       <Button type="success" class="add-button">add</Button>
     </router-link>
     <Table border stripe :columns="columns" :data="blogList"></Table>
-    <Page v-if="blogLen > 10" :total="blogLen" size="small" :page-size="10" show-elevator show-total @on-change="changePage"/>
+    <Page v-if="blogLen > 10" :total="blogLen" size="small" :page-size="10" show-elevator @on-change="changePage"/>
   </section>
 </template>
 
