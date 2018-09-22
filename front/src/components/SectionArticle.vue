@@ -45,7 +45,7 @@ export default {
   },
   data () {
     return {
-      basePath: window.location.origin + '/krryblog/',
+      basePath: window.location.origin + '/',
       blogShowList: [
         {
           classify: '',
