@@ -19,7 +19,7 @@ import com.krry.service.IAdminService;
  * @author krry
  *
  */
-@Controller  // 表示是多例模式，每个用户返回的web层是不一样的
+@Controller
 @RequestMapping("/krry")
 public class AdminController {
 	

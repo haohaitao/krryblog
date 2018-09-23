@@ -191,6 +191,10 @@ article {
 
     a {
       border-bottom: 1px solid #ccc;
+
+      &:hover {
+        border-bottom: 1px solid #eb5055;
+      }
     }
   }
 }
