@@ -279,9 +279,10 @@ article {
 
 #directory {
   position: fixed;
-  top: 32%;
+  top: 50%;
   margin-left: 686px;
   max-width: 400px;
+  transform: translateY(-56%);
   .cl-wrapper {
     padding: 5px 0;
     border-left: 2px solid #ddd;
