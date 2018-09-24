@@ -82,6 +82,8 @@ export default {
       let id = this.$route.params['id'];
       // get blog when edit
       if (id !== undefined) {
+        // 设置标题
+        document.title = document.title.replace('新增', '编辑');
         let blog = this.$route.params;
         // 参数注入
         for (let key in blog) {
