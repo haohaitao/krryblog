@@ -2,6 +2,14 @@
   <footer>
     <div class="container">
       <!-- 需要用到的竖线使用全角竖线｜ -->
+      <a href="http://www.miitbeian.gov.cn" target="_blank">
+        <span class="name">粤ICP备17158733号-1</span>
+      </a>
+      ｜
+      <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44081102000040" target="_blank">
+        <span class="name">粤公网安备44081102000040号</span>
+      </a>
+      ｜
       <span class="name">Copyright © 2018 乐诗</span>&nbsp;
       <span class="github">
         <a target="_blank" href="https://github.com/Krryxa"><Icon type="logo-github" /></a>
