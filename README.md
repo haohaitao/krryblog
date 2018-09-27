@@ -95,7 +95,14 @@ npm install iview-loader --save-dev
 
 ##  图片长方形：280*230
 1. 因为使用 background 来装载博客图片，使用 filter: blur(3px); 使背景图片虚化，当准备做图片懒加载的时候，使用了 ::before{} 在被选元素的前面插入内容，且设置 z-index: -1，使用 content 属性定义插入内容的文本信息，这样子来做图片懒加载，当背景图片加载完成，会自动覆盖 ::before{} 的内容
-2. 点击分页的时候，加载数据完成后，section 先 display: none，再 display: block; 才会显示动画
+2. 点击分页的时候，加载数据完成后，section 先 display: none，再 display: block; 才会显示动画，显示 block 时使用 setTimeout 延迟一下
+```js
+// 共用组件，每次数据变化产生过渡效果
+this.$refs.blogSection.style['display'] = 'none';
+setTimeout(() => {
+  this.$refs.blogSection.style['display'] = 'block';
+}, 0);
+```
 
 ## 数据结构
 1. 查询详细博客内容的数据：
@@ -129,7 +136,8 @@ npm install iview-loader --save-dev
 3. 子组件的 props 的 default 属性，只在父组件没有传递该 props 的情况下才生效，有可能该子组件被很多父组件引用，有些父组件会传递 props 属性，有些没有，没有传递 props 属性的子组件，就会用到 default 属性
 4. 骨架屏的制作：（本项目使用方法 2 ）
 （1）自制模板，进入路由展示，加载数据后替换真实组件<br>
-（2）模拟数据，在真实模板模拟异步加载的数据，当真实数据加载完成，将模拟数据替换成真实数据（可保留之前自定义的动画）
+（2）使用图片模板，就要使用 ps<br>
+（3）模拟数据字段，在真实模板模拟异步加载的数据字段，但是数据基本为空，当真实数据加载完成，将模拟数据替换成真实数据（可保留之前自定义的动画）
 5. 监听对象 {} 变化的问题，可以使用深度监听：
 ```js
 mounted () {
@@ -151,7 +159,7 @@ xxx/static/fonts/icomoon.0125455.woff
 xxx/static/css/static/fonts/icomoon.0125455.woff 
 解决方法：
 webpack 配置问题
-在 build/webpack.prod.conf.js 中 extract :true 改为 fasle即可。
+在 build/webpack.prod.conf.js 中 extract :true 改为 fasle 即可
 ```
 3. css 添加的背景中引用的图片路径出错
 在 build 文件夹下 找 utils.js 配置加上 publicPath: '../../',
@@ -185,8 +193,7 @@ module.exports = {
 ```js
 axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? process.env.API_ROOT : '';
 ```
-6. 路由变成 history 模式
 
-7. 将 vue 打包后输出的 dist 文件夹下面的文件拷贝到 后台接口项目目录结构的 src/main/webapp/ 下面
+6. 将 vue 打包后输出的 dist 文件夹下面的文件拷贝到 后台接口项目目录结构的 src/main/webapp/ 下面
 
-8. 把所有的 console.log 删除
+7. 把所有的 console.log 删除
