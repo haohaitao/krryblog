@@ -291,12 +291,16 @@ scrollbar[orient="vertical"] {
     top: 18px !important;
     z-index: 1;
   }
-}
-
-@media screen and (max-width: 550px) {
   /* 底部响应式 */
-  footer .container .sec-footer-flot {
-    visibility: hidden !important;
+  footer .container .link-git {
+    position: absolute !important;
+    top: 40px !important;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  footer .container .footer-flot {
+    top: 64% !important;
   }
 }
 
@@ -307,13 +311,6 @@ scrollbar[orient="vertical"] {
   }
   .detail-article .art-header .header-tag {
     width: 100% !important;
-  }
-}
-
-@media screen and (max-width: 361px) {
-  /* 底部响应式 */
-  footer .container .fir-footer-flot {
-    visibility: hidden !important;
   }
 }
 
