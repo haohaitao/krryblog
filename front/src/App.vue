@@ -302,6 +302,9 @@ scrollbar[orient="vertical"] {
   footer .container .footer-flot {
     top: 64% !important;
   }
+  footer .container .sec-footer-flot {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 460px) {
