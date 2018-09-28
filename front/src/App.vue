@@ -293,6 +293,13 @@ scrollbar[orient="vertical"] {
   }
 }
 
+@media screen and (max-width: 550px) {
+  /* 底部响应式 */
+  footer .container .sec-footer-flot {
+    visibility: hidden !important;
+  }
+}
+
 @media screen and (max-width: 460px) {
   /* 时间隐藏 */
   .detail-article .art-header .tag-time {
@@ -300,6 +307,13 @@ scrollbar[orient="vertical"] {
   }
   .detail-article .art-header .header-tag {
     width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 361px) {
+  /* 底部响应式 */
+  footer .container .fir-footer-flot {
+    visibility: hidden !important;
   }
 }
 
