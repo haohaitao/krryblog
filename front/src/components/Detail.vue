@@ -27,6 +27,8 @@
     </div>
     <aside id="directory"></aside>
     <div id="zooms" class="zoom-shadow"></div>
+    <p class="comments-desc" v-if="isloaded"><span>发表评论</span></p>
+    <div id="vcomments"></div>
   </article>
 </template>
 
@@ -34,6 +36,7 @@
 import '@/assets/css/markdown.css';
 import '@/assets/css/github.css';
 import Catalog from '@/util/catalog.js';
+import Valine from 'valine';
 export default {
   props: {
     blog: {
@@ -48,6 +51,7 @@ export default {
   },
   data () {
     return {
+      isloaded: false,
     };
   },
   computed: {
@@ -63,16 +67,19 @@ export default {
     },
   },
   mounted () {
+    // 加载目录和评论插件
     if (JSON.stringify(this.blog) !== '{}' && this.blog !== null) {
-      this.getCatalog();
+      this.getCatalogZoomsCommont();
+      this.getCommont();
     }
     // 这里使用深度监听 blog 对象的属性变化
-    this.$watch('blog', this.getCatalog, {
+    this.$watch('blog', this.getCatalogZoomsCommont, {
       deep: true,
     });
   },
   methods: {
-    getCatalog () {
+    getCatalogZoomsCommont () {
+      // 设置文章目录
       Catalog({
         contentEl: 'blog',
         catalogEl: 'directory',
@@ -83,6 +90,7 @@ export default {
       if (wrapper.innerHTML === '') {
         wrapper.style.display = 'none';
       }
+      // 设置图片点击放大
       // 事件委托，处理全部 img 标签的点击事件
       let blog = document.getElementById('blog');
       let zooms = document.getElementById('zooms');
@@ -104,6 +112,20 @@ export default {
         zooms.style.visibility = 'hidden';
         zooms.style.opacity = '0';
         target.className = '';
+      });
+      // 加载评论系统
+      this.getCommont();
+      this.isloaded = true;
+    },
+    getCommont () {
+      Valine({
+        el: '#vcomments',
+        appId: 'AXcd7u8mPqn0JWnsXku8MgdU-gzGzoHsz',
+        appKey: 'xDI01iWSsPVlKzITBp5ODinq',
+        notify: false,
+        verify: false,
+        avatar: 'mm',
+        placeholder: '留下你的足迹... （支持 Markdown）',
       });
     },
   },
@@ -340,6 +362,32 @@ article {
         color: #f44336 !important;
       }
     }
+  }
+}
+/* 评论样式 */
+.comments-desc {
+  &::before {
+    font-size: 30px;
+    content: '|';
+    color: red;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: -13px;
+  }
+  margin-top: 50px;
+  color: #24292e;
+  font-size: 1.4em;
+  position: relative;
+  margin-bottom: 16px;
+
+  span {
+    margin-left: 12px;
+  }
+}
+#vcomments {
+  .txt-right {
+    display: none;
   }
 }
 </style>

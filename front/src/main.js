@@ -10,6 +10,10 @@ import 'mavon-editor/dist/css/index.css';
 import 'iview/dist/styles/iview.css';
 import 'animate.css';
 
+// 以下配置 Valine 评论插件
+// Register AV objects to the global
+window.AV = require('leancloud-storage');
+
 Vue.config.productionTip = false;
 
 Vue.use(iView);
