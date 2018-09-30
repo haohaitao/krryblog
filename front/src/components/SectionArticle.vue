@@ -139,8 +139,8 @@ section {
       }
 
       .bg-cover {
-        background-color: rgba(0,0,0,.5);
-
+        background-color: rgba(0, 0, 0, .5);
+        transition: .5s;
         p {
           transition: .5s;
           margin-top: 0px;

@@ -37,6 +37,7 @@ import '@/assets/css/markdown.css';
 import '@/assets/css/github.css';
 import Catalog from '@/util/catalog.js';
 import Valine from 'valine';
+import Service from '@/service';
 export default {
   props: {
     blog: {
@@ -69,16 +70,16 @@ export default {
   mounted () {
     // 加载目录和评论插件
     if (JSON.stringify(this.blog) !== '{}' && this.blog !== null) {
-      this.getCatalogZoomsCommont();
-      this.getCommont();
+      this.getCatalogZoomsComment();
+      this.getComment();
     }
     // 这里使用深度监听 blog 对象的属性变化
-    this.$watch('blog', this.getCatalogZoomsCommont, {
+    this.$watch('blog', this.getCatalogZoomsComment, {
       deep: true,
     });
   },
   methods: {
-    getCatalogZoomsCommont () {
+    getCatalogZoomsComment () {
       // 设置文章目录
       Catalog({
         contentEl: 'blog',
@@ -114,18 +115,51 @@ export default {
         target.className = '';
       });
       // 加载评论系统
-      this.getCommont();
+      this.getComment();
       this.isloaded = true;
     },
-    getCommont () {
+    getComment () {
       Valine({
         el: '#vcomments',
         appId: 'AXcd7u8mPqn0JWnsXku8MgdU-gzGzoHsz',
         appKey: 'xDI01iWSsPVlKzITBp5ODinq',
         notify: false,
         verify: false,
+        path: window.location.hash,
         avatar: 'mm',
         placeholder: '留下你的足迹... （支持 Markdown）',
+      });
+      // 更改提交按钮的文字
+      let btn = document.getElementsByClassName('vsubmit')[0];
+      // let nick = document.getElementsByName('nick')[0];
+      // let mail = document.getElementsByName('mail')[0];
+      btn.innerText = '提交评论';
+      btn.title = '';
+      // 提交评论的事件
+      btn.addEventListener('click', async (e) => {
+        // let nickText = nick.value;
+        // let mailText = mail.value;
+        // if (nickText.trim() === '') {
+        //   this.$Message.warning('先输入昵称哦~~');
+        //   btn.setAttribute('disabled', true);
+        // } else if (mailText.trim() === '') {
+        //   this.$Message.warning('先输入邮箱哦~~');
+        //   btn.setAttribute('disabled', true);
+        // } else {
+        let vnumDiv = document.getElementsByClassName('vcount')[0].getElementsByClassName('vnum')[0];
+        let commentCount = 0;
+        if (vnumDiv) {
+          commentCount = +vnumDiv.innerText;
+        } else {
+          document.getElementsByClassName('vcount')[0].style['display'] = 'block';
+        }
+        let reqData = {
+          id: this.blog['id'],
+          comment: ++commentCount,
+        };
+        await Service.updateBlog(reqData);
+        this.$emit('addComment', commentCount);
+        // }
       });
     },
   },
@@ -375,7 +409,7 @@ article {
     left: 0;
     top: -13px;
   }
-  margin-top: 50px;
+  margin-top: 62px;
   color: #24292e;
   font-size: 1.4em;
   position: relative;
@@ -388,6 +422,92 @@ article {
 #vcomments {
   .txt-right {
     display: none;
+  }
+  .veditor {
+    min-height: 6rem;
+  }
+  .vctrl {
+    display: none;
+  }
+  .vcontrol {
+    padding-top: 10px;
+    & > .col:first-child {
+      visibility: hidden;
+    }
+    .text-right {
+      .vsubmit {
+        background: #ff9800;
+        color: #fff;
+        &:hover {
+          border: 1px solid #f60;
+        }
+      }
+    }
+  }
+  .vlist {
+    & > .vcard > .vh {
+      border-bottom: 1px solid #e5e9ef !important;
+    }
+    .vcard {
+      padding-top: 20px;
+      .vh {
+        border: none;
+        &:hover {
+          & > .vmeta .vat {
+            display: block;
+          }
+        }
+        .vhead {
+          .vnick {
+            color: #6d757a;
+            font-weight: 700;
+            &::before {
+              background: #eb5055;
+            }
+            &:hover {
+              color: #eb5055;
+              cursor: url(../assets/pic/cursor.cur), pointer;
+            }
+          }
+          .vsys {
+            display: none;
+          }
+        }
+        .vmeta .vat {
+          display: none;
+          color: #b3b3b3;
+          cursor: url(../assets/pic/cursor.cur), pointer;
+        }
+        .vcontent {
+          padding-top: 2px;
+          margin-bottom: 0;
+          .at {
+            color: #ff9800;
+            &::before {
+              background: #eb5055;
+            }
+          }
+          p {
+            display: inline;
+            margin-left: 6px;
+          }
+        }
+      }
+      .vquote {
+        border: none;
+        margin-top: 0;
+        padding-left: 0;
+      }
+    }
+  }
+  .vpage {
+    .vmore {
+      background: #ff9800;
+      color: #fff;
+      &:hover {
+        border: 1px solid #f60;
+      }
+    }
   }
 }
 </style>
