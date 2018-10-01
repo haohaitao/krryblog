@@ -10,7 +10,7 @@
         <Icon type="md-eye" />
         {{blog.hit}}
         <Icon type="md-chatboxes" />
-        {{blog.comment}}
+        <span ref="commentSpan">{{blog.comment}}</span>
       </div>
       <div class="header-tag" v-if="hasShowTags">
         <router-link :to="`/tag/${tags}`" v-for="(tags, index) in blogLabel" :key="index">{{tags}}</router-link>
@@ -28,7 +28,7 @@
     <aside id="directory"></aside>
     <div id="zooms" class="zoom-shadow"></div>
     <p class="comments-desc" v-if="isloaded"><span>发表评论</span></p>
-    <div id="vcomments"></div>
+    <div id="vcomments" ref="vcomments"></div>
   </article>
 </template>
 
@@ -53,6 +53,7 @@ export default {
   data () {
     return {
       isloaded: false,
+      submitBtn: null,
     };
   },
   computed: {
@@ -129,37 +130,56 @@ export default {
         avatar: 'mm',
         placeholder: '留下你的足迹... （支持 Markdown）',
       });
-      // 更改提交按钮的文字
-      let btn = document.getElementsByClassName('vsubmit')[0];
-      // let nick = document.getElementsByName('nick')[0];
-      // let mail = document.getElementsByName('mail')[0];
+      // 获取按钮的容器
+      let buttonContainer = document.getElementsByClassName('text-right')[0];
+      // 获取提交按钮并移除提交按钮
+      this.submitBtn = document.getElementsByClassName('vsubmit')[0];
+      this.submitBtn.style['display'] = 'none';
+      buttonContainer.removeChild(this.submitBtn);
+
+      // 获取输入的昵称、邮箱、评论内容
+      let nick = document.getElementsByName('nick')[0];
+      let mail = document.getElementsByName('mail')[0];
+      let textDiv = document.getElementById('veditor');
+
+      // 邮箱正则
+      const emailReg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,5}$/;
+
+      // 创建新的按钮替换
+      let btn = document.createElement('button');
+      btn.className = 'new-btn';
       btn.innerText = '提交评论';
-      btn.title = '';
+      buttonContainer.appendChild(btn);
       // 提交评论的事件
-      btn.addEventListener('click', async (e) => {
-        // let nickText = nick.value;
-        // let mailText = mail.value;
-        // if (nickText.trim() === '') {
-        //   this.$Message.warning('先输入昵称哦~~');
-        //   btn.setAttribute('disabled', true);
-        // } else if (mailText.trim() === '') {
-        //   this.$Message.warning('先输入邮箱哦~~');
-        //   btn.setAttribute('disabled', true);
-        // } else {
-        let vnumDiv = document.getElementsByClassName('vcount')[0].getElementsByClassName('vnum')[0];
-        let commentCount = 0;
-        if (vnumDiv) {
-          commentCount = +vnumDiv.innerText;
+      btn.addEventListener('click', (e) => {
+        let nickText = nick.value;
+        let mailText = mail.value;
+        let textDesc = textDiv.value;
+        let isok = emailReg.test(mailText);
+        if (nickText.trim() === '') {
+          this.$Message.warning('先输入昵称哦~~');
+        } else if (mailText.trim() === '') {
+          this.$Message.warning('先输入邮箱哦~~');
+        } else if (!isok) {
+          this.$Message.warning('邮箱格式不正确哦~~');
+        } else if (textDesc.trim() === '') {
+          this.$Message.warning('先输入评论哦~~');
         } else {
-          document.getElementsByClassName('vcount')[0].style['display'] = 'block';
+          // 触发提交按钮
+          buttonContainer.appendChild(this.submitBtn);
+          this.submitBtn.click();
+          // 获取点击数并提交
+          let commentCount = document.getElementsByClassName('vcard').length;
+          let reqData = {
+            id: this.blog['id'],
+            comment: ++commentCount,
+          };
+          Service.updateBlog(reqData);
+          // 设置当前评论量
+          this.$refs.commentSpan.innerText = commentCount;
+          // 移除评论按钮
+          buttonContainer.removeChild(this.submitBtn);
         }
-        let reqData = {
-          id: this.blog['id'],
-          comment: ++commentCount,
-        };
-        await Service.updateBlog(reqData);
-        this.$emit('addComment', commentCount);
-        // }
       });
     },
   },
@@ -425,6 +445,7 @@ article {
   }
   .veditor {
     min-height: 6rem;
+    max-height: 12rem;
   }
   .vctrl {
     display: none;
@@ -435,6 +456,20 @@ article {
       visibility: hidden;
     }
     .text-right {
+      .new-btn {
+        border: none;
+        border-radius: .3rem;
+        padding: .5rem 1.25rem;
+        font-size: .875rem;
+        line-height: 1.42857143;
+        outline: none;
+        background: #ff9800;
+        color: #fff;
+        border: 1px solid #ff9800;
+        &:hover {
+          border: 1px solid #f60;
+        }
+      }
       .vsubmit {
         background: #ff9800;
         color: #fff;
@@ -443,6 +478,9 @@ article {
         }
       }
     }
+  }
+  .vinfo {
+    display: none !important;
   }
   .vlist {
     & > .vcard > .vh {

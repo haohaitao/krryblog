@@ -1,7 +1,7 @@
 <template>
   <main v-if="!isNoBlog">
     <Header></Header>
-    <Detail :blog="blog" @addComment="addComment"></Detail>
+    <Detail :blog="blog"></Detail>
     <Footer></Footer>
   </main>
   <NotFound v-else></NotFound>
@@ -38,10 +38,6 @@ export default {
       if (this.status !== 404) {
         document.title = `${this.blog['title']} - ${document.title}`;
       }
-    },
-    // 接收子组件事件，设置评论量
-    addComment (count) {
-      this.blog['comment'] = count;
     },
   },
   watch: {
