@@ -423,7 +423,7 @@ article {
   &::before {
     font-size: 30px;
     content: '|';
-    color: red;
+    color: #eb5055;
     font-weight: bold;
     position: absolute;
     left: 0;
