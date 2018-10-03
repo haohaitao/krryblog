@@ -124,8 +124,8 @@ export default {
         el: '#vcomments',
         appId: 'AXcd7u8mPqn0JWnsXku8MgdU-gzGzoHsz',
         appKey: 'xDI01iWSsPVlKzITBp5ODinq',
-        notify: false,
-        verify: false,
+        notify: true,
+        verify: true,
         path: window.location.hash,
         avatar: 'mm',
         placeholder: '留下你的足迹... （支持 Markdown）',
@@ -546,6 +546,16 @@ article {
         border: 1px solid #f60;
       }
     }
+  }
+  .vcancel {
+    background: #ff4d43;
+    color: #fff;
+    border: 1px solid #ff6969;
+  }
+  .vsure {
+    background: #4373ff;
+    color: #fff;
+    border: 1px solid #4f87ff;
   }
 }
 </style>
