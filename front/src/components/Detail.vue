@@ -292,6 +292,11 @@ article {
 <style lang="scss">
 .detail-article {
   .content {
+    mark {
+      background-color: #fff5f5;
+      color: #ff502c;
+      padding: .065em .4em;
+    }
     p {
       font-size: 14px !important;
     }
@@ -307,7 +312,7 @@ article {
     h1, h2, h3 {
       position: relative;
       font-weight: 400;
-      font-size: 1.24em;
+      font-size: 1.34em;
       &::before {
         line-height: 24px;
         font-size: 20px;
@@ -321,7 +326,7 @@ article {
     }
 
     h1 {
-      font-size: 1.3em;
+      font-size: 1.4em;
       &::before {
         font-size: 21px;
         line-height: 25px;
@@ -329,7 +334,7 @@ article {
     }
 
     h3 {
-      font-size: 1.05em;
+      font-size: 1.18em;
       &::before {
         font-size: 19px;
         line-height: 21px;
