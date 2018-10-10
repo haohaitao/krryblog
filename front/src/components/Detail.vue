@@ -127,7 +127,7 @@ export default {
         notify: true,
         verify: true,
         path: window.location.hash,
-        avatar: 'mm',
+        avatar: 'retro',
         placeholder: '留下你的足迹... （支持 Markdown）',
       });
       // 获取按钮的容器
@@ -348,7 +348,7 @@ article {
       right: 0;
       top: 0;
       bottom: 0;
-      transform: scale(1.1);
+      transform: scale(1);
     }
   }
 }
@@ -488,6 +488,12 @@ article {
     }
     .vcard {
       padding-top: 20px;
+      .vimg {
+        border: none;
+        margin-top: 0.1rem;
+        width: 3.25rem;
+        height: 3.25rem;
+      }
       .vh {
         border: none;
         &:hover {
@@ -535,6 +541,11 @@ article {
         border: none;
         margin-top: 0;
         padding-left: 0;
+
+        .vimg {
+          width: 2.80rem;
+          height: 2.80rem;
+        }
       }
     }
   }
