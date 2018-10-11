@@ -8,7 +8,7 @@
       </Breadcrumb>
       <Form>
         <input type="text" maxlength="36" class="blog-title" v-model.trim="title" placeholder="博客标题..." style="width: 100%" />
-        <mavon-editor :value="markdownDesc" @save="markdownSave" placeholder="编辑内容，支持 Markdown"></mavon-editor>
+        <mavon-editor :value="markdownDesc" @save="markdownSave" placeholder="编辑内容，支持 Markdown" class="detail-article"></mavon-editor>
         <FormItem label="博客描述：" style="padding-top: 42px">
           <Input v-model.trim="description" :autosize="{minRows: 4,maxRows: 10}" style="width: 460px" type="textarea" :rows="4" placeholder="为博客的写上简单描述吧~~" />
         </FormItem>

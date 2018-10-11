@@ -328,3 +328,75 @@ scrollbar[orient="vertical"] {
   }
 }
 </style>
+
+<style lang="scss">
+/* 博客详情页样式 */
+.detail-article {
+  .content, .v-show-content {
+    mark {
+      background-color: #fff5f5;
+      color: #ff502c;
+      padding: .065em .4em;
+      border-radius: 6px;
+    }
+    p {
+      font-size: 14px !important;
+    }
+    ul li {
+      list-style: initial;
+    }
+    ul, ol {
+      padding-left: 1em;
+      li {
+        font-size: 14px !important;
+      }
+    }
+    h1, h2, h3 {
+      position: relative;
+      font-weight: 400;
+      font-size: 1.34em;
+      &::before {
+        line-height: 24px;
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: -15px;
+        content: '#';
+        color: #eb5055;
+      }
+    }
+
+    h1 {
+      font-size: 1.4em;
+      &::before {
+        font-size: 21px;
+        line-height: 25px;
+      }
+    }
+
+    h3 {
+      font-size: 1.18em;
+      &::before {
+        font-size: 19px;
+        line-height: 21px;
+      }
+    }
+    img {
+      cursor: zoom-in;
+      transition: .3s;
+    }
+    .zoom-big-img {
+      z-index: 1501;
+      position: fixed;
+      cursor: zoom-out;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      transform: scale(1);
+    }
+  }
+}
+</style>
