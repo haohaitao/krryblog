@@ -296,6 +296,7 @@ article {
       background-color: #fff5f5;
       color: #ff502c;
       padding: .065em .4em;
+      border-radius: 6px;
     }
     p {
       font-size: 14px !important;
