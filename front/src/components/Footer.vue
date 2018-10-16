@@ -2,11 +2,11 @@
   <footer>
     <div class="container">
       <!-- 需要用到的竖线使用全角竖线｜ -->
-      <span class="footer-flot">
+      <span class="footer-flot fir-desc-footer">
         <a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备17158733号-1</a>
       </span>
       <span class="footer-flot fir-footer-flot">｜</span>
-      <span class="footer-flot">
+      <span class="footer-flot sec-desc-footer">
         <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44081102000040" target="_blank">粤公网安备44081102000040号</a>
       </span>
       <span class="footer-flot sec-footer-flot">｜</span>

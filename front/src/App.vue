@@ -317,6 +317,25 @@ scrollbar[orient="vertical"] {
   }
 }
 
+@media screen and (max-width: 370px) {
+  /* 底部响应式 */
+  footer .container .fir-desc-footer {
+    position: absolute !important;
+    top: 54% !important;
+    left: 0;
+    right: 0;
+  }
+  footer .container .fir-footer-flot {
+    display: none !important;
+  }
+  footer .container .sec-desc-footer {
+    top: 78% !important;
+  }
+  footer .container .link-git {
+    top: 30% !important;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
