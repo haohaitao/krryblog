@@ -449,6 +449,9 @@ article {
               color: #eb5055;
               cursor: url(../assets/pic/cursor.cur), pointer;
             }
+            &[href="https://ainyi.com"] {
+              color: #eb5055;
+            }
           }
           .vsys {
             display: none;

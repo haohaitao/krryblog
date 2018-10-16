@@ -593,7 +593,7 @@
   max-width: 100%;
   box-sizing: content-box;
   background-color: #fff;
-  margin: 0 auto;
+  margin: 30px auto;
   display: block;
   box-shadow: 0 0 2.6875rem rgba(0,0,0,0.15);
 }
