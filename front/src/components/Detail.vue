@@ -127,7 +127,7 @@ export default {
         notify: true,
         verify: true,
         path: window.location.hash,
-        avatar: 'retro',
+        avatar: 'robohash',
         placeholder: '留下你的足迹... （支持 Markdown）',
       });
       // 获取按钮的容器
