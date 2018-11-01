@@ -20,6 +20,19 @@
         {{blog.createTime | subTime(1)}}
       </div>
     </div>
+    <router-link class="modifyBtn" v-if="isLogined" :to="{
+      name: 'edit',
+      params: {
+        id: blog.id,
+        title: blog.title,
+        markdownDesc: blog.content_md,
+        description: blog.description,
+        imgName: blog.imageName,
+        uploadImgUrl: blog.image,
+        classifyId: blog.classifyId,
+        label: blog.label,
+        statusFlag: !!blog.status,
+      }}">修改</router-link>
     <div id="blog" class="content markdown-body" v-html="blog.content_hm"></div>
     <div class="content-footer">
       <p>本文由 <router-link to="/">乐诗-Krry</router-link> 创作，转载请注明</p>
@@ -66,6 +79,9 @@ export default {
     hasShowHeader () {
       // 当标题是 关于我 或 友情链接，不显示文章头部信息
       return this.blog.title !== '关于我' && this.blog.title !== '友情链接';
+    },
+    isLogined () {
+      return sessionStorage.getItem('username') === 'krry';
     },
   },
   mounted () {
@@ -195,6 +211,7 @@ article {
   padding: 0 25px 30px;
   margin: 0 auto;
   background-color: #fff;
+  position: relative;
 
   .art-header {
     padding-top: 100px;
@@ -255,6 +272,12 @@ article {
         margin-top: -2px;
       }
     }
+  }
+  .modifyBtn {
+    position: absolute;
+    right: 26px;
+    margin-top: 10px;
+    z-index: 2;
   }
   .content {
     margin: 26px 0;

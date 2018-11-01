@@ -34,7 +34,7 @@ export default {
 
 <style lang='scss' scoped>
 footer {
-  margin-top: 36px;
+  margin-top: 16px;
   height: 120px;
   background: rgba(255, 255, 255, 0.5);
 
