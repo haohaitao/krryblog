@@ -148,14 +148,14 @@ export default {
         console.log(reqData);
         let msg = await Service.updateBlog(reqData);
         if (msg === 'success') {
-          this.$router.push({name: 'list'});
+          this.$router.push(`/${this.id}`);
         } else {
           this.$Message.error('出错了呢，修改失败...');
         }
       } else {
         let id = await Service.addBlog(reqData);
         console.log('保存的id：' + id);
-        this.$router.push({name: 'list'});
+        this.$router.push(`/${id}`);
       }
       this.$Spin.hide();
     },
