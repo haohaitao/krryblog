@@ -276,8 +276,7 @@ article {
   .modifyBtn {
     position: absolute;
     right: 26px;
-    margin-top: 10px;
-    z-index: 2;
+    margin-top: 4px;
   }
   .content {
     margin: 26px 0;
