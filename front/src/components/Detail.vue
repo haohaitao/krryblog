@@ -20,7 +20,7 @@
         {{blog.createTime | subTime(1)}}
       </div>
     </div>
-    <router-link class="modifyBtn" v-if="isLogined" :to="{
+    <router-link class="modifyBtn" :style="hasShowHeader || 'margin-top: -15px;'" v-if="isLogined" :to="{
       name: 'edit',
       params: {
         id: blog.id,
