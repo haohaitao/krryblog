@@ -12,6 +12,6 @@ export default new Vuex.Store({
   modules: {
     blog, user,
   },
-  plugins: [logger()], // 导入日志插件
+  // plugins: [logger()], // 导入日志插件
   strict: true, // 严格模式，只能通过 mutation 来更改状态
 });
