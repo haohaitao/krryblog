@@ -497,6 +497,11 @@ article {
             display: inline;
             margin-left: 6px;
           }
+          a {
+            &::before {
+              background: #eb5055;
+            }
+          }
         }
       }
       .vquote {

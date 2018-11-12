@@ -1,7 +1,7 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
-import logger from 'vuex/dist/logger'; // logger是一个日志插件
+// import logger from 'vuex/dist/logger'; // logger是一个日志插件
 
 import blog from './modules/blog';
 import user from './modules/user';
