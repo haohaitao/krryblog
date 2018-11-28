@@ -22,8 +22,9 @@ export default {
     this.getClassifyList();
   },
   methods: {
+    // 将 `this.setClassify()` 映射为 `this.$store.dispatch('blog/SETCLASSIFY')`
     ...mapActions({
-      setClassify: 'blog/SETCLASSIFY', // 将 `this.setClassify()` 映射为 `this.$store.dispatch('blog/SETCLASSIFY')`
+      setClassify: 'blog/SETCLASSIFY',
     }),
     getClassifyList () {
       // 调用 vuex 中的 action 保存分类信息
