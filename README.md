@@ -11,6 +11,10 @@
 2. java、ssm、maven
 3. mysql
 
+## 服务器
+数据库：腾讯云
+项目部署：阿里云
+
 ## Build Setup
 
 ``` bash
