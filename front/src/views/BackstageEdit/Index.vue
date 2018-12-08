@@ -82,17 +82,28 @@ export default {
       let id = this.$route.params['id'];
       // get blog when edit
       if (id !== undefined) {
-        // 设置标题
         document.title = document.title.replace('新增', '编辑');
-        let blog = this.$route.params;
-        // 参数注入
-        for (let key in blog) {
-          this[key] = blog[key];
-        }
+
+        this.id = this.$route.params['id'];
+        this.imgName = this.$route.params['imgName'];
+        this.uploadImgUrl = this.$route.params['uploadImgUrl'];
         this.defaultUploadList = [{
           name: this.imgName,
           url: window.location.origin + '/krryblog/' + this.uploadImgUrl,
         }];
+
+        let res = await Service.getEditBlogDetail(this.id);
+        let status = res.status;
+        let blogObj = res.data;
+        // 404 的标题在 axios 拦截器已经定义
+        if (status !== 404) {
+          this.title = blogObj['title'];
+          this.markdownDesc = blogObj['content_md'];
+          this.statusFlag = !!blogObj['status'];
+          this.description = blogObj['description'];
+          this.classifyId = blogObj['classifyId'];
+          this.label = blogObj['label'];
+        }
       }
     },
 

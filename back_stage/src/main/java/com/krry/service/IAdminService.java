@@ -26,6 +26,12 @@ public interface IAdminService {
 	 */
 	public HashMap<String, Object> getLinkOrAbout(String title);
 	
+	/**
+	 * 获取博客详情页（编辑）
+	 * @return
+	 */
+	public HashMap<String, Object> getBlogDetail(int id);
+	
 	
 	/**
 	 * 分页所有博客（发布和未发布）、博客总数

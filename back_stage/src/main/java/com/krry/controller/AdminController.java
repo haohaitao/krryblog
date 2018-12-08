@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,6 +54,21 @@ public class AdminController {
 		
 		String title = request.getParameter("title");
 		HashMap<String, Object> resData = adminService.getLinkOrAbout(title);
+		
+		return resData;
+	}
+	
+	
+	/**
+	 * 获取博客详情页（编辑）
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/getBlogDetail/{id}")
+	public HashMap<String, Object> getBlogDetail(@PathVariable("id")Integer id){
+		
+		HashMap<String, Object> resData = adminService.getBlogDetail(id);
 		
 		return resData;
 	}

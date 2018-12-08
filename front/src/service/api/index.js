@@ -23,6 +23,9 @@ export default {
   fetchLinkOrAbout (reqData) {
     return Ax.get('/krryblog/krry/getLinkOrAbout', {params: reqData});
   },
+  fetchEditBlogDetail (id) {
+    return Ax.get(`/krryblog/krry/getBlogDetail/${id}`);
+  },
   fetchBlogByTag (reqData) {
     return Ax.get(`/krryblog/part/getBlogByTag`, {params: reqData});
   },

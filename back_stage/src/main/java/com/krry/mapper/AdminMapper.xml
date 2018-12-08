@@ -7,8 +7,6 @@
 	<!-- 通用sql -->
 	<sql id="blog_column">
 		b.title,
-		b.content_md,
-		b.content_hm,
 		b.description,
 		b.imageName,
 		b.image,
@@ -39,6 +37,7 @@
 		select
 			b.id,
 			c.name as classify,
+			b.content_hm,
 			<include refid="blog_column"></include>
 		from
 			blog b
@@ -47,6 +46,25 @@
 		on
 			b.classifyId = c.id
 		where b.title = #{title}
+	</select>
+	
+	<!-- 获取博客详情页（编辑，只需要markdown字段） -->
+	<select id="getBlogDetail" resultType="Blog">
+		select
+			b.id,
+			c.name as classify,
+			b.content_md,
+			<include refid="blog_column"></include>
+		from
+			blog b
+		left join
+			classify c
+		on
+			b.classifyId = c.id
+		where
+			b.id = #{id}
+		and
+			b.isDelete = 0
 	</select>
 	
 	

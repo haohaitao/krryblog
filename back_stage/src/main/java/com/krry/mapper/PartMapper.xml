@@ -7,8 +7,6 @@
 	<!-- 通用sql -->
 	<sql id="blog_column">
 		b.title,
-		b.content_md,
-		b.content_hm,
 		b.description,
 		b.imageName,
 		b.image,

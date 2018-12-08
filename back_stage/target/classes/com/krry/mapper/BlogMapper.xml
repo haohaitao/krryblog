@@ -7,8 +7,6 @@
 	<!-- 通用sql -->
 	<sql id="blog_column">
 		b.title,
-		b.content_md,
-		b.content_hm,
 		b.description,
 		b.imageName,
 		b.image,
@@ -55,11 +53,12 @@
 			isDelete = 0
 	</select>
 	
-	<!-- 获取博客详情页 -->
+	<!-- 获取博客详情页（只需要html字段） -->
 	<select id="getBlogDetail" resultType="Blog">
 		select
 			b.id,
 			c.name as classify,
+			b.content_hm,
 			<include refid="blog_column"></include>
 		from
 			blog b

@@ -18,13 +18,17 @@ public interface AdminMapper {
 	 */
 	public User getUserByName(User user);
 	
-	
-	
 	/**
 	 * 查询相关链接 / 关于我
 	 * @return
 	 */
 	public Blog getLinkOrAbout(String title);
+	
+	/**
+	 * 获取博客详情页（编辑）
+	 * @return
+	 */
+	public Blog getBlogDetail(int id);
 	
 	
 	/**

@@ -24,14 +24,8 @@
       name: 'edit',
       params: {
         id: blog.id,
-        title: blog.title,
-        markdownDesc: blog.content_md,
-        description: blog.description,
         imgName: blog.imageName,
-        uploadImgUrl: blog.image,
-        classifyId: blog.classifyId,
-        label: blog.label,
-        statusFlag: !!blog.status,
+        uploadImgUrl: blog.image
       }}">修改</router-link>
     <div id="blog" class="content markdown-body" v-html="blog.content_hm"></div>
     <div class="content-footer">
