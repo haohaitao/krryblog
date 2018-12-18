@@ -1,6 +1,6 @@
 <template>
   <section class="login">
-    <h1>Wellcome Login</h1>
+    <h1>Login</h1>
     <Form :label-width="73" label-position="top">
       <FormItem label="name">
         <Input v-model.trim="name" @keyup.enter.native="beforeSubmit" placeholder="Enter name..."/>
