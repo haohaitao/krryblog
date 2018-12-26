@@ -46,7 +46,7 @@ npm test
 2. 管理员模块，本模块由个人信息管理、发布、管理博客、管理音乐组成，管理员可在后台界面进行发布、管理博客（支持 Markdown）以及管理平台背景音乐（网易云外链播放）
 3. 音乐模块，本模块由音乐播放器组成，任何人访问本博客，都可进行选择、播放、暂停博客平台的背景音乐（网易云外链播放）
 
-![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/my/request.jpg)
+![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/my/requestImage.jpg)
 
 ## 路程
 8月22号：搭建 vue 脚手架，开始开发前端界面<br>
