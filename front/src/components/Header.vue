@@ -24,7 +24,7 @@
               </li>
             </ul>
           </li>
-          <li class="sub-item">
+          <!-- <li class="sub-item">
             主题
             <ul class="nav-child">
               <li @click="littleThem">
@@ -34,7 +34,7 @@
                 <router-link to="#">二次元</router-link>
               </li>
             </ul>
-          </li>
+          </li> -->
           <!-- 可使用命名路由 -->
           <router-link :to="{name: 'link'}">
             <li>
@@ -65,7 +65,7 @@
               </li>
             </ul>
           </li>
-          <li class="sub-item">
+          <!-- <li class="sub-item">
             <Icon type="md-color-palette" />
             主题
             <ul class="nav-child">
@@ -76,7 +76,7 @@
                 <router-link to="#">二次元</router-link>
               </li>
             </ul>
-          </li>
+          </li> -->
           <!-- 可使用命名路由 -->
           <router-link :to="{name: 'link'}">
             <li>
@@ -148,12 +148,12 @@ export default {
     closeCollMenu () {
       this.isVisibleNavFar = !this.isVisibleNavFar;
     },
-    littleThem () {
-      this.$Message.info('已经是当前主题哦~');
-    },
-    currentThem () {
-      this.$Message.error('该主题暂时未完成~ QAQ');
-    },
+    // littleThem () {
+    //   this.$Message.info('已经是当前主题哦~');
+    // },
+    // currentThem () {
+    //   this.$Message.error('该主题暂时未完成~ QAQ');
+    // },
   },
   components: {
   },
