@@ -20,7 +20,9 @@ export default function (opts) {
   // var $scrollWrap = Opt.scrollWrapper; // 滚动条区域
   var $catalog = document.getElementById(Opt.catalogEl); // 目录容器
 
+  // 在内容区获取要生成目录的 H 标签，allCatalogs：数组形式
   var allCatalogs = $content.querySelectorAll(Opt.selector.join());
+  // 生成目录树
   var tree = getCatalogsTree(allCatalogs);
 
   try {
@@ -58,6 +60,8 @@ export default function (opts) {
     var target = _ref.target;
 
     var datasetId = target.getAttribute(Opt.datasetName);
+    // 当前点击的 class 如果包含 Opt.linkClass，就跳到某一目录
+    // Element.scrollIntoView() 方法让当前的元素滚动到浏览器窗口的可视区域内
     target.classList.contains(Opt.linkClass) && document.getElementById(datasetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -154,7 +158,7 @@ export default function (opts) {
   }
 
   /**
-   *  设置选中的项
+   *  滚动到当前目录，设置选中的目录
    */
   function setActiveItem (id) {
     var _this = this;
