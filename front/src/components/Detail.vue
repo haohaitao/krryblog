@@ -29,7 +29,7 @@
       }}">修改</router-link>
     <div id="blog" class="content markdown-body" v-html="blog.content_hm"></div>
     <div class="content-footer">
-      <p>本文由 <router-link to="/">乐诗-Krry</router-link> 创作，转载请注明</p>
+      <p>本文由 <router-link to="/">{{blog.userName}}</router-link> 创作，转载请注明</p>
       <p>最后编辑时间：{{blog.updateTime}}</p>
     </div>
     <aside id="directory"></aside>

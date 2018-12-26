@@ -6,6 +6,7 @@
 	
 	<!-- 通用sql -->
 	<sql id="blog_column">
+		b.userId,
 		b.title,
 		b.description,
 		b.imageName,
@@ -25,10 +26,15 @@
 	<select id="getBlog" resultType="Blog">
 		select
 			b.id,
+			u.name as userName,
 			c.name as classify,
 			<include refid="blog_column"></include>
 		from
 			blog b
+		left join
+			user u
+		on
+			b.userId = u.id
 		left join
 			classify c
 		on
@@ -57,11 +63,16 @@
 	<select id="getBlogDetail" resultType="Blog">
 		select
 			b.id,
+			u.name as userName,
 			c.name as classify,
 			b.content_hm,
 			<include refid="blog_column"></include>
 		from
 			blog b
+		left join
+			user u
+		on
+			b.userId = u.id
 		left join
 			classify c
 		on
@@ -87,10 +98,15 @@
 	<select id="getBlogByClassifyId" resultType="Blog">
 		select
 			b.id,
+			u.name as userName,
 			c.name as classify,
 			<include refid="blog_column"></include>
 		from
 			blog b
+		left join
+			user u
+		on
+			b.userId = u.id
 		left join
 			classify c
 		on
@@ -132,6 +148,7 @@
 	<!-- 新增 -->
 	<insert id="addBlog" useGeneratedKeys="true" keyProperty="id" parameterType="Blog">  
 	    insert into blog(
+	    	userId,
 	    	title,
 			content_md,
 			content_hm,
@@ -148,6 +165,7 @@
 			isDelete
 	    )
 	    values(
+	    	#{userId},
 	    	#{title},
 			#{content_md},
 			#{content_hm},
@@ -170,6 +188,7 @@
 		update
 			blog
 		<trim prefix="SET" suffixOverrides=",">
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(userId)">title=#{userId},</if>
 			<if test="@com.krry.util.TmStringUtils@isNotEmpty(title)">title=#{title},</if>
 			<if test="@com.krry.util.TmStringUtils@isNotEmpty(content_md)">content_md=#{content_md},</if>
 			<if test="@com.krry.util.TmStringUtils@isNotEmpty(content_hm)">content_hm=#{content_hm},</if>

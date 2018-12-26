@@ -6,6 +6,7 @@
 	
 	<!-- 通用sql -->
 	<sql id="blog_column">
+		b.userId,
 		b.title,
 		b.description,
 		b.imageName,
@@ -24,10 +25,15 @@
 	<select id="getBlogByTag" resultType="Blog" parameterType="Params">
 		select
 			b.id,
+			u.name as userName,
 			c.name as classify,
 			<include refid="blog_column"></include>
 		from
 			blog b
+		left join
+			user u
+		on
+			b.userId = u.id
 		left join
 			classify c
 		on
@@ -61,10 +67,15 @@
 	<select id="getBlogBykeyword" resultType="Blog" parameterType="Params">
 		select
 			b.id,
+			u.name as userName,
 			c.name as classify,
 			<include refid="blog_column"></include>
 		from
 			blog b
+		left join
+			user u
+		on
+			b.userId = u.id
 		left join
 			classify c
 		on

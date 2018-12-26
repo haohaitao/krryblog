@@ -3,6 +3,8 @@ package com.krry.entity;
 public class Blog {
 	
 	private Integer id;
+	private Integer userId;
+	private String userName;
 	private String title;
 	private String content_md;
 	private String content_hm;
@@ -24,6 +26,18 @@ public class Blog {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getTitle() {
 		return title;
@@ -115,6 +129,7 @@ public class Blog {
 	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
 	}
+	
 	
 	
 }

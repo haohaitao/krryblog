@@ -73,6 +73,10 @@ export default {
     classifyList () {
       return this.$store.getters['blog/classify'];
     },
+    // 获取用户 ID
+    userId () {
+      return this.$store.getters['user/id'];
+    },
   },
   created () {
     this.getBlogInfo();
@@ -172,6 +176,7 @@ export default {
     },
     convertParams () {
       return {
+        userId: this.userId,
         title: this.title,
         content_md: this.markdownDesc,
         content_hm: this.translateDesc,

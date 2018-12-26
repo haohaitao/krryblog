@@ -55,12 +55,16 @@ export default {
     },
     async submit (reqData) {
       let res = await Service.getLogin(reqData);
-      if (res !== 'success') {
+      if (!res.includes('success')) {
         this.$Message.warning(res);
       } else {
         // 成功登录
         console.log('成功登录');
+        // 成功登录的返回值是 success+空格+用户id
+        let userId = +res.split(' ')[1];
+        sessionStorage.setItem('id', userId);
         sessionStorage.setItem('username', this.name);
+        this.$store.dispatch('user/SETUSERID', userId);
         this.$store.dispatch('user/SETUSERNAME', this.name);
         this.$router.push({name: 'list'});
       }

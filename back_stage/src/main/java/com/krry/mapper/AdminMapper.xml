@@ -6,6 +6,7 @@
 	
 	<!-- 通用sql -->
 	<sql id="blog_column">
+		b.userId,
 		b.title,
 		b.description,
 		b.imageName,
@@ -24,6 +25,7 @@
 	<!-- 根据用户名查询 -->
 	<select id="getUserByName" resultType="User" parameterType="User">
 		select
+			id,
 			name,
 			password
 		from
@@ -36,11 +38,16 @@
 	<select id="getLinkOrAbout" resultType="Blog">
 		select
 			b.id,
+			u.name as userName,
 			c.name as classify,
 			b.content_hm,
 			<include refid="blog_column"></include>
 		from
 			blog b
+		left join
+			user u
+		on
+			b.userId = u.id
 		left join
 			classify c
 		on
@@ -52,11 +59,16 @@
 	<select id="getBlogDetail" resultType="Blog">
 		select
 			b.id,
+			u.name as userName,
 			c.name as classify,
 			b.content_md,
 			<include refid="blog_column"></include>
 		from
 			blog b
+		left join
+			user u
+		on
+			b.userId = u.id
 		left join
 			classify c
 		on
@@ -72,10 +84,15 @@
 	<select id="getBlog" resultType="Blog">
 		select
 			b.id,
+			u.name as userName,
 			c.name as classify,
 			<include refid="blog_column"></include>
 		from
 			blog b
+		left join
+			user u
+		on
+			b.userId = u.id
 		left join
 			classify c
 		on

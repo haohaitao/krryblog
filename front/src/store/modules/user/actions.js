@@ -5,4 +5,8 @@ export default {
   async [Types.SETUSERNAME] ({ commit }, name) {
     commit(Types.SETUSERNAME, name);
   },
+  // 设置用户 ID
+  async [Types.SETUSERID] ({ commit }, id) {
+    commit(Types.SETUSERID, id);
+  },
 };

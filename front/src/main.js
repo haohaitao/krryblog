@@ -22,6 +22,7 @@ Vue.use(mavonEditor);
 router.beforeEach((to, from, next) => {
   let toRouteName = to.name;
   let username = sessionStorage.getItem('username');
+  let id = sessionStorage.getItem('id');
   if (toRouteName === 'login') {
     if (username !== null) {
       // 已登录，进入列表页
@@ -34,6 +35,7 @@ router.beforeEach((to, from, next) => {
     // 如果需要登录通过的页面
     if (username !== null) {
       // 已登录，进入下一个页面
+      store.dispatch('user/SETUSERID', +id);
       store.dispatch('user/SETUSERNAME', username);
       next();
     } else {

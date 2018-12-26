@@ -43,7 +43,7 @@ public class AdminService implements IAdminService{
 		User realUser = adminMapper.getUserByName(user);
 		if (realUser != null) {
 			if (realUser.getPassword().equals(user.getPassword())) {
-				return "success";
+				return "success " + realUser.getId();
 			} else {
 				return "密码错误哦~";
 			}
