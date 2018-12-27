@@ -322,9 +322,9 @@ export default {
       if (msg === 'success') {
         // 同步已查询出来的数据
         this.$emit('statusBlog', reqData);
-        this.$Message.success('修改成功');
+        this.$Message.success('Modified success!');
       } else {
-        this.$Message.error('出错了呢，修改失败...');
+        this.$Message.error('Error, Failure to Modify...');
       }
       this.$Spin.hide();
     },
@@ -348,9 +348,9 @@ export default {
       if (msg === 'success') {
         // refresh local data
         this.$emit('deleteBlog', id);
-        this.$Message.success('删除成功');
+        this.$Message.success('Delete successful!');
       } else {
-        this.$Message.error('出错了呢，删除失败...');
+        this.$Message.error('Error, Failure to delete...');
       }
       this.$Spin.hide();
     },

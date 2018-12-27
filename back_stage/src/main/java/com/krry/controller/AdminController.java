@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.krry.entity.Blog;
 import com.krry.entity.Params;
 import com.krry.entity.User;
 import com.krry.service.IAdminService;
@@ -96,7 +95,7 @@ public class AdminController {
 	 */
 	@ResponseBody
 	@RequestMapping("/updateUser")
-	public String updateBlog(User user){
+	public String updateUser(User user){
 		
 		String msg = adminService.updateUser(user);
 		
