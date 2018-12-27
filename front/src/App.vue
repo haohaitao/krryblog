@@ -78,11 +78,6 @@ img {
   z-index: 1011 !important;
 }
 
-/* 对话框的内边距 */
-.ivu-modal-body {
-  padding: 22px 38px;
-}
-
 /* 表单的验证信息右移 */
 .ivu-form-item-error-tip {
   left: unset;

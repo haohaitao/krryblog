@@ -9,7 +9,7 @@
       width="400"
       v-model="showModel"
       title="Modifying personal information">
-      <Form :model="userForm" :rules="rule" label-position="top" ref="userForm">
+      <Form :model="userForm" :rules="rule" label-position="top" class="user-form" ref="userForm">
         <FormItem label="User Name" prop="newName">
           <i-input v-model="userForm.newName" autocomplete="off" :maxlength="10" width="100" placeholder="Please enter your name..."></i-input>
         </FormItem>
@@ -263,7 +263,7 @@ export default {
       return this.$store.getters['user/id'];
     },
     showPWmsg () {
-      return this.showPW ? '收起，不修改密码' : '修改密码';
+      return this.showPW ? 'Pick up, No modify password' : 'Modify password';
     },
   },
   methods: {
@@ -331,8 +331,10 @@ export default {
     beforeRemove (id, title) {
       console.log('删除id：' + id);
       this.$Modal.confirm({
-        title: '提示~',
+        title: 'notification~',
         content: `<p>是否删除博客 “ ${title} ” ？</p>`,
+        okText: 'Confirm',
+        cancelText: 'Cancel',
         onOk: () => {
           this.remove(id);
         },
@@ -408,5 +410,8 @@ section {
       cursor: url(../../../assets/pic/cursor.cur), pointer !important;
     }
   }
+}
+.user-form {
+  padding: 8px 20px;
 }
 </style>
