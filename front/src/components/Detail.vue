@@ -75,7 +75,7 @@ export default {
       return this.blog.title !== '关于我' && this.blog.title !== '友情链接';
     },
     isLogined () {
-      return sessionStorage.getItem('username') === 'krry';
+      return sessionStorage.getItem('username') === 'Krry';
     },
   },
   mounted () {

@@ -26,13 +26,14 @@ router.beforeEach((to, from, next) => {
   if (toRouteName === 'login') {
     if (username !== null) {
       // 已登录，进入列表页
+      store.dispatch('user/SETUSERID', +id);
       store.dispatch('user/SETUSERNAME', username);
       next({name: 'list'});
     } else {
       next();
     }
   } else if (to.meta.requireAuth) {
-    // 如果需要登录通过的页面
+    // 如果需要进入需登录的页面
     if (username !== null) {
       // 已登录，进入下一个页面
       store.dispatch('user/SETUSERID', +id);
