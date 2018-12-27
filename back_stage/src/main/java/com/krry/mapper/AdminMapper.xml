@@ -33,6 +33,17 @@
 		where name = #{name}
 	</select>
 	
+	<!-- 根据用户 id 查询 -->
+	<select id="getUserById" resultType="User" parameterType="java.lang.Integer">
+		select
+			id,
+			name,
+			password
+		from
+			user
+		where id = #{id}
+	</select>
+	
 	
 	<!-- 获取相关链接/关于 -->
 	<select id="getLinkOrAbout" resultType="Blog">
@@ -113,6 +124,18 @@
 		where
 			isDelete = 0
 	</select>
+	
+	<!-- 修改用户信息 -->
+	<update id="updateUser"  parameterType="User">
+		update
+			user
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(name)">name=#{name},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(password)">password=#{password},</if>
+		</trim>
+		where
+			id = #{id}
+	</update>
 	
 </mapper>
 

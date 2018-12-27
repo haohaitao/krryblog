@@ -51,12 +51,28 @@ npm test
 ![](https://raw.githubusercontent.com/Krryxa/WORK-LEARNING/master/images/my/requestImage.jpg)
 
 ## 路程
+2018<br>
+08/22：搭建 vue 脚手架，开始开发前端界面<br>
+09/02：开始编写 java 后台，一边写后台接口，一边前端对接接口<br>
+09/17：博客功能基本完成<br>
+09/18：尝试上线，上线成功<br>
+09/19：加入骨架屏<br>
+09/20：完成响应式<br>
+09/30：加入评论系统<br>
+10~11：各种样式调整和其他优化<br>
+12/08：配置文件重构（分页插件重新配置）<br>
+12/27：加入个人信息修改<br>
+...
+
+
 8月22号：搭建 vue 脚手架，开始开发前端界面<br>
 9月02号：开始编写 java 后台，一边写后台接口，一边前端对接接口<br>
 9月17号：博客功能基本完成<br>
 9月18号：尝试上线，上线成功<br>
+9月19号：加入骨架屏<br>
 9月20号：完成响应式<br>
-9/21…
+9月30号：加入评论系统<br>
+
 
 ## 安装依赖
 ```bash
@@ -164,6 +180,18 @@ mounted () {
 },
 ```
 6. 移动端不支持十六进制的透明度，会失效，所以要在设置颜色的同时设置透明度就用 rgba 的形式设置
+7. iview 的对话框 modal 在点击确定后会自动关闭，有时需要在验证表单通过后再关闭对话框，但是官方对话框点了确定，不管怎么样都会关闭对话框，解决方法：
+使用 slot 重写底部按钮
+```html
+<Modal title="退款" v-model="showRejectModal">
+   <!--重点就是下面的代码了-->
+   <div slot="footer">
+   	<Button type="text" size="large" @click="showRejectModal=false">取消</Button>
+   	<Button type="primary" size="large" @click="doSomething">确定</Button>
+   </div>
+</Modal>
+```
+8. 很多页面使用到 loading 动画，放入 mixins 中混入需要的页面
 
 ## 部署
 1. 文件路径出错：在 config 的 index.js 下 build 的设置：assetsPublicPath: './',

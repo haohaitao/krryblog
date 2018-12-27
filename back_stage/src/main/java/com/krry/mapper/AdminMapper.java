@@ -13,10 +13,17 @@ import com.krry.entity.User;
 public interface AdminMapper {
 	
 	/**
-	 * 查询根据用户名查询
+	 * 根据用户名查询
 	 * @return
 	 */
 	public User getUserByName(User user);
+	
+	/**
+	 * 根据用户id查询
+	 * @param id
+	 * @return
+	 */
+	public User getUserById(int id);
 	
 	/**
 	 * 查询相关链接 / 关于我
@@ -42,6 +49,12 @@ public interface AdminMapper {
 	 * @return
 	 */
 	public int getBlogCount();
+	
+	/**
+	 * 修改个人信息
+	 * @param user
+	 */
+	public void updateUser(User user);
 
 }
 

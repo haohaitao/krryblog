@@ -176,6 +176,27 @@ public class AdminService implements IAdminService{
 	}
 	
 	
+	/**
+	 * 修改个人信息
+	 * @param user
+	 * @return
+	 */
+	public String updateUser(User user) {
+		
+		if (user.getOriginWord() != null) {
+			// 如果要修改密码
+			int id = user.getId();
+			User originUser = adminMapper.getUserById(id);
+			// 查询原密码是否输入正确
+			if (!originUser.getPassword().equals(user.getOriginWord())) {
+				return "Incorrect input of original password";
+			}
+		}
+		
+		adminMapper.updateUser(user);
+		
+		return "success";
+	}
 
 
 }

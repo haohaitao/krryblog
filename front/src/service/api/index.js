@@ -35,6 +35,9 @@ export default {
   fetchLogin (reqData) {
     return Ax.get(`/krryblog/krry/login`, {params: reqData});
   },
+  updateUser (reqData) {
+    return Ax.post(`/krryblog/krry/updateUser`, qs.stringify(reqData));
+  },
   fetchAllBlog (reqData) {
     return Ax.get(`/krryblog/krry/getBlog`, {params: reqData});
   },

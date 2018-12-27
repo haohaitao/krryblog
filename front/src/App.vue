@@ -68,6 +68,27 @@ img {
   animation-duration: .5s;
 }
 
+/* 遮罩层 */
+.ivu-modal-mask, .ivu-modal-wrap {
+  z-index: 1010 !important;
+}
+
+/* message 提示信息 */
+.ivu-message {
+  z-index: 1011 !important;
+}
+
+/* 对话框的内边距 */
+.ivu-modal-body {
+  padding: 22px 38px;
+}
+
+/* 表单的验证信息右移 */
+.ivu-form-item-error-tip {
+  left: unset;
+  right: 0;
+}
+
 /* 回到顶部 */
 .ivu-back-top {
   display: block;

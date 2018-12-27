@@ -1,9 +1,36 @@
 <template>
   <section class="list">
-    <h1>~Wellcome~</h1>
+    <h1>~Wellcome {{userName}}~</h1>
     <router-link :to="{name: 'edit'}">
-      <Button type="success" class="add-button">add</Button>
+      <Button type="success" class="add-button">Add</Button>
     </router-link>
+    <a href="javascript:void(0)" @click="showDialog" class="modify-buttom">修改个人信息</a>
+    <Modal
+      width="400"
+      v-model="showModel"
+      title="Modifying personal information">
+      <Form :model="userForm" :rules="rule" label-position="top" ref="userForm">
+        <FormItem label="User Name" prop="newName">
+          <i-input v-model="userForm.newName" autocomplete="off" :maxlength="10" width="100" placeholder="Please enter your name..."></i-input>
+        </FormItem>
+        <p class="text-right"><a href="javascript:void(0)" @click="showPW = !showPW">{{showPWmsg}}</a></p>
+        <template v-if="showPW">
+          <FormItem label="Original Password" prop="originPW">
+            <i-input v-model="userForm.originPW" type="password" autocomplete="off" :maxlength="20" placeholder="Please enter your original password..."></i-input>
+          </FormItem>
+          <FormItem label="New Password" prop="newPW">
+            <i-input v-model="userForm.newPW" type="password" autocomplete="off" :maxlength="20" placeholder="Please enter your new password..."></i-input>
+          </FormItem>
+          <FormItem label="Repeat The New Password" prop="reNewPW">
+            <i-input v-model="userForm.reNewPW" type="password" autocomplete="off" :maxlength="20" placeholder="Please repeat enter your new password..."></i-input>
+          </FormItem>
+        </template>
+      </Form>
+      <div slot="footer">
+        <Button type="warning" size="large" @click="cancel">Cancel</Button>
+        <Button type="primary" size="large" @click="confirmUser">Confirm</Button>
+      </div>
+    </Modal>
     <Table border stripe :columns="columns" :data="blogList"></Table>
     <Page v-if="blogLen > 10" :total="blogLen" size="small" :page-size="10" show-elevator @on-change="changePage"/>
   </section>
@@ -11,6 +38,7 @@
 
 <script>
 import Service from '@/service';
+import { loading } from '@/mixins/loading';
 export default {
   props: {
     blogList: {
@@ -20,8 +48,76 @@ export default {
       type: Number,
     },
   },
+  mixins: [loading],
   data () {
+    const validateRepeatPW = (rule, value, callback) => {
+      if (this.userForm['newPW'] !== value) {
+        return callback(new Error('Two input password must be consistent'));
+      } else {
+        callback();
+      }
+    };
     return {
+      showModel: false,
+      showPW: false,
+      userForm: {
+        newName: '',
+        originPW: '',
+        newPW: '',
+        reNewPW: '',
+      },
+      rule: {
+        newName: [
+          {
+            required: true,
+            message: 'The user name cannot be empty',
+            trigger: 'blur',
+          },
+        ],
+        originPW: [
+          {
+            required: true,
+            message: 'The original password cannot be empty',
+            trigger: 'blur',
+          },
+          {
+            type: 'string',
+            min: 6,
+            message: 'The password no less than 6 words',
+            trigger: 'blur',
+          },
+        ],
+        newPW: [
+          {
+            required: true,
+            message: 'The new password cannot be empty',
+            trigger: 'blur',
+          },
+          {
+            type: 'string',
+            min: 6,
+            message: 'The password no less than 6 words',
+            trigger: 'blur',
+          },
+        ],
+        reNewPW: [
+          {
+            required: true,
+            message: 'The repeat new password cannot be empty',
+            trigger: 'blur',
+          },
+          {
+            type: 'string',
+            min: 6,
+            message: 'The password no less than 6 words',
+            trigger: 'blur',
+          },
+          {
+            validator: validateRepeatPW,
+            trigger: 'blur',
+          },
+        ],
+      },
       columns: [
         {
           type: 'selection',
@@ -159,27 +255,65 @@ export default {
       ],
     };
   },
+  computed: {
+    userName () {
+      return this.$store.getters['user/username'];
+    },
+    userId () {
+      return this.$store.getters['user/id'];
+    },
+    showPWmsg () {
+      return this.showPW ? '收起，不修改密码' : '修改密码';
+    },
+  },
   methods: {
     changePage (pageNo) {
       this.$emit('changePage', pageNo);
     },
+    showDialog () {
+      this.showModel = true;
+      this.userForm['newName'] = this.userName;
+    },
+    // 确认修改个人信息
+    confirmUser () {
+      this.$refs['userForm'].validate(async (valid) => {
+        if (valid) {
+          this.openLoading('正在修改~~');
+          let reqData = {
+            id: this.userId,
+            name: this.userForm['newName'],
+          };
+          if (this.showPW) {
+            // 如果修改密码
+            reqData = Object.assign({}, reqData, {
+              originWord: this.userForm['originPW'],
+              password: this.userForm['newPW'],
+            });
+          }
+          let res = await Service.updateUser(reqData);
+          this.$Spin.hide();
+          if (res !== 'success') {
+            this.$Message.error(res);
+          } else {
+            // 修改成功，更改 session 和 vuex 中的数据
+            sessionStorage.setItem('username', reqData.name);
+            this.$store.dispatch('user/SETUSERNAME', reqData.name);
+            this.$Message.success('Modified success!');
+            this.cancel();
+          }
+        } else {
+        }
+      });
+    },
+    cancel () {
+      this.showModel = false;
+      this.$refs['userForm'].resetFields();
+      this.showPW = false;
+    },
     // 设置发布状态
     async setStatus (id, val) {
       console.log(id, val);
-      this.$Spin.show({
-        render: (h) => {
-          return h('div', [
-            h('Icon', {
-              'class': 'icon-load',
-              props: {
-                type: 'ios-loading',
-                size: 26,
-              },
-            }),
-            h('div', '正在修改~~'),
-          ]);
-        },
-      });
+      this.openLoading('正在修改~~');
       let reqData = {
         id: id,
         status: val ? 1 : 0,
@@ -205,20 +339,7 @@ export default {
       });
     },
     async remove (id) {
-      this.$Spin.show({
-        render: (h) => {
-          return h('div', [
-            h('Icon', {
-              'class': 'icon-load',
-              props: {
-                type: 'ios-loading',
-                size: 26,
-              },
-            }),
-            h('div', '正在删除~~'),
-          ]);
-        },
-      });
+      this.openLoading('正在删除~~');
       let reqData = {
         id: id,
         isDelete: 1,
@@ -254,14 +375,21 @@ section {
   }
 
   .add-button {
-    float: right;
+    float: left;
     width: 80px;
     margin-top: -15px;
+  }
+
+  .modify-buttom {
+    float: right;
   }
 
   .ivu-table-wrapper {
     margin-top: 28px;
   }
+}
+.text-right {
+  text-align: right;
 }
 </style>
 <style lang="scss">

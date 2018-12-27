@@ -179,7 +179,4 @@ export default {
     }
   }
 }
-.ivu-modal-mask, .ivu-modal-wrap {
-  z-index: 1010 !important;
-}
 </style>

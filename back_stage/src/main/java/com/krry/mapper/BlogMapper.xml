@@ -188,7 +188,7 @@
 		update
 			blog
 		<trim prefix="SET" suffixOverrides=",">
-			<if test="@com.krry.util.TmStringUtils@isNotEmpty(userId)">title=#{userId},</if>
+			<if test="@com.krry.util.TmStringUtils@isNotEmpty(userId)">userId=#{userId},</if>
 			<if test="@com.krry.util.TmStringUtils@isNotEmpty(title)">title=#{title},</if>
 			<if test="@com.krry.util.TmStringUtils@isNotEmpty(content_md)">content_md=#{content_md},</if>
 			<if test="@com.krry.util.TmStringUtils@isNotEmpty(content_hm)">content_hm=#{content_hm},</if>

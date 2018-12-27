@@ -38,5 +38,12 @@ public interface IAdminService {
 	 * @return
 	 */
 	public HashMap<String, Object> getBlog(Params parmas);
+	
+	
+	/**
+	 * 修改个人信息
+	 * @param user
+	 */
+	public String updateUser(User user);
 
 }

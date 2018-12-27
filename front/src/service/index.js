@@ -45,6 +45,10 @@ export default {
     let res = await Api.fetchLogin(reqData);
     return res;
   },
+  async updateUser (reqData) {
+    let res = await Api.updateUser(reqData);
+    return res;
+  },
   async getAllBlog (reqData) {
     let res = await Api.fetchAllBlog(reqData);
     return res;

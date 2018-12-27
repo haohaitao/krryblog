@@ -45,9 +45,11 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import uploadImg from './UploadImg';
 import Service from '@/service';
+import { loading } from '@/mixins/loading';
 import '@/assets/css/markdown.css';
 import '@/assets/css/github.css';
 export default {
+  mixins: [loading],
   data () {
     return {
       id: 0,
@@ -142,20 +144,7 @@ export default {
     },
     async commit (reqData) {
       console.log(reqData);
-      this.$Spin.show({
-        render: (h) => {
-          return h('div', [
-            h('Icon', {
-              'class': 'icon-load',
-              props: {
-                type: 'ios-loading',
-                size: 26,
-              },
-            }),
-            h('div', '正在保存~~'),
-          ]);
-        },
-      });
+      this.openLoading('正在保存~~');
       if (this.id > 0) {
         // is edit
         console.log('是编辑，id：' + this.id);

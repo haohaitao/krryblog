@@ -18,7 +18,9 @@
 
 <script>
 import Service from '@/service';
+import { loading } from '@/mixins/loading';
 export default {
+  mixins: [loading],
   data () {
     return {
       name: '',
@@ -32,20 +34,7 @@ export default {
       } else if (this.password === '') {
         this.$Message.warning('先输入密码哦~~');
       } else {
-        this.$Spin.show({
-          render: (h) => {
-            return h('div', [
-              h('Icon', {
-                'class': 'icon-load',
-                props: {
-                  type: 'ios-loading',
-                  size: 26,
-                },
-              }),
-              h('div', '正在登录哦~~'),
-            ]);
-          },
-        });
+        this.openLoading('正在登录~~');
         let reqData = {
           name: this.name,
           password: this.password,
