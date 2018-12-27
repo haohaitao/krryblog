@@ -35,7 +35,7 @@ export default {
         },
         {
           title: '标题',
-          width: 150,
+          width: 140,
           key: 'title',
           render: (h, params) => {
             return h('router-link', {
@@ -47,6 +47,7 @@ export default {
         },
         {
           title: '存档',
+          width: 97,
           key: 'classify',
           render: (h, params) => {
             return h('router-link', {
@@ -57,27 +58,32 @@ export default {
           },
         },
         {
+          title: '作者',
+          key: 'userName',
+        },
+        {
           title: '标签',
+          width: 90,
           key: 'label',
         },
         {
           title: '点击 / 评论',
-          width: 103,
+          width: 97,
           key: 'hitComment',
         },
         {
           title: '发表时间',
-          width: 106,
+          width: 100,
           key: 'createTime',
         },
         {
           title: '最后更新',
-          width: 106,
+          width: 100,
           key: 'updateTime',
         },
         {
           title: '状态',
-          width: 90,
+          width: 80,
           key: 'status',
           align: 'center',
           render: (h, params) => {
@@ -109,7 +115,7 @@ export default {
         {
           title: '操作',
           key: 'action',
-          width: 140,
+          width: 130,
           align: 'center',
           render: (h, params) => {
             return h('div', {
@@ -236,7 +242,7 @@ export default {
 <style lang='scss' scoped>
 section {
   animation: fadeIn .6s linear;
-  padding: 90px 0 30px;
+  padding: 90px 0 0px;
   width: 1020px;
   margin: 0 auto;
 
