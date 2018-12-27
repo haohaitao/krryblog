@@ -65,15 +65,6 @@ npm test
 ...
 
 
-8月22号：搭建 vue 脚手架，开始开发前端界面<br>
-9月02号：开始编写 java 后台，一边写后台接口，一边前端对接接口<br>
-9月17号：博客功能基本完成<br>
-9月18号：尝试上线，上线成功<br>
-9月19号：加入骨架屏<br>
-9月20号：完成响应式<br>
-9月30号：加入评论系统<br>
-
-
 ## 安装依赖
 ```bash
 npm install stylus-loader css-loader style-loader --save-dev
