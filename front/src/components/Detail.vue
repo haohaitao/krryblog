@@ -136,7 +136,7 @@ export default {
         appKey: 'xDI01iWSsPVlKzITBp5ODinq',
         verify: true,
         path: window.location.hash,
-        avatar: 'robohash',
+        avatar: 'mp',
         placeholder: '留下你的足迹... （支持 Markdown）',
       });
       // 获取按钮的容器
