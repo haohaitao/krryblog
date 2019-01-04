@@ -400,9 +400,6 @@ article {
     min-height: 6rem;
     max-height: 12rem;
   }
-  .vctrl {
-    display: none;
-  }
   .vcontrol {
     padding-top: 10px;
     & > .col:first-child {
