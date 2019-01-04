@@ -134,7 +134,6 @@ export default {
         el: '#vcomments',
         appId: 'AXcd7u8mPqn0JWnsXku8MgdU-gzGzoHsz',
         appKey: 'xDI01iWSsPVlKzITBp5ODinq',
-        notify: true,
         verify: true,
         path: window.location.hash,
         avatar: 'robohash',
