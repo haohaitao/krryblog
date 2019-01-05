@@ -27,7 +27,9 @@
             <span>{{val.comment}}</span>
           </div>
           <router-link :to="val.id | setLink(`/category/${val.classifyId}`)">
-            <div class="item-icon" :title="val.classify" :style="{backgroundPosition: `0 ${-val.classifyId*70}px`}"></div>
+            <Tooltip :content="val.classify" theme="light" placement="top-end">
+              <div class="item-icon" :style="{backgroundPosition: `0 ${-val.classifyId*70}px`}"></div>
+            </Tooltip>
           </router-link>
         </div>
       </div>
