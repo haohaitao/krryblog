@@ -3,7 +3,7 @@
 .DS_Store
 
 # ignore eclipse files
-.project
-.classpath
-.settings
-.tern-project
+# .project
+# .classpath
+# .settings
+# .tern-project
