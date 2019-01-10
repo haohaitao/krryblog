@@ -109,32 +109,6 @@ setTimeout(() => {
 }, 0);
 ```
 
-## 数据结构
-1. 查询详细博客内容的数据：
-```js
-{
-  [{
-    id: 33,
-    title: '测试444',
-    content_md: '测试444测试444',
-    content_hm: '<p>测试444测试444</p>\n',
-    description: '测试444',
-    imageName: '830db39e136e1f0547519217bd11d0f4.jpg',
-    image: 'upload/2018/09/18/ee971bcc-dcf9-49cb-b496-7c293f692d37.jpg',
-    classify: '技术分享',
-    classifyId: 2,
-    label: '标签',
-    hit: 2,
-    comment: 0,
-    createTime: '2018-09-18',
-    updateTime: '2018-09-18',
-    status: 1,
-    isDelete: 0
-  }],
-  status: 200,
-}
-```
-
 ## 问题
 1. 如果出现mybatis查询中文没有结果集的情况，或者查询中文出现报错，在jdbc.propersities文件里的db.url=数据库地址加上?useUnicode=true&characterEncoding=UTF-8
 2. 若页面已经被 keepAlive 了，那将获取路由参数的钩子应该是 activated，created 和 mounted 钩子无法获取
