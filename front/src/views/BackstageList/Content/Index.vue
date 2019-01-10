@@ -39,6 +39,7 @@
 <script>
 import Service from '@/service';
 import { loading } from '@/mixins/loading';
+import { PERSON_MODIFY_RULE } from '@/views/service/rules';
 export default {
   props: {
     blogList: {
@@ -50,13 +51,6 @@ export default {
   },
   mixins: [loading],
   data () {
-    const validateRepeatPW = (rule, value, callback) => {
-      if (this.userForm['newPW'] !== value) {
-        return callback(new Error('Two input password must be consistent'));
-      } else {
-        callback();
-      }
-    };
     return {
       showModel: false,
       showPW: false,
@@ -66,58 +60,7 @@ export default {
         newPW: '',
         reNewPW: '',
       },
-      rule: {
-        newName: [
-          {
-            required: true,
-            message: 'The user name cannot be empty',
-            trigger: 'blur',
-          },
-        ],
-        originPW: [
-          {
-            required: true,
-            message: 'The original password cannot be empty',
-            trigger: 'blur',
-          },
-          {
-            type: 'string',
-            min: 6,
-            message: 'The password no less than 6 words',
-            trigger: 'blur',
-          },
-        ],
-        newPW: [
-          {
-            required: true,
-            message: 'The new password cannot be empty',
-            trigger: 'blur',
-          },
-          {
-            type: 'string',
-            min: 6,
-            message: 'The password no less than 6 words',
-            trigger: 'blur',
-          },
-        ],
-        reNewPW: [
-          {
-            required: true,
-            message: 'The repeat new password cannot be empty',
-            trigger: 'blur',
-          },
-          {
-            type: 'string',
-            min: 6,
-            message: 'The password no less than 6 words',
-            trigger: 'blur',
-          },
-          {
-            validator: validateRepeatPW,
-            trigger: 'blur',
-          },
-        ],
-      },
+      rule: PERSON_MODIFY_RULE.call(this),
       columns: [
         {
           type: 'selection',
