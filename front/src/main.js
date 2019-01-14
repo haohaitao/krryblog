@@ -4,11 +4,11 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from './store';
-import iView from 'iview';
+// import iView from 'iview';
 import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
-import 'iview/dist/styles/iview.css';
-import 'animate.css';
+// import 'iview/dist/styles/iview.css';
+// import 'animate.css';
 
 // 以下配置 Valine 评论插件
 // Register AV objects to the global
@@ -16,7 +16,7 @@ window.AV = require('leancloud-storage');
 
 Vue.config.productionTip = false;
 
-Vue.use(iView);
+// Vue.use(iView);
 Vue.use(mavonEditor);
 
 router.beforeEach((to, from, next) => {
