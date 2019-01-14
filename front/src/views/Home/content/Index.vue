@@ -30,7 +30,6 @@ export default {
       if (res.status === 200) {
         this.blogList = res.data;
         this.blogLen = res.blogLen;
-        console.log(res);
       }
     },
     changePage (pageNo) {
