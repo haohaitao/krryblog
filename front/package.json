@@ -14,16 +14,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "animate.css": "^3.7.0",
-    "axios": "^0.18.0",
-    "headroom.js": "^0.9.4",
-    "iview": "^3.0.1",
     "leancloud-storage": "^3.10.0",
-    "mavon-editor": "^2.6.17",
-    "valine": "^1.3.3",
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "mavon-editor": "^2.6.17"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

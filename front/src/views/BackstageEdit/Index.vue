@@ -41,13 +41,15 @@
 </template>
 
 <script>
+import { mavonEditor } from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+import '@/assets/css/markdown.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import uploadImg from './UploadImg';
 import Service from '@/service';
 import { loading } from '@/mixins/loading';
-import '@/assets/css/markdown.css';
-import '@/assets/css/github.css';
+// import '@/assets/css/github.css';
 export default {
   mixins: [loading],
   data () {
@@ -182,7 +184,7 @@ export default {
     },
   },
   components: {
-    Header, Footer, uploadImg,
+    Header, Footer, uploadImg, mavonEditor,
   },
 };
 </script>

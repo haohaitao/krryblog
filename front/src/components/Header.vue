@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import Headroom from 'headroom.js';
+// import Headroom from 'headroom';
 export default {
   data () {
     return {
@@ -120,7 +120,7 @@ export default {
   mounted () {
     // 获取页面元素
     let myElement = document.querySelector('header');
-    let headroom = new Headroom(myElement, {
+    let headroom = new Headroom(myElement, { // eslint-disable-line
       'tolerance': 5,
       'offset': 80,
       'classes': {
