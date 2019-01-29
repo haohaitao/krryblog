@@ -11,7 +11,7 @@
       </span>
       <span class="footer-flot sec-footer-flot">｜</span>
       <p class="link-git">
-        <span class="name">Copyright © 2018 乐诗</span>&nbsp;
+        <span class="name">Copyright © 2019 乐诗</span>&nbsp;
         <span class="github">
           <a target="_blank" href="https://github.com/Krryxa"><Icon type="logo-github" /></a>
         </span>
