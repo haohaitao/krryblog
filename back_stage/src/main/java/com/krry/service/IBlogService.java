@@ -50,4 +50,10 @@ public interface IBlogService {
 	 */
 	public String updateBlog(Blog blog);
 	
+	/**
+	 * 博客评论数+1
+	 * @param blog
+	 */
+	public String updateCommonBlog(Blog blog);
+	
 }

@@ -183,7 +183,7 @@ export default {
             id: this.blog['id'],
             comment: ++commentCount,
           };
-          Service.updateBlog(reqData);
+          Service.updateCommonBlog(reqData);
           // 设置当前评论量
           this.$refs.commentSpan.innerText = commentCount;
           // 移除评论按钮

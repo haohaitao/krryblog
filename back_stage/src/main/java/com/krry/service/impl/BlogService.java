@@ -228,6 +228,19 @@ public class BlogService implements IBlogService{
 		
 		return "success";
 	}
+	
+	
+	/**
+	 * 博客评论数+1
+	 * @param blog
+	 * @return
+	 */
+	public String updateCommonBlog(Blog blog) {
+		
+		blogMapper.updateBlog(blog);
+		
+		return "success";
+	}
 
 
 }

@@ -137,6 +137,20 @@ public class BlogController {
 		return msg;
 	}
 	
+	/**
+	 * 博客评论数+1
+	 * @param blog
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/updateCommonBlog")
+	public String updateCommonBlog(Blog blog){
+		
+		String msg = blogService.updateCommonBlog(blog);
+		
+		return msg;
+	}
+	
 }
 
 
