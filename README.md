@@ -159,6 +159,53 @@ mounted () {
 </Modal>
 ```
 8. 很多页面使用到 loading 动画，放入 mixins 中混入需要的页面
+9. 博客点击数的统计，写在后台，当调用查询博客详情页的接口时，点击数 +1
+```java
+  /**
+	 * 获取博客详情页
+	 * @return
+	 */
+	public HashMap<String, Object> getBlogDetail(int id){
+		
+		Blog newBlog = new Blog();
+		
+		Blog blog = blogMapper.getBlogDetail(id);
+		
+		HashMap<String, Object> resData = new HashMap<>();
+		
+		if (blog != null) {
+			// 设置点击量+1
+			int hit = blog.getHit();
+			blog.setHit(++hit);
+			newBlog.setHit(hit);
+			newBlog.setId(id);
+			
+			blogMapper.updateBlog(newBlog);
+			
+			// 处理查询出timestamp时间类型多了个 .0  的问题
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // 设置日期格式
+			try {
+				Date createData = df.parse(blog.getCreateTime());
+				Date updateData = df.parse(blog.getUpdateTime());
+				String createTime = df.format(createData);
+				String updateTime = df.format(updateData);
+				blog.setCreateTime(createTime);
+				blog.setUpdateTime(updateTime);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			resData.put("status", 200);
+		} else {
+			resData.put("status", 404);
+		}
+		resData.put("data", blog);
+		
+		return resData;
+	}
+```
+10. 博客评论数的统计，点击提交评论，验证码通过时，后端调用 updateBlog 接口，根据传递的参数只有 comment，就不更改 updateTime
 
 ## 部署
 1. 文件路径出错：在 config 的 index.js 下 build 的设置：assetsPublicPath: './',
