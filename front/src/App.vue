@@ -84,6 +84,15 @@ img {
   right: 0;
 }
 
+/* 代码字体 */
+.hljs {
+  font-size: 16px;
+}
+.hljs-comment, .hljs-quote {
+  font-style: normal !important;
+  font-weight: bold;
+}
+
 /* 回到顶部 */
 .ivu-back-top {
   display: block;
