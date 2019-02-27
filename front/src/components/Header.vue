@@ -91,9 +91,9 @@
             </li>
           </router-link>
         </ul>
-        <div class="search">
+        <div class="search" @mouseover="focusInp">
           <Icon type="md-search" @click="search"/>
-          <input type="text" class="s-inp" v-model.trim="keyWord" @keyup.enter="search" placeholder="查找你喜欢的内容..." maxlength="30" autocomplete="off">
+          <input type="text" class="s-inp" ref="searchInp" v-model.trim="keyWord" @keyup.enter="search" placeholder="查找你喜欢的内容..." maxlength="30" autocomplete="off">
         </div>
       </div>
     </div>
@@ -143,7 +143,14 @@ export default {
         console.log('search api...');
         this.$router.push(`/search/${this.keyWord}`);
         this.keyWord = '';
+      } else {
+        this.$refs.searchInp.focus();
       }
+    },
+    focusInp () {
+      setTimeout(() => {
+        this.$refs.searchInp.focus();
+      }, 100);
     },
     closeCollMenu () {
       this.isVisibleNavFar = !this.isVisibleNavFar;

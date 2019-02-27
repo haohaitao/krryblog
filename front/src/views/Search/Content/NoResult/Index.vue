@@ -54,7 +54,7 @@ export default {
 <style lang='scss' scoped>
 section {
   animation: fadeIn .6s linear;
-  padding: 50px 0;
+  padding: 70px 0;
   text-align: center;
   line-height: 70px;
 
