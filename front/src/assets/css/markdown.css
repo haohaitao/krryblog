@@ -331,7 +331,8 @@
 }
 
 .markdown-body code {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: Menlo,Monaco,Consolas,Courier New,monospace !important;
+  /* font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; */
   font-size: 12px;
 }
 
