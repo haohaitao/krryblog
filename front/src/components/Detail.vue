@@ -135,7 +135,7 @@ export default {
         appId: 'AXcd7u8mPqn0JWnsXku8MgdU-gzGzoHsz',
         appKey: 'xDI01iWSsPVlKzITBp5ODinq',
         verify: true,
-        path: window.location.hash,
+        path: window.location.pathname,
         avatar: 'mp',
         placeholder: '留下你的足迹... （支持 Markdown）',
       });
