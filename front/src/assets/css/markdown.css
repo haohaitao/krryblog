@@ -14,6 +14,17 @@
   word-wrap: break-word;
 }
 
+.markdown-body .back-img {
+  width: 23px;
+  height: 23px;
+  display: inline-block;
+  background-size: cover !important;
+  vertical-align: middle;
+  margin-right: 10px;
+  border-radius: 3px;
+  background: url(https://gravatar.loli.net/avatar/123?d=mp&v=1.3.3);
+}
+
 .markdown-body .pl-c {
   color: #6a737d;
 }
