@@ -65,6 +65,7 @@ npm test
 2019<br>
 01/14：使用CDN资源优化首屏加载，减少 vendor 包的大小<br>
 02/27：更改代码显示风格为 vs2015<br>
+03/01：hash 路由更换成 history 路由<br>
 ...
 
 
